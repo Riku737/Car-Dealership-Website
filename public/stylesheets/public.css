@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ROOT */
+
+:root {
+    --pri_color: black;
+    --sec_color: grey;
+    --ter_color: white;
+    --accent_color: blue;
+}
+
+
+* {
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* NAVIGATION */
+
+.navigation_section {
+    margin: 0;
+    padding: 15px;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+.navigation_content {
+    display: flex;
+    margin: auto;
+}
+
+.navigation_left {
+    width: 50%;
+}
+
+.navigation_right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    flex-direction: row-reverse;
+}
+
+/* INDEX.PHP */
+
+.section_content {
+    margin: auto;
+    height: 1000vh;
+}
