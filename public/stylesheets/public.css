@@ -25,17 +25,19 @@ body {
 .navigation_section {
     margin: 0;
     padding: 15px;
+    background-color: black;
     margin-bottom: 30px;
-    background-color: white;
 }
 
 .navigation_content {
     display: flex;
     margin: auto;
+    width: 1080px;
 }
 
 .navigation_left {
     width: 50%;
+    color: white;
 }
 
 .navigation_right {
@@ -46,9 +48,57 @@ body {
     flex-direction: row-reverse;
 }
 
+.menu_link {
+    color: white;
+    text-decoration: none;
+}
+
+.menu_link:hover {
+    color: grey;
+}
+
+/* FOOTER */
+
+.footer_section {
+    background-color: #dadada;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.footer_content {
+    margin: auto;
+    width: 1080px;
+}
+
+
+
 /* INDEX.PHP */
 
 .section_content {
     margin: auto;
-    height: 1000vh;
+    width: 1080px;
+}
+
+.table_section {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.table_section td, th {
+    padding: 7px;
+}
+
+.table_section tr {
+    border-bottom: 1px solid #dadada;
+}
+
+.table_section td {
+    color: #252525;
+}
+
+.item_box {
+    border: 1px solid #dadada;
+    border-radius: 7px;
+    padding: 30px;
 }
