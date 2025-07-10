@@ -20,7 +20,7 @@
             </a>
         </div>
         <div class="col navigation_right navbar-nav">
-            <a class="nav-item nav-link" href="<?php echo url_for('/index.php')?>">Inventory</a>
+            <a class="nav-item nav-link" href="<?php echo url_for('/cars.php')?>">Inventory</a>
             <a class="nav-item nav-link" href="<?php echo url_for('/index.php')?>">Home</a>
         </div>
 
