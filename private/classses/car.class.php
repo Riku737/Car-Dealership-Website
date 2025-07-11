@@ -7,7 +7,7 @@ class Car {
     public $model;
     public $year;
     public $body_type;
-    public $color;
+    public $colour;
     public $mileage_km;
     public $price;
     public $fuel_type;
@@ -15,7 +15,7 @@ class Car {
 
     // Constants
     public const CATEGORIES = ['Sedan', 'SUV', 'Coupe', 'Hatchback', 'Convertible', 'Pickup', 'Van', 'Sports', 'Crossover'];
-    public const COLOR = ['Black', 'Gray', 'Silver', 'White', 'Blue', 'Red'];
+    public const COLOUR = ['Black', 'Gray', 'Silver', 'White', 'Blue', 'Red'];
     protected const CONDITION_OPTIONS = [
         1 => 'New',
         2 => 'Certified Pre-Owned',
@@ -28,7 +28,7 @@ class Car {
         $this->model = $args['model'] ?? '';
         $this->year = $args['year'] ?? '';
         $this->body_type = $args['body_type'] ?? '';
-        $this->color = $args['color'] ?? '';
+        $this->colour = $args['colour'] ?? '';
         $this->mileage_km = $args['mileage_km'] ?? 0;
         $this->price = $args['price'] ?? 0.0;
         $this->fuel_type = $args['fuel_type'] ?? '';

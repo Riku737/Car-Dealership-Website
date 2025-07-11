@@ -16,10 +16,16 @@ define("WWW_ROOT", $doc_root);
 
 // Loads necessary PHP files once
 require_once('functions.php');
+require_once('db_credentials.php');
+require_once('database.php');
+
+// Load class definitions
 require_once(PRIVATE_PATH . '/classses/car.class.php');
 require_once(PRIVATE_PATH . '/classses/parsecsv.class.php');
 // foreach(glob('classes/*.class.php') as $file) {
 //     require_once($file);
 // }
+
+$database = db_connect();
 
 ?>

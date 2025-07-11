@@ -42,7 +42,7 @@ $car_array = $parser->parse();
                         <th>Model</th>
                         <th>Year</th>
                         <th>Body Type</th>
-                        <th>Color</th>
+                        <th>Colour</th>
                         <th>Mileage (km)</th>
                         <th>Price</th>
                         <th>Fuel Type</th>
@@ -58,7 +58,7 @@ $car_array = $parser->parse();
                         <td><?php echo h($car->model); ?></td>
                         <td><?php echo h($car->year); ?></td>
                         <td><?php echo h($car->body_type); ?></td>
-                        <td><?php echo h($car->color); ?></td>
+                        <td><?php echo h($car->colour); ?></td>
                         <td><?php echo h(number_format($car->mileage_km)); ?></td>
                         <td><?php echo h('$' . number_format($car->price, 2)); ?></td>
                         <td><?php echo h($car->fuel_type); ?></td>

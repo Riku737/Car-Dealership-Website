@@ -1,4 +1,4 @@
-make,model,year,body_type,color,mileage_km,price,fuel_type,condition_id
+make,model,year,body_type,colour,mileage_km,price,fuel_type,condition_id
 Chevrolet,Impala,2011,Convertible,Black,64322,5000,Petrol,1
 Chevrolet,Malibu,2023,Pickup,Black,178091,16952,Diesel,1
 Hyundai,Tucson,2015,Hatchback,Blue,101449,5000,Petrol,1
