@@ -76,4 +76,13 @@ $car_array = $parser->parse();
 
 </section>
 
+<?php 
+
+$cars = Car::find_all();
+
+print_r($cars);
+// echo "Make: " . $row['make'];
+
+?>
+
 <?php require_once(SHARED_PATH . '/public_footer.php'); ?>
