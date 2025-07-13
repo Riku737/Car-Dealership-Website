@@ -1,32 +1,8 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php require_once('../../private/initialize.php'); ?>
 
 <?php include(SHARED_PATH . '/public_navigation.php'); ?>
 
-<?php
-
-// $parser = new ParseCSV(PRIVATE_PATH . '/car_dealership_inventory.csv');
-// $car_array = $parser->parse();
-
-// print_r($car_array);
-
-// $args = [
-//     'make' => 'Toyota',
-//     'model' => 'Corolla',
-//     'year' => 2022,
-//     'body_type' => 'Sedan',
-//     'color' => 'White',
-//     'mileage_km' => 15000,
-//     'price' => 18000,
-//     'fuel_type' => 'Gasoline',
-//     'status' => 'Available',
-//     'condition_id' => '1'
-// ];
-
-// $car = new Car($args);
-
-$cars = Car::find_all();
-
-?>
+<?php $cars = Car::find_all(); ?>
 
 <section class="section_container">
 
@@ -35,26 +11,7 @@ $cars = Car::find_all();
         <h1>Inventory</h1>
         <h2>Find new, used, and certified pre-owned cars.</h2>
 
-        <div class="list">
-            <?php foreach($cars as $car) {?>
-            <div class="item_box car_preview">
-
-                <img class="car_preview_thumbnail" src="<?php echo h($car->image_path); ?>" >
-
-                <div>
-                    <p><?php echo h($car->condition()); ?></p>
-                    <a class="car_preview_link" href="detail.php?id=<?php echo $car->id; ?>"><h3><?php echo $car->name(); ?></h3></a>
-                    <h4><?php echo "$" . number_format(h($car->price), 2); ?></h4>
-                    <p><?php echo number_format(h($car->mileage_km)) . " km"; ?></p>
-                    <p><?php echo h($car->body_type); ?></p>
-                </div>
-
-            </div>
-            <?php } ?>
-        </div>
-        
-
-        <!-- <div class="item_box">
+        <div class="item_box">
 
             <table class="table_section">
                 <thead>
@@ -88,7 +45,7 @@ $cars = Car::find_all();
 
             </table>
 
-        </div> -->
+        </div>
 
     </div>
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/public.css'); ?>"/>
-    <title>Document</title>
+    <title><?php if(isset($page_title)) { echo h($page_title); } ?></title>
 </head>
 <body>
 
@@ -16,7 +16,6 @@
             <h4>Car Dealership Inventory System</h4>
         </div>
         <div class="navigation_right">
-            <a class="menu_link" href="<?php echo url_for('/cars.php')?>">Inventory</a>
             <a class="menu_link" href="<?php echo url_for('/index.php')?>">Home</a>
         </div>
 

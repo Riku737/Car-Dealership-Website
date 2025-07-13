@@ -102,3 +102,35 @@ body {
     border-radius: 7px;
     padding: 30px;
 }
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.car_preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.car_preview_link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.car_preview_link:hover {
+    text-decoration: underline;
+
+}
+
+.car_preview_thumbnail {
+    width: 100%;
+}
+
+
+/* IMAGES */
+.item_thumbnail {
+    width: 100%;
+}
