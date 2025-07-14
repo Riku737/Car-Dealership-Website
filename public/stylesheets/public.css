@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 /* ROOT */
 
@@ -7,12 +7,20 @@
     --sec_color: grey;
     --ter_color: white;
     --accent_color: blue;
+
+    --pri_font: "Figtree", Arial, Helvetica, sans-serif;
+    --sec_font: "Lato", Arial, Helvetica, sans-serif;
 }
 
 
-* {
-    font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--pri_font);
 }
+
+html, body, p, a, span, div, li, td, th, input, button, textarea, label {
+    font-family: var(--sec_font);
+}
+
 
 body {
     margin: 0;
@@ -24,9 +32,10 @@ body {
 
 .navigation_section {
     margin: 0;
-    padding: 15px;
-    background-color: black;
     margin-bottom: 30px;
+    padding: 15px 0;
+    border-bottom: 1px solid #dadada;
+    background-color: white;
 }
 
 .navigation_content {
@@ -37,7 +46,8 @@ body {
 
 .navigation_left {
     width: 50%;
-    color: white;
+    display: flex;
+    align-items: center;
 }
 
 .navigation_right {
@@ -49,13 +59,39 @@ body {
 }
 
 .menu_link {
-    color: white;
+    color: black;
     text-decoration: none;
+    font-weight: bold;
+    transform: 250ms;
 }
 
 .menu_link:hover {
-    color: grey;
+    color: #007EA7;
 }
+
+.menu_logo {
+    font-family: var(--pri_font);
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+}
+
+.primary_button {
+    background-color: #00a8e8;
+    color: white;
+    border-radius: 7px;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.primary_button:hover {
+    background-color: #007EA7;
+    transition: 250ms;
+}
+
+
 
 /* FOOTER */
 
@@ -77,6 +113,9 @@ body {
 .section_content {
     margin: auto;
     width: 1080px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .table_section {
@@ -99,8 +138,16 @@ body {
 
 .item_box {
     border: 1px solid #dadada;
-    border-radius: 7px;
     padding: 30px;
+    border-radius: 7px;
+}
+
+.item_box img {
+    border-radius: 3px;
+}
+
+.item_box p {
+    margin: 0;
 }
 
 .list {
@@ -109,26 +156,64 @@ body {
     gap: 30px;
 }
 
-.car_preview {
+.grid_layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
-.car_preview_link {
+.car_link {
     color: inherit;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.car_preview_link:hover {
-    text-decoration: underline;
+.car_link:hover {
+    background-color: #f6f6f6;
+    transition: 250ms;
+}
 
+.car_link:focus {
+    border: 1px solid #007EA7;
 }
 
 .car_preview_thumbnail {
     width: 100%;
+    height: 250px;
+    object-fit: cover;
 }
 
+.car_details h4,
+.car_details h3,
+.car_details p {
+    padding: 0;
+    margin: 0;
+}
+
+.car_details h3 {
+    margin-top: 7px;
+    margin-bottom: 3px;
+}
+
+
+/* DETAIL.PHP */
+.heading_container h1, 
+.heading_container h2, 
+.heading_container p {
+    margin: 0;
+}
+
+.heading_container h1 {
+    margin-top: 15px;
+    margin-bottom: 7px;
+}
+
+.content_container h2 {
+    margin: 0;
+    margin-bottom: 15px;
+}
 
 /* IMAGES */
 .item_thumbnail {

@@ -32,64 +32,27 @@ $cars = Car::find_all();
 
     <div class="section_content">
 
-        <h1>Inventory</h1>
-        <h2>Find new, used, and certified pre-owned cars.</h2>
+        <div class="heading_container">
+            <h1>Inventory</h1>
+            <p>Find new, used, and certified pre-owned car in Ottawa.</p>
+        </div>
 
-        <div class="list">
+        <div class="grid_layout">
             <?php foreach($cars as $car) {?>
-            <div class="item_box car_preview">
+            <a class="item_box car_link" href="detail.php?id=<?php echo $car->id; ?>">
 
                 <img class="car_preview_thumbnail" src="<?php echo h($car->image_path); ?>" >
 
-                <div>
-                    <p><?php echo h($car->condition()); ?></p>
-                    <a class="car_preview_link" href="detail.php?id=<?php echo $car->id; ?>"><h3><?php echo $car->name(); ?></h3></a>
-                    <h4><?php echo "$" . number_format(h($car->price), 2); ?></h4>
-                    <p><?php echo number_format(h($car->mileage_km)) . " km"; ?></p>
-                    <p><?php echo h($car->body_type); ?></p>
+                <div class="car_details">
+                    <small><?php echo h($car->mileage()); ?></small>
+                    <h3><?php echo $car->name(); ?></h3>
+                    <h4><?php echo h($car->price()); ?></h4>
                 </div>
 
-            </div>
+            </a>
             <?php } ?>
         </div>
         
-
-        <!-- <div class="item_box">
-
-            <table class="table_section">
-                <thead>
-                    <tr>
-                        <th>Make</th>
-                        <th>Model</th>
-                        <th>Year</th>
-                        <th>Body Type</th>
-                        <th>Colour</th>
-                        <th>Mileage (km)</th>
-                        <th>Price</th>
-                        <th>Condition</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach($cars as $car) {?>
-                    <tr>
-                        <td><?php echo h($car->make); ?></td>
-                        <td><?php echo h($car->model); ?></td>
-                        <td><?php echo h($car->year); ?></td>
-                        <td><?php echo h($car->body_type); ?></td>
-                        <td><?php echo h($car->colour); ?></td>
-                        <td><?php echo h(number_format($car->mileage_km)); ?></td>
-                        <td><?php echo h('$' . number_format($car->price, 2)); ?></td>
-                        <td><?php echo h($car->condition()); ?></td>
-                        <td><a href="detail.php?id=<?php echo $car->id; ?>">View</a></td>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-
-            </table>
-
-        </div> -->
-
     </div>
 
 </section>

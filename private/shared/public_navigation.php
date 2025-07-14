@@ -13,9 +13,10 @@
     <div class="navigation_content">
 
         <div class="navigation_left">
-            <h4>Car Dealership Inventory System</h4>
+            <a class="menu_logo" href="<?php echo url_for('/index.php')?>">Ottawa Car Dealership</a>
         </div>
         <div class="navigation_right">
+            <a class="primary_button" href="<?php echo url_for('/index.php')?>">Search Inventory</a>
             <a class="menu_link" href="<?php echo url_for('/index.php')?>">Home</a>
         </div>
 

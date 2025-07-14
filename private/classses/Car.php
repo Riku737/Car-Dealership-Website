@@ -106,8 +106,15 @@ class Car {
 
     public function name() {
         return "{$this->year} {$this->make} {$this->model}";
-    } 
+    }
 
+    public function price() {
+        return "$" . number_format($this->price,2);
+    }
+
+    public function mileage() {
+        return number_format(h($this->mileage_km)) . " km";
+    }
 
 }
 
