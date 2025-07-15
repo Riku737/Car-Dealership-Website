@@ -13,11 +13,14 @@
     <div class="navigation_content">
 
         <div class="navigation_left">
-            <a class="menu_logo" href="<?php echo url_for('/index.php')?>">Ottawa Car Dealership</a>
+            <a class="menu_link menu_logo" href="<?php echo url_for('/index.php')?>">The Used Suspects</a>
+            <a class="menu_link" href="<?php echo url_for('/index.php')?>">Home</a>
+            <a class="menu_link" href="<?php echo url_for('/index.php')?>">About</a>
+            <a class="menu_link" href="<?php echo url_for('/index.php')?>">Contact</a>
         </div>
         <div class="navigation_right">
             <a class="primary_button" href="<?php echo url_for('/index.php')?>">Search Inventory</a>
-            <a class="menu_link" href="<?php echo url_for('/index.php')?>">Home</a>
+            <a class="secondary_button" href="<?php echo url_for('/staff/index.php')?>">Login</a>
         </div>
 
     </div>

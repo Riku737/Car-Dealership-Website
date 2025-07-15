@@ -17,10 +17,37 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--pri_font);
 }
 
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+p {
+    font-size: 16px;
+}
+
 html, body, p, a, span, div, li, td, th, input, button, textarea, label {
     font-family: var(--sec_font);
 }
 
+p {
+    color: #363636;
+}
+
+small {
+    font-size: 14px;
+}
 
 body {
     margin: 0;
@@ -32,10 +59,13 @@ body {
 
 .navigation_section {
     margin: 0;
-    margin-bottom: 30px;
     padding: 15px 0;
     border-bottom: 1px solid #dadada;
     background-color: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
 }
 
 .navigation_content {
@@ -48,13 +78,14 @@ body {
     width: 50%;
     display: flex;
     align-items: center;
+    column-gap: 30px;
 }
 
 .navigation_right {
     width: 50%;
     display: flex;
     align-items: center;
-    column-gap: 30px;
+    column-gap: 15px;
     flex-direction: row-reverse;
 }
 
@@ -63,6 +94,7 @@ body {
     text-decoration: none;
     font-weight: bold;
     transform: 250ms;
+    font-size: 14px;
 }
 
 .menu_link:hover {
@@ -74,21 +106,43 @@ body {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-size: large;
+    font-size: 18px;
 }
 
 .primary_button {
     background-color: #00a8e8;
     color: white;
     border-radius: 7px;
-    padding: 10px 15px;
+    padding: 15px 30px;
     text-decoration: none;
     font-weight: bold;
+    font-size: 14px;
 }
 
 .primary_button:hover {
     background-color: #007EA7;
     transition: 250ms;
+}
+
+.secondary_button {
+    background-color: white;
+    color: #00a8e8;
+    border: 1px solid #00a8e8;
+    border-radius: 7px;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.secondary_button:hover {
+    border: 1px solid #007EA7;
+    color: #007EA7;
+    transition: 250ms;
+}
+
+.website_content {
+    margin-top: 130px;
 }
 
 
@@ -125,7 +179,8 @@ body {
 }
 
 .table_section td, th {
-    padding: 7px;
+    padding: 15px;
+    font-size: 16px;
 }
 
 .table_section tr {
@@ -133,7 +188,7 @@ body {
 }
 
 .table_section td {
-    color: #252525;
+    color: #363636;
 }
 
 .item_box {
@@ -158,7 +213,7 @@ body {
 
 .grid_layout {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
@@ -171,7 +226,7 @@ body {
 }
 
 .car_link:hover {
-    background-color: #f6f6f6;
+    background-color: #f4fcff;
     transition: 250ms;
 }
 
@@ -181,7 +236,7 @@ body {
 
 .car_preview_thumbnail {
     width: 100%;
-    height: 250px;
+    height: 150px;
     object-fit: cover;
 }
 
@@ -192,9 +247,9 @@ body {
     margin: 0;
 }
 
-.car_details h3 {
-    margin-top: 7px;
-    margin-bottom: 3px;
+.car_details h4 {
+    margin-top: 3px;
+    margin-bottom: 7px;
 }
 
 
@@ -203,10 +258,11 @@ body {
 .heading_container h2, 
 .heading_container p {
     margin: 0;
+    color: black;
 }
 
 .heading_container h1 {
-    margin-top: 15px;
+    margin-top: 3px;
     margin-bottom: 7px;
 }
 

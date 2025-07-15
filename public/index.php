@@ -28,33 +28,37 @@ $cars = Car::find_all();
 
 ?>
 
-<section class="section_container">
+<div class="website_content">
 
-    <div class="section_content">
+    <section class="section_container">
 
-        <div class="heading_container">
-            <h1>Inventory</h1>
-            <p>Find new, used, and certified pre-owned car in Ottawa.</p>
+        <div class="section_content">
+
+            <div class="heading_container">
+                <h1>Inventory</h1>
+                <p>Find new, used, and certified pre-owned car in Ottawa.</p>
+            </div>
+
+            <div class="grid_layout">
+                <?php foreach($cars as $car) {?>
+                <a class="item_box car_link" href="detail.php?id=<?php echo $car->id; ?>">
+
+                    <img class="car_preview_thumbnail" src="<?php echo h($car->image_path); ?>" >
+
+                    <div class="car_details">
+                        <small><?php echo h($car->condition()); ?></small>
+                        <h4><?php echo $car->name(); ?></h4>
+                        <p><?php echo h($car->price()); ?></p>
+                    </div>
+
+                </a>
+                <?php } ?>
+            </div>
+            
         </div>
 
-        <div class="grid_layout">
-            <?php foreach($cars as $car) {?>
-            <a class="item_box car_link" href="detail.php?id=<?php echo $car->id; ?>">
+    </section>
 
-                <img class="car_preview_thumbnail" src="<?php echo h($car->image_path); ?>" >
-
-                <div class="car_details">
-                    <small><?php echo h($car->mileage()); ?></small>
-                    <h3><?php echo $car->name(); ?></h3>
-                    <h4><?php echo h($car->price()); ?></h4>
-                </div>
-
-            </a>
-            <?php } ?>
-        </div>
-        
-    </div>
-
-</section>
+</div>
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>
