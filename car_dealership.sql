@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2025 at 07:00 PM
+-- Generation Time: Jul 15, 2025 at 04:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -21,18 +21,60 @@ SET time_zone = "+00:00";
 -- Database: `car_dealership`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cars`
+--
+
+CREATE TABLE `cars` (
+  `id` int(11) NOT NULL,
+  `make` varchar(255) NOT NULL,
+  `model` varchar(255) NOT NULL,
+  `year` int(4) NOT NULL,
+  `body_type` varchar(255) NOT NULL,
+  `colour` varchar(255) NOT NULL,
+  `mileage_km` decimal(9,2) NOT NULL,
+  `price` decimal(9,2) NOT NULL,
+  `fuel_type` varchar(255) NOT NULL,
+  `condition_id` tinyint(3) NOT NULL,
+  `description` text NOT NULL,
+  `image_path` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 --
 -- Dumping data for table `cars`
 --
 
 INSERT INTO `cars` (`id`, `make`, `model`, `year`, `body_type`, `colour`, `mileage_km`, `price`, `fuel_type`, `condition_id`, `description`, `image_path`) VALUES
-(1, 'Chevrolet', 'Impala', 2011, 'Sedan', 'Black', 64322.00, 5000.00, 'Petrol', 1, 'A well-maintained black Chevrolet Impala sedan, offering comfort and smooth driving. Great for daily commuting.', 'images/pexels-mikebirdy-244206.jpg'),
-(2, 'Chevrolet', 'Malibu', 2023, 'Sedan', 'Black', 1200.00, 22000.00, 'Petrol', 1, 'A nearly-new 2023 Chevrolet Malibu with minimal mileage. Modern tech, efficient engine, and stylish design.', 'images/pexels-mikebirdy-244206.jpg'),
-(3, 'Hyundai', 'Tucson', 2015, 'SUV', 'Blue', 101449.00, 9500.00, 'Petrol', 2, 'Spacious and fuel-efficient 2015 Hyundai Tucson. Great for families and long trips with lots of cargo space.', 'images/pexels-mikebirdy-244206.jpg'),
-(4, 'Honda', 'CR-V', 2014, 'SUV', 'White', 79680.00, 10400.00, 'Petrol', 2, 'Reliable and popular white Honda CR-V with moderate mileage. Known for its versatility and safety features.', 'images/pexels-mikebirdy-244206.jpg'),
-(5, 'Nissan', 'Frontier', 2014, 'Pickup', 'Gray', 107095.00, 11385.00, 'Petrol', 3, 'Durable Nissan Frontier pickup truck, ideal for hauling and off-road driving. Mechanically sound.', 'images/pexels-mikebirdy-244206.jpg'),
-(6, 'Ford', 'Fusion', 2019, 'Sedan', 'Red', 43993.00, 14849.00, 'Petrol', 1, 'Sporty red 2019 Ford Fusion in excellent condition. Comfortable interior with advanced safety features.', 'images/pexels-mikebirdy-244206.jpg'),
-(7, 'Nissan', 'Rogue', 2018, 'Crossover', 'Gray', 87266.00, 12731.00, 'Petrol', 2, 'Versatile gray Nissan Rogue crossover with spacious interior and reliable performance.', 'images/pexels-mikebirdy-244206.jpg');
+(1, 'Ford', 'Mustang GT', 2016, 'Coupe', 'Black', 56000.00, 26500.00, 'Petrol', 2, 'A black 2016 Ford Mustang GT coupe delivering classic muscle car performance and aggressive styling.', 'images/2016_Mustang_GT.jpg'),
+(2, 'Audi', 'A4', 2021, 'Sedan', 'Black', 12000.00, 34500.00, 'Petrol', 1, 'Luxury black Audi A4 with low mileage, refined interior, and cutting-edge technology.', 'images/Black_Audi_A-series.jpg'),
+(3, 'Jeep', 'Cherokee', 2019, 'SUV', 'White', 34000.00, 28800.00, 'Petrol', 1, 'Capable white Jeep Cherokee SUV perfect for both urban driving and off-road adventures.', 'images/White_Jeep_Cherokee_Suv.jpg'),
+(4, 'Mercedes-Benz', 'A-Class', 2020, 'Hatchback', 'Blue', 22000.00, 31000.00, 'Petrol', 1, 'Sporty and efficient 5-door Mercedes-Benz A-Class in stunning blue with premium features.', 'images/Blue_Mercedes-benz_5-door_Hatchback.jpg'),
+(5, 'Mercedes-Benz', 'E300', 2018, 'Sedan', 'Silver', 54000.00, 39000.00, 'Petrol', 3, 'Executive silver Mercedes E300 sedan, known for comfort, performance, and sleek aesthetics.', 'images/Silver_Mercedes_E300.jpg'),
+(6, 'Mercedes-Benz', 'S-Class', 2022, 'Sedan', 'Black', 7000.00, 88000.00, 'Petrol', 1, 'Luxury at its finest — black 2022 Mercedes S-Class with cutting-edge features and ultra-smooth ride.', 'images/A_Mercedes-Benz_S_Class.jpg'),
+(7, 'Ducati', 'Monster 821', 2020, 'Motorbike', 'Red', 8900.00, 13200.00, 'Petrol', 1, 'Red Ducati Monster 821 — Italian engineering, thrilling performance, and bold naked-bike design.', 'images/Ducati_Monster_821.jpg'),
+(8, 'Honda', 'NSX', 1999, 'Coupe', 'Red', 68000.00, 94000.00, 'Petrol', 2, 'Legendary red Honda NSX JDM supercar — lightweight mid-engine performance and timeless styling.', 'images/Honda_NSX_JDM_Supercar.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cars`
+--
+ALTER TABLE `cars`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cars`
+--
+ALTER TABLE `cars`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
