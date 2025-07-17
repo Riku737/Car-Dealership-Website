@@ -1,0 +1,17 @@
+/* INDEX.PHP */
+
+.admin_banner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.admin_box {
+    padding: 30px;
+    border: 1px solid #dadada;
+    border-radius: 7px;
+}
+
+.admin_box h3 {
+    margin-bottom: 15px;
+}

@@ -22,7 +22,7 @@ include(SHARED_PATH . '/public_navigation.php');
         <div class="section_content">
     
             <div class="heading_container">
-                <p><?php echo h($car->condition()); ?></p>
+                <span class="headline_pill"><?php echo h($car->condition()); ?></span>
                 <h1><?php echo h($car->name())?></h1>
                 <h2><?php echo h($car->price()) ?></h2>
             </div>
@@ -51,6 +51,10 @@ include(SHARED_PATH . '/public_navigation.php');
     
                     <table class="table_section">
                         <tbody>
+                            <tr>
+                                <th>ID</th>
+                                <td><?php echo h($car->id); ?></td>
+                            </tr>
                             <tr>
                                 <th>Make</th>
                                 <td><?php echo h($car->make); ?></td>
@@ -87,7 +91,6 @@ include(SHARED_PATH . '/public_navigation.php');
                                 <th>Condition</th>
                                 <td><?php echo h($car->condition()); ?></td>
                             </tr>
-    
                         </tbody>
     
                     </table>

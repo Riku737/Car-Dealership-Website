@@ -19,8 +19,8 @@
             <a class="menu_link" href="<?php echo url_for('/index.php')?>">Contact</a>
         </div>
         <div class="navigation_right">
-            <a class="primary_button" href="<?php echo url_for('/index.php')?>">Search Inventory</a>
-            <a class="secondary_button" href="<?php echo url_for('/staff/index.php')?>">Login</a>
+            <a class="secondary_button" href="<?php echo url_for('/index.php')?>">Search Inventory</a>
+            <a class="menu_link tertiary_button" href="<?php echo url_for('/staff/index.php')?>">Login</a>
         </div>
 
     </div>
