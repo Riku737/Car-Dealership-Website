@@ -39,20 +39,20 @@ $cars = Car::find_all();
             </div>
             <form class="search_container">
                 <select class="custom_select" name="cars" id="cars">
-                    <option value="" disabled selected>Select a make</option>
+                    <option value="" disabled selected>Make</option>
                     <option value="volvo">Volvo</option>
                     <option value="saab">Saab</option>
                     <option value="opel">Opel</option>
                     <option value="audi">Audi</option>
                 </select>
                 <select class="custom_select" name="cars" id="cars">
-                    <option value="" disabled selected>Select a model</option>
+                    <option value="" disabled selected>Model</option>
                     <option value="saab">Saab</option>
                     <option value="opel">Opel</option>
                     <option value="audi">Audi</option>
                 </select>
                 <select class="custom_select" name="cars" id="cars">
-                    <option value="" disabled selected>Select a budget</option>
+                    <option value="" disabled selected>Budget</option>
                     <option value="saab">$0 - $1,000</option>
                     <option value="opel">$1,000 - $5,000</option>
                     <option value="audi">$5,000 - $10,000</option>

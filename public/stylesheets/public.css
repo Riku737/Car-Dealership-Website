@@ -157,14 +157,19 @@ body {
 /* FOOTER */
 
 .footer_section {
-    background-color: #dadada;
+    background-color: #00a8e8;
     padding: 15px;
     margin-top: 30px;
+    color: white;
 }
 
 .footer_content {
     margin: auto;
     width: 1080px;
+}
+
+.footer_content p {
+    color: white;
 }
 
 
@@ -279,7 +284,7 @@ body {
 
 .car_preview_thumbnail {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 7px;
     transition: transform 150ms;
@@ -300,13 +305,6 @@ body {
 
 
 /* DETAIL.PHP */
-.heading_container h1, 
-.heading_container h2, 
-.heading_container p {
-    margin: 0;
-    color: black;
-}
-
 .heading_container h1 {
     margin-top: 15px;
     margin-bottom: 7px;
@@ -320,4 +318,8 @@ body {
 /* IMAGES */
 .item_thumbnail {
     width: 100%;
+    border-radius: 7px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
 }

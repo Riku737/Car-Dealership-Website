@@ -27,11 +27,8 @@ include(SHARED_PATH . '/public_navigation.php');
                 <h2><?php echo h($car->price()) ?></h2>
             </div>
     
-            <div class="item_box">
     
-                <img class="item_thumbnail" src="<?php echo h($car->image_path)?>">
-    
-            </div>
+            <img class="item_thumbnail" src="<?php echo h($car->image_path)?>">
     
             <div class="content_container">
     

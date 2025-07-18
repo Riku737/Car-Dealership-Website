@@ -15,8 +15,7 @@
         <div class="navigation_left">
             <a class="menu_link menu_logo" href="<?php echo url_for('/index.php')?>">The Used Suspects</a>
             <a class="menu_link" href="<?php echo url_for('/index.php')?>">Home</a>
-            <a class="menu_link" href="<?php echo url_for('/index.php')?>">About</a>
-            <a class="menu_link" href="<?php echo url_for('/index.php')?>">Contact</a>
+            <a class="menu_link" href="<?php echo url_for('/about.php')?>">About</a>
         </div>
         <div class="navigation_right">
             <a class="secondary_button" href="<?php echo url_for('/index.php')?>">Search Inventory</a>
