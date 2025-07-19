@@ -31,8 +31,8 @@
                     <h4>Contact</h4>
                     <div class="footer_links">
                         <p>260 Maplewood Avenue, Suite 410 Ottawa, ON, K1R 6L5 Canada</p>
-                        <p>+1 (613) 555-8421</p>
-                        <p>info@mapleworksconsulting.ca</p>
+                        <p>+1 (613) 123-4567</p>
+                        <p>info@theusedsuspects.ca</p>
                     </div>
                 </div>
                 

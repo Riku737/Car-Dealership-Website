@@ -18,7 +18,7 @@
                 <div class="admin_box">
 
                     <h3>Inventory</h3>
-                    <p>View, edit, or add vehicles.</p>
+                    <p>View, edit, delete, or add vehicles.</p>
                     <a class="primary_button" href="<?php echo url_for("staff/cars/index.php"); ?>">Manage</a>
 
                 </div>
@@ -26,7 +26,7 @@
                 <div class="admin_box">
 
                     <h3>Admin</h3>
-                    <p>Update or add new admins.</p>
+                    <p>Update, delete, or add admins.</p>
                     <a class="primary_button" href="<?php echo url_for("staff/admins/index.php"); ?>">Manage</a>
 
                 </div>

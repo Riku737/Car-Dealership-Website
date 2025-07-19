@@ -10,7 +10,7 @@
     
         <div class="section_content">
 
-            <div class="heading_content">
+            <div class="heading_container">
                 <h1>Inventory</h1>
                 <p>Find new, used, and certified pre-owned cars.</p>
             </div>
