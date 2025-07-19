@@ -13,5 +13,9 @@
 }
 
 .admin_box h3 {
+    margin-bottom: 7px;
+}
+
+.admin_box p {
     margin-bottom: 15px;
 }

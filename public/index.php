@@ -67,6 +67,8 @@ $cars = Car::find_all();
 
         <div class="section_content">
 
+            <h2>All Vehicles</h2>
+
             <div class="grid_layout">
                 <?php foreach($cars as $car) {?>
                 <a class="car_link" href="detail.php?id=<?php echo $car->id; ?>">
