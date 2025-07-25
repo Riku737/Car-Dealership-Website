@@ -15,7 +15,6 @@
                 <p>Find new, used, and certified pre-owned cars.</p>
             </div>
 
-    
             <div class="item_box">
     
                 <table class="table_section">
@@ -30,6 +29,8 @@
                             <th>Price</th>
                             <th>Condition</th>
                             <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +44,9 @@
                             <td><?php echo h(number_format($car->mileage_km)); ?></td>
                             <td><?php echo h('$' . number_format($car->price, 2)); ?></td>
                             <td><?php echo h($car->condition()); ?></td>
-                            <td><a href="detail.php?id=<?php echo $car->id; ?>">View</a></td>
+                            <td><a class="link" href="show.php?id=<?php echo $car->id; ?>">View</a></td>
+                            <td><a class="link" href="detail.php?id=<?php echo $car->id; ?>">Edit</a></td>
+                            <td><a class="link" href="detail.php?id=<?php echo $car->id; ?>">Delete</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>

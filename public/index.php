@@ -33,31 +33,35 @@ $cars = Car::find_all();
     <section class="hero_section">
 
         <div class="section_content">
+            
             <div class="heading_container">
-                <h1>Inventory</h1>
+                <h1 style="margin-top:0px;">Inventory</h1>
                 <p>Find new, used, and certified pre-owned car in Ottawa.</p>
             </div>
+
             <form class="search_container">
                 <select class="custom_select" name="cars" id="cars">
-                    <option value="" disabled selected>Make</option>
+                    <option value="" disabled selected>Make<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                     <option value="volvo">Volvo</option>
                     <option value="saab">Saab</option>
                     <option value="opel">Opel</option>
                     <option value="audi">Audi</option>
                 </select>
                 <select class="custom_select" name="cars" id="cars">
-                    <option value="" disabled selected>Model</option>
+                    <option value="" disabled selected>Model<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                     <option value="saab">Saab</option>
                     <option value="opel">Opel</option>
                     <option value="audi">Audi</option>
                 </select>
                 <select class="custom_select" name="cars" id="cars">
-                    <option value="" disabled selected>Budget</option>
+                    <option value="" disabled selected>Budget<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                     <option value="saab">$0 - $1,000</option>
                     <option value="opel">$1,000 - $5,000</option>
                     <option value="audi">$5,000 - $10,000</option>
                 </select>
-                <button class="primary_button">Search</button>
+                <button class="primary_button">
+                    <i class="bi bi-search" style="font-size:14px; font-weight:bold; stroke-width:2.5;"></i>Search
+                </button>
             </form>
         </div>
 

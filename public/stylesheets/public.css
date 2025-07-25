@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
 /* ROOT */
 
@@ -6,10 +7,11 @@
     --pri_color: #00a8e8;
     --pri_hov_color: #007EA7;
     --pri_light_color: #e1f7ff;
-    --pri_pill_color: #dee3e5;
+    --pri_pill_color: #c1cacd;
     
     --ter_color: white;
     --accent_color: blue;
+    --background_color: #f1f6f7;
 
     --border_color: #dadada;
     --text_color: #363636;
@@ -17,7 +19,10 @@
     --pri_font: "Figtree", Arial, Helvetica, sans-serif;
     --sec_font: "Lato", Arial, Helvetica, sans-serif;
 }
-
+/* 
+body {
+    background-color: var(--background_color);
+} */
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--pri_font);
@@ -53,6 +58,21 @@ p {
     color: var(--text_color);
 }
 
+.primary_button .bi, .secondary_button .bi {
+    margin-right: 7px;
+}
+
+.link {
+    font-family: var(--sec_font);
+    color: var(--pri_color);
+    text-decoration: none;
+}
+
+.link:hover {
+    color: var(--pri_hov_color);
+    transform: 150ms;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -66,7 +86,7 @@ body {
     padding: 15px 0;
     background-color: white;
     width: 100%;
-    border-bottom: 1px solid var(--border_color);
+    /* border-bottom: 1px solid var(--border_color); */
     position: fixed;
     top: 0;
     z-index: 100;
@@ -96,20 +116,20 @@ body {
 .menu_link {
     color: black;
     text-decoration: none;
-    font-weight: bold;
-    transform: 150ms;
+    font-weight: 600;
     font-size: 14px;
 }
 
 .menu_link:hover {
     color: var(--pri_hov_color);
+    transform: 150ms;
 }
 
 .menu_logo {
     font-family: var(--pri_font);
     text-decoration: none;
     color: black;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 18px;
 }
 
@@ -119,7 +139,7 @@ body {
     border-radius: 7px;
     padding: 15px 30px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 14px;
     border: none;
     display: inline-block;
@@ -138,7 +158,7 @@ body {
     border-radius: 7px;
     padding: 15px 30px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 14px;
     display: inline-block;
 }
@@ -152,11 +172,13 @@ body {
 
 .tertiary_button {
     color: var(--pri_color);
+    font-weight: 600;
 }
 
 .website_content {
-    margin-top: 200px;
-    margin-bottom: 120px;
+    margin-top: 80px;
+    margin-bottom: 60px;
+    margin-top: 140px;
 }
 
 
@@ -207,9 +229,9 @@ body {
 
 .hero_section {
     background-color: var(--pri_light_color);
-    margin-top: -120px;
-    padding: 120px 0px 120px 0;
-    margin-bottom: 120px;
+    padding: 60px 0px 60px 0;
+    margin-bottom: 60px;
+    margin-top: -60px
 }
 
 .search_container {
@@ -218,12 +240,22 @@ body {
 }
 
 .custom_select {
-    padding: 15px 30px 15px 30px;
+    padding: 15px 60px 15px 30px;
     border-radius: 7px;
     border: 1px solid var(--border_color);
-    font-weight: bold;
+    font-weight: 600;
     background-color: white;
     font-size: 14px;
+}
+
+.custom_select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill=\"black\" height=\"16\" viewBox=\"0 0 24 24\" width=\"16\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 30px center;
+    background-size: 16px 16px;
 }
 
 .custom_select:hover {
@@ -234,7 +266,7 @@ body {
 .headline_pill {
     font-size: 14px;
     background-color: var(--pri_pill_color);
-    border-radius: 3px;
+    border-radius: 7px;
     padding: 3px 7px;
     display: inline-block;
     font-family: var(--pri_font);
@@ -259,6 +291,10 @@ body {
     font-size: 16px;
 }
 
+th {
+    font-family: var(--pri_font);
+}
+
 .table_section tr {
     border-bottom: 1px solid var(--border_color);
 }
@@ -268,13 +304,14 @@ body {
 }
 
 .item_box {
-    border: 1px solid var(--border_color);
+    background-color: white;
+    /* border: 1px solid var(--border_color); */
     padding: 30px;
-    border-radius: 7px;
+    border-radius: 15px;
 }
 
 .item_box img {
-    border-radius: 3px;
+    border-radius: 15px;
 }
 
 .item_box p {
@@ -298,6 +335,10 @@ body {
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    /* background-color: #f4f6f7;
+    border-radius: 15px; */
+    /* padding: 30px; */
 }
 
 .car_link:hover .car_preview_thumbnail {
@@ -307,14 +348,14 @@ body {
 
 .image_boundary {
     overflow: hidden;
-    border-radius: 7px 7px 0px 0px;
+    border-radius: 7px;
 }
 
 .car_preview_thumbnail {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 7px 7px 0px 0px;
+    border-radius: 7px;
     transition: transform 150ms;
     display: block;
 }
@@ -329,14 +370,38 @@ body {
 .car_details h4 {
     margin-top: 7px;
     margin-bottom: 3px;
+    position: relative;
+    display: inline-block;
+}
+
+.car_link:hover h4::after {
+    background-color: black;
+    bottom: 0;
+    content: "";
+    height: 1px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    animation: box_link 200ms normal forwards;
 }
 
 .car_details {
-    border-width: 0 1px 1px 1px;
+    /* border-width: 0 1px 1px 1px;
     border-style: solid;
     border-color: var(--border_color);
     border-radius: 0px 0px 7px 7px;
-    padding: 30px;
+    padding: 30px; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@keyframes box_link {
+    from {
+        width: 0%;
+    } to {
+        width: 100%;
+    }
 }
 
 
@@ -351,10 +416,27 @@ body {
     margin-bottom: 15px;
 }
 
+.car_banner {
+    background-color: var(--pri_light_color);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.car_banner h2 {
+    margin-bottom: 7px;
+}
+
+.car_banner p {
+    margin-bottom: 15px;
+}
+
 /* IMAGES */
 .item_thumbnail {
     width: 100%;
-    border-radius: 7px;
+    border-radius: 15px;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     display: block;

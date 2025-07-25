@@ -49,8 +49,8 @@ include(SHARED_PATH . '/public_navigation.php');
                     <table class="table_section">
                         <tbody>
                             <tr>
-                                <th>ID</th>
-                                <td><?php echo h($car->id); ?></td>
+                                <th style="width:50%;">ID</th>
+                                <td style="width:50%;"><?php echo h($car->id); ?></td>
                             </tr>
                             <tr>
                                 <th>Make</th>
@@ -94,6 +94,19 @@ include(SHARED_PATH . '/public_navigation.php');
     
                 </div>
     
+            </div>
+
+            <div class="content_container">
+
+                <div class="item_box car_banner">
+
+                    <h2>Found the One?</h2>
+                    <p>If this ride checks all your boxes, don’t let it slip away. Let’s make your next move easy.</p>
+                    <a class="primary_button">Get more info</a>
+
+                </div>
+
+
             </div>
     
         </div>

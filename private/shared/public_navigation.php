@@ -21,7 +21,7 @@
             <a class="menu_link" href="<?php echo url_for('/about.php')?>">Careers</a>
         </div>
         <div class="navigation_right">
-            <a class="secondary_button" href="<?php echo url_for('/index.php')?>">Search Inventory</a>
+            <a class="secondary_button" href="<?php echo url_for('/index.php')?>"><i class="bi bi-search" style="font-size:14px; font-weight:bold; stroke-width:2.5;"></i>Search Inventory</a>
             <a class="menu_link tertiary_button" href="<?php echo url_for('/staff/index.php')?>">Login</a>
         </div>
 
