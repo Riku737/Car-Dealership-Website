@@ -20,7 +20,11 @@ $car = Car::find_by_id($id);
 
     <section class="section_container">
 
-        
+
+        <div class="section_content">
+            <h1><?php echo h($car->name()); ?></h1>
+        </div>
+
 
     </section>
 

@@ -7,11 +7,11 @@
     --pri_color: #00a8e8;
     --pri_hov_color: #007EA7;
     --pri_light_color: #e1f7ff;
-    --pri_pill_color: #c1cacd;
+    --pri_pill_color: #f1f4f5;
     
     --ter_color: white;
     --accent_color: blue;
-    --background_color: #f1f6f7;
+    --background_color: #f6f8f9;
 
     --border_color: #dadada;
     --text_color: #363636;
@@ -87,9 +87,9 @@ body {
     background-color: white;
     width: 100%;
     /* border-bottom: 1px solid var(--border_color); */
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    z-index: 100;
+    z-index: 100; */
 }
 
 .navigation_content {
@@ -118,11 +118,24 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
+    position: relative;
+    padding: 15px 0px;
 }
 
 .menu_link:hover {
     color: var(--pri_hov_color);
     transform: 150ms;
+}
+
+.menu_link:hover::after {
+    background-color: var(--pri_hov_color);
+    bottom: 0;
+    content: "";
+    height: 1px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    animation: link_grow 200ms normal forwards;
 }
 
 .menu_logo {
@@ -136,7 +149,7 @@ body {
 .primary_button {
     background-color: var(--pri_color);
     color: white;
-    border-radius: 7px;
+    border-radius: 100px;
     padding: 15px 30px;
     text-decoration: none;
     font-weight: 600;
@@ -155,7 +168,7 @@ body {
     background-color: white;
     color: var(--pri_color);
     border: 1px solid var(--pri_color);
-    border-radius: 7px;
+    border-radius: 100px;
     padding: 15px 30px;
     text-decoration: none;
     font-weight: 600;
@@ -176,9 +189,11 @@ body {
 }
 
 .website_content {
-    margin-top: 80px;
+    margin-top: 60px;
     margin-bottom: 60px;
-    margin-top: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 }
 
 
@@ -227,21 +242,24 @@ body {
 
 /* INDEX.PHP */
 
-.hero_section {
+.hero_container {
     background-color: var(--pri_light_color);
-    padding: 60px 0px 60px 0;
-    margin-bottom: 60px;
-    margin-top: -60px
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-radius: 15px;
+    align-items: center;
 }
 
 .search_container {
     display: flex;
-    gap: 15px;
+    gap: 7px;
 }
 
 .custom_select {
     padding: 15px 60px 15px 30px;
-    border-radius: 7px;
+    border-radius: 100px;
     border: 1px solid var(--border_color);
     font-weight: 600;
     background-color: white;
@@ -266,10 +284,15 @@ body {
 .headline_pill {
     font-size: 14px;
     background-color: var(--pri_pill_color);
-    border-radius: 7px;
+    border-radius: 100px;
     padding: 3px 7px;
     display: inline-block;
     font-family: var(--pri_font);
+}
+
+.pill_group {
+    display: flex;
+    gap: 7px;
 }
 
 .section_content {
@@ -304,9 +327,9 @@ th {
 }
 
 .item_box {
-    background-color: white;
+    background-color: var(--background_color);
     /* border: 1px solid var(--border_color); */
-    padding: 30px;
+    padding: 60px;
     border-radius: 15px;
 }
 
@@ -348,7 +371,7 @@ th {
 
 .image_boundary {
     overflow: hidden;
-    border-radius: 7px;
+    border-radius: 15px;
 }
 
 .car_preview_thumbnail {
@@ -380,9 +403,10 @@ th {
     content: "";
     height: 1px;
     position: absolute;
+    border-radius: 100px;
     left: 0;
     width: 100%;
-    animation: box_link 200ms normal forwards;
+    animation: link_grow 200ms normal forwards;
 }
 
 .car_details {
@@ -396,7 +420,7 @@ th {
     align-items: flex-start;
 }
 
-@keyframes box_link {
+@keyframes link_grow {
     from {
         width: 0%;
     } to {
@@ -423,6 +447,7 @@ th {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 60px;
 }
 
 .car_banner h2 {

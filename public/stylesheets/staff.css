@@ -7,9 +7,9 @@
 }
 
 .admin_box {
-    padding: 30px;
-    border: 1px solid #dadada;
+    padding: 60px;
     border-radius: 7px;
+    background-color: var(--background_color);
 }
 
 .admin_box h3 {

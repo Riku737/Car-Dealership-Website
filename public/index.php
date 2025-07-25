@@ -30,45 +30,50 @@ $cars = Car::find_all();
 
 <div class="website_content">
 
-    <section class="hero_section">
+    <section class="section_container">
 
         <div class="section_content">
-            
-            <div class="heading_container">
-                <h1 style="margin-top:0px;">Inventory</h1>
-                <p>Find new, used, and certified pre-owned car in Ottawa.</p>
-            </div>
 
-            <form class="search_container">
-                <select class="custom_select" name="cars" id="cars">
-                    <option value="" disabled selected>Make<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
-                </select>
-                <select class="custom_select" name="cars" id="cars">
-                    <option value="" disabled selected>Model<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
-                </select>
-                <select class="custom_select" name="cars" id="cars">
-                    <option value="" disabled selected>Budget<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
-                    <option value="saab">$0 - $1,000</option>
-                    <option value="opel">$1,000 - $5,000</option>
-                    <option value="audi">$5,000 - $10,000</option>
-                </select>
-                <button class="primary_button">
-                    <i class="bi bi-search" style="font-size:14px; font-weight:bold; stroke-width:2.5;"></i>Search
-                </button>
-            </form>
+            <div class="hero_container">
+                <div class="heading_container" style="text-align: center;">
+                    <h1 style="margin-top:0px;">Inventory</h1>
+                    <p>Find new, used, and certified pre-owned car in Ottawa.</p>
+                </div>
+    
+                <form class="search_container">
+                    <select class="custom_select" name="cars" id="cars">
+                        <option value="" disabled selected>Make<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <select class="custom_select" name="cars" id="cars">
+                        <option value="" disabled selected>Model<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <select class="custom_select" name="cars" id="cars">
+                        <option value="" disabled selected>Budget<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
+                        <option value="saab">$0 - $1,000</option>
+                        <option value="opel">$1,000 - $5,000</option>
+                        <option value="audi">$5,000 - $10,000</option>
+                    </select>
+                    <button class="primary_button">
+                        <i class="bi bi-search" style="font-size:14px; font-weight:bold; stroke-width:2.5;"></i>Search
+                    </button>
+                </form>
+
+            </div>
+            
         </div>
 
     </section>
 
     <section class="section_container">
 
+        
         <div class="section_content">
 
             <h2>All Vehicles</h2>
@@ -80,7 +85,11 @@ $cars = Car::find_all();
                     <div class="image_boundary"><img class="car_preview_thumbnail" src="<?php echo h($car->image_path); ?>" ></div>
 
                     <div class="car_details">
-                        <span class="headline_pill"><?php echo h($car->condition()); ?></span>
+                        <div class="pill_group">
+                            <span class="headline_pill"><?php echo h($car->condition()); ?></span>
+                            <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
+                            <span class="headline_pill"><?php echo h($car->body_type); ?></span>
+                        </div>
                         <h4><?php echo $car->name(); ?></h4>
                         <p><?php echo h($car->price()); ?></p>
                     </div>
