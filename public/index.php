@@ -36,29 +36,33 @@ $cars = Car::find_all();
 
             <div class="hero_container">
                 <div class="heading_container" style="text-align: center;">
-                    <h1 style="margin-top:0px;">Inventory</h1>
-                    <p>Find new, used, and certified pre-owned car in Ottawa.</p>
+                    <h1 style="margin-top:0px;">Lineup of the Usual Suspects</h1>
+                    <p>Find new, used, and certified pre-owned vehicles with clean records and killer deals.</p>
                 </div>
     
                 <form class="search_container">
                     <select class="custom_select" name="cars" id="cars">
-                        <option value="" disabled selected>Make<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
+                        <option value="all_makes" disabled selected>All makes<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
+                        <optgroup label="Popular makes">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                        </optgroup>
                     </select>
                     <select class="custom_select" name="cars" id="cars">
-                        <option value="" disabled selected>Model<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
+                        <option value="all_models" disabled selected>All models<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
+                        <optgroup label="Popular models">
+                            <option value="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                        </optgroup>
                     </select>
                     <select class="custom_select" name="cars" id="cars">
-                        <option value="" disabled selected>Budget<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
-                        <option value="saab">$0 - $1,000</option>
-                        <option value="opel">$1,000 - $5,000</option>
-                        <option value="audi">$5,000 - $10,000</option>
+                        <option value="all_budgets">All budgets<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
+                        <option value="saab">$0 - $5,000</option>
+                        <option value="opel">$5,000 - $10,000</option>
+                        <option value="audi">$10,000 - $15,000</option>
                     </select>
                     <button class="primary_button">
                         <i class="bi bi-search" style="font-size:14px; font-weight:bold; stroke-width:2.5;"></i>Search
@@ -90,8 +94,8 @@ $cars = Car::find_all();
                             <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
                             <span class="headline_pill"><?php echo h($car->body_type); ?></span>
                         </div>
-                        <h4><?php echo $car->name(); ?></h4>
-                        <p><?php echo h($car->price()); ?></p>
+                        <h4><?php echo h($car->price()) ?></h4>
+                        <p><?php echo h($car->name()); ?></p>
                     </div>
 
                 </a>

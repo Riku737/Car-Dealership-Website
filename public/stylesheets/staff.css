@@ -8,14 +8,14 @@
 
 .admin_box {
     padding: 60px;
-    border-radius: 7px;
+    border-radius: 15px;
     background-color: var(--background_color);
 }
 
-.admin_box h3 {
+.admin_box h2 {
     margin-bottom: 7px;
 }
 
 .admin_box p {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }

@@ -27,7 +27,7 @@ include(SHARED_PATH . '/public_navigation.php');
                     <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
                     <span class="headline_pill"><?php echo h($car->body_type); ?></span>
                 </div>
-                <h1><?php echo h($car->name())?></h1>
+                <h1 style="margin-top:15px;"><?php echo h($car->name())?></h1>
                 <h2><?php echo h($car->price()) ?></h2>
             </div>
     

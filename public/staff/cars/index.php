@@ -45,8 +45,8 @@
                             <td><?php echo h('$' . number_format($car->price, 2)); ?></td>
                             <td><?php echo h($car->condition()); ?></td>
                             <td><a class="link" href="show.php?id=<?php echo $car->id; ?>">View</a></td>
-                            <td><a class="link" href="detail.php?id=<?php echo $car->id; ?>">Edit</a></td>
-                            <td><a class="link" href="detail.php?id=<?php echo $car->id; ?>">Delete</a></td>
+                            <td><a class="link" href="edit.php?id=<?php echo $car->id; ?>">Edit</a></td>
+                            <td><a class="link" href="delete.php?id=<?php echo $car->id; ?>">Delete</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>

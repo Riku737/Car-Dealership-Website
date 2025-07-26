@@ -6,12 +6,13 @@
 :root {
     --pri_color: #00a8e8;
     --pri_hov_color: #007EA7;
-    --pri_light_color: #e1f7ff;
-    --pri_pill_color: #f1f4f5;
+    --pri_light_color: #bcedff;
+    --pri_pill_color: #e8eeef;
     
     --ter_color: white;
     --accent_color: blue;
     --background_color: #f6f8f9;
+    --hero_backgrond_color: #0b1b21;
 
     --border_color: #dadada;
     --text_color: #363636;
@@ -86,7 +87,7 @@ body {
     padding: 15px 0;
     background-color: white;
     width: 100%;
-    /* border-bottom: 1px solid var(--border_color); */
+    border-bottom: 1px solid var(--pri_pill_color);
     /* position: fixed;
     top: 0;
     z-index: 100; */
@@ -119,19 +120,18 @@ body {
     font-weight: 600;
     font-size: 14px;
     position: relative;
-    padding: 15px 0px;
+    /* padding: 15px 0px; */
 }
 
 .menu_link:hover {
-    color: var(--pri_hov_color);
     transform: 150ms;
 }
 
 .menu_link:hover::after {
-    background-color: var(--pri_hov_color);
+    background-color: var(--pri_color);
     bottom: 0;
     content: "";
-    height: 1px;
+    height: 2px;
     position: absolute;
     left: 0;
     width: 100%;
@@ -149,13 +149,14 @@ body {
 .primary_button {
     background-color: var(--pri_color);
     color: white;
-    border-radius: 100px;
+    border-radius: 15px;
     padding: 15px 30px;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
     border: none;
     display: inline-block;
+    transition: 200ms;
 }
 
 .primary_button:hover {
@@ -164,16 +165,21 @@ body {
     transition: 150ms;
 }
 
+.primary_button:active {
+    transform: scale(0.9);
+}
+
 .secondary_button {
     background-color: white;
     color: var(--pri_color);
     border: 1px solid var(--pri_color);
-    border-radius: 100px;
+    border-radius: 15px;
     padding: 15px 30px;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
     display: inline-block;
+    transition: 200ms;
 }
 
 .secondary_button:hover {
@@ -181,6 +187,10 @@ body {
     border: 1px solid var(--pri_hov_color);
     color: var(--pri_hov_color);
     transition: 150ms;
+}
+
+.secondary_button:active {
+    transform: scale(0.9);
 }
 
 .tertiary_button {
@@ -243,13 +253,18 @@ body {
 /* INDEX.PHP */
 
 .hero_container {
-    background-color: var(--pri_light_color);
+    background-color: var(--hero_backgrond_color);
     padding: 60px;
     display: flex;
     flex-direction: column;
+    color: white;
     gap: 30px;
     border-radius: 15px;
     align-items: center;
+}
+
+.hero_container p {
+    color: white;
 }
 
 .search_container {
@@ -259,11 +274,13 @@ body {
 
 .custom_select {
     padding: 15px 60px 15px 30px;
-    border-radius: 100px;
-    border: 1px solid var(--border_color);
+    border-radius: 15px;
+    border: none;
+    /* border: 1px solid var(--border_color); */
     font-weight: 600;
     background-color: white;
     font-size: 14px;
+    transition: 200ms;
 }
 
 .custom_select {
@@ -276,6 +293,10 @@ body {
     background-size: 16px 16px;
 }
 
+.custom_select:active {
+    transform: scale(0.9);
+}
+
 .custom_select:hover {
     cursor: pointer;
     background-color: #fbfbfb;
@@ -284,7 +305,7 @@ body {
 .headline_pill {
     font-size: 14px;
     background-color: var(--pri_pill_color);
-    border-radius: 100px;
+    border-radius: 7px;
     padding: 3px 7px;
     display: inline-block;
     font-family: var(--pri_font);
@@ -328,7 +349,6 @@ th {
 
 .item_box {
     background-color: var(--background_color);
-    /* border: 1px solid var(--border_color); */
     padding: 60px;
     border-radius: 15px;
 }
@@ -398,10 +418,10 @@ th {
 }
 
 .car_link:hover h4::after {
-    background-color: black;
+    background-color: var(--pri_color);
     bottom: 0;
     content: "";
-    height: 1px;
+    height: 2px;
     position: absolute;
     border-radius: 100px;
     left: 0;
@@ -431,7 +451,6 @@ th {
 
 /* DETAIL.PHP */
 .heading_container h1 {
-    margin-top: 15px;
     margin-bottom: 7px;
 }
 
@@ -455,7 +474,7 @@ th {
 }
 
 .car_banner p {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 /* IMAGES */
