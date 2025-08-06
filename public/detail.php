@@ -22,12 +22,17 @@ include(SHARED_PATH . '/public_navigation.php');
         <div class="section_content">
     
             <div class="heading_container">
+                <div class="breadcrumb_menu">
+                    <a class="link" href="<?php echo 'index.php' ?>">Inventory</a>
+                    <p>/</p>
+                    <p><?php echo h($car->name()) ?></p>
+                </div>
                 <div class="pill_group">
                     <span class="headline_pill"><?php echo h($car->condition()); ?></span>
                     <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
                     <span class="headline_pill"><?php echo h($car->body_type); ?></span>
                 </div>
-                <h1 style="margin-top:15px;"><?php echo h($car->name())?></h1>
+                <h1 style="margin-top:7px; margin-bottom: 3px;"><?php echo h($car->name())?></h1>
                 <h2><?php echo h($car->price()) ?></h2>
             </div>
     

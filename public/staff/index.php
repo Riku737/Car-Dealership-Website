@@ -10,6 +10,9 @@
 
 
             <div class="heading_container">
+                <div class="breadcrumb_menu">
+                    <p>Staff</p>
+                </div>
                 <h1>Admin Dashboard</h1>
             </div>
 
@@ -17,7 +20,7 @@
 
                 <div class="admin_box">
 
-                    <h2>Inventory</h2>
+                    <h3>Inventory</h3>
                     <p>View, edit, delete, or add vehicles.</p>
                     <a class="primary_button" href="<?php echo url_for("staff/cars/index.php"); ?>">Manage</a>
     
@@ -25,7 +28,7 @@
 
                 <div class="admin_box">
 
-                    <h2>Admin</h2>
+                    <h3>Admin</h3>
                     <p>Update, delete, or add admins.</p>
                     <a class="primary_button" href="<?php echo url_for("staff/admins/index.php"); ?>">Manage</a>
 
