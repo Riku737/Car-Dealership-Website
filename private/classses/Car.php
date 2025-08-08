@@ -58,21 +58,22 @@ class Car {
         return $object;
     }
 
+
     public function create() {
         $sql = "INSERT INTO cars (";
-        $sql .= "make, model, year, body_type, colour, mileage_km, price, fuel_type, description, image_path, condition_id";
+        $sql .= "make, model, year, bodyType_id, colour_id, mileage_km, price, fuelType_id, description, condition_id, file";
         $sql .= ") VALUES (";
         $sql .= "'" . $this->make . "', ";
         $sql .= "'" . $this->model . "', ";
         $sql .= "'" . $this->year . "', ";
-        $sql .= "'" . $this->body_type . "', ";
-        $sql .= "'" . $this->colour . "', ";
+        $sql .= "'" . $this->bodyType_id . "', ";
+        $sql .= "'" . $this->colour_id . "', ";
         $sql .= "'" . $this->mileage_km . "', ";
         $sql .= "'" . $this->price . "', ";
-        $sql .= "'" . $this->fuel_type . "', ";
+        $sql .= "'" . $this->fuelType_id . "', ";
         $sql .= "'" . $this->description . "', ";
-        $sql .= "'" . $this->image_path . "', ";
-        $sql .= "'" . $this->condition_id . "'";
+        $sql .= "'" . $this->condition_id . "', ";
+        $sql .= "'" . $this->file . "'";
         $sql .= ")";
 
         $result = self::$database->query($sql);
@@ -89,19 +90,40 @@ class Car {
     public $make;
     public $model;
     public $year;
-    public $body_type;
-    public $colour;
     public $mileage_km;
     public $price;
-    public $fuel_type;
     public $description;
-    public $image_path;
+    public $file;
+    
+    protected $fuelType_id;
     protected $condition_id;
-
+    protected $bodyType_id;
+    protected $colour_id;
+    
     // Constants
-    public const CATEGORIES = ['Sedan', 'SUV', 'Coupe', 'Hatchback', 'Convertible', 'Pickup', 'Van', 'Sports', 'Crossover', 'Motorbike'];
-    public const COLOURS = ['Black', 'Gray', 'Silver', 'White', 'Blue', 'Red'];
-    public const FUEL_TYPES = [
+    public const BODY_OPTIONS = [
+        1 => 'Sedan',
+        2 => 'SUV',
+        3 => 'Coupe',
+        4 => 'Hatchback',
+        5 => 'Convertible',
+        6 => 'Pickup',
+        7 => 'Van',
+        8 => 'Sports',
+        9 => 'Crossover',
+        10 => 'Motorbike'
+    ];
+    
+    public const COLOUR_OPTIONS = [
+        1 => 'Black',
+        2 => 'Gray',
+        3 => 'Silver',
+        4 => 'White',
+        5 => 'Blue',
+        6 => 'Red'
+    ];
+
+    public const FUEL_OPTIONS = [
         1 => 'Petrol',
         2 => 'Diesel',
         3 => 'Electric',
@@ -111,7 +133,8 @@ class Car {
         7 => 'CNG',
         8 => 'Hydrogen'
     ];
-    protected const CONDITION_OPTIONS = [
+
+    public const CONDITION_OPTIONS = [
         1 => 'New',
         2 => 'Certified Pre-Owned',
         3 => 'Used',
@@ -119,17 +142,17 @@ class Car {
 
     // Constructor
     public function __construct($args = []) {
-        $this->make = $args['make'] ?? '';
-        $this->model = $args['model'] ?? '';
-        $this->year = $args['year'] ?? '';
-        $this->body_type = $args['body_type'] ?? '';
-        $this->colour = $args['colour'] ?? '';
+        $this->make = $args['make'] ?? 'Unknown';
+        $this->model = $args['model'] ?? 'Unknown';
+        $this->year = $args['year'] ?? 0000;
+        $this->bodyType_id = $args['bodyType_id'] ?? 0;
+        $this->colour_id = $args['colour_id'] ?? 0;
         $this->mileage_km = $args['mileage_km'] ?? 0;
         $this->price = $args['price'] ?? 0.0;
-        $this->fuel_type = $args['fuel_type'] ?? '';
+        $this->fuelType_id = $args['fuelType_id'] ?? 0;
         $this->description = $args['description'] ?? '';
-        $this->image_path = $args['image_path'] ?? '';
-        $this->condition_id = $args['condition_id'] ?? '';
+        $this->condition_id = $args['condition_id'] ?? 0;
+        $this->file = $args['file'] ?? '';
     }
 
     public function condition() {
@@ -140,8 +163,39 @@ class Car {
         }
     }
 
+    public function fuel() {
+        if ($this->fuelType_id > 0) {
+            return self::FUEL_OPTIONS[$this->fuelType_id];
+        } else {
+            return "Unknown";
+        }
+    }
+
+    public function colour() {
+        if ($this->colour_id > 0) {
+            return self::COLOUR_OPTIONS[$this->colour_id];
+        } else {
+            return "Unknown";
+        }
+    }
+
+    public function body() {
+        if ($this->bodyType_id > 0) {
+            return self::BODY_OPTIONS[$this->bodyType_id];
+        } else {
+            return "Unknown";
+        }
+    }
+
+    public function image() {
+    }
+
     public function name() {
-        return "{$this->year} {$this->make} {$this->model}";
+        if (isset($this->year) && isset($this->make) && isset($this->model)) {
+            return "{$this->year} {$this->make} {$this->model}";
+        } else {
+            return "Unknown";
+        }
     }
 
     public function price() {
@@ -151,6 +205,7 @@ class Car {
     public function mileage() {
         return number_format(h($this->mileage_km)) . " km";
     }
+
 
 }
 

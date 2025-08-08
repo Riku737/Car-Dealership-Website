@@ -30,14 +30,14 @@ include(SHARED_PATH . '/public_navigation.php');
                 <div class="pill_group">
                     <span class="headline_pill"><?php echo h($car->condition()); ?></span>
                     <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
-                    <span class="headline_pill"><?php echo h($car->body_type); ?></span>
+                    <span class="headline_pill"><?php echo h($car->body()); ?></span>
                 </div>
                 <h1 style="margin-top:7px; margin-bottom: 3px;"><?php echo h($car->name())?></h1>
                 <h2><?php echo h($car->price()) ?></h2>
             </div>
     
     
-            <img class="item_thumbnail" src="<?php echo h($car->image_path)?>">
+            <img class="item_thumbnail" src="<?php echo h($car->file)?>">
     
             <div class="content_container">
     
@@ -75,15 +75,15 @@ include(SHARED_PATH . '/public_navigation.php');
                             </tr>
                             <tr>
                                 <th>Body Type</th>
-                                <td><?php echo h($car->body_type); ?></td>
+                                <td><?php echo h($car->body()); ?></td>
                             </tr>
                             <tr>
                                 <th>Colour</th>
-                                <td><?php echo h($car->colour); ?></td>
+                                <td><?php echo h($car->colour()); ?></td>
                             </tr>
                             <tr>
-                                <th>Mileage (km)</th>
-                                <td><?php echo h(number_format($car->mileage_km)); ?></td>
+                                <th>Mileage</th>
+                                <td><?php echo h($car->mileage()); ?></td>
                             </tr>
                             <tr>
                                 <th>Price</th>
@@ -91,7 +91,7 @@ include(SHARED_PATH . '/public_navigation.php');
                             </tr>
                             <tr>
                                 <th>Fuel Type</th>
-                                <td><?php echo h($car->fuel_type); ?></td>
+                                <td><?php echo h($car->fuel()); ?></td>
                             </tr>
                             <tr>
                                 <th>Condition</th>

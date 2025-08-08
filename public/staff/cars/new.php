@@ -6,15 +6,22 @@ if (is_post_request()) {
 
     // Create record using post parameters
     $args = [];
-    $args['make'] = $_POST['make'] ?? null;
-    $args['model'] = $_POST['model'] ?? null;
-    $args['year'] = $_POST['year'] ?? null;
-    $args['body_type'] = $_POST['body_type'] ?? null;
-    $args['colour'] = $_POST['colour'] ?? null;
-    $args['mileage'] = $_POST['mileage'] ?? null;
-    $args['price'] = $_POST['price'] ?? null;
-    $args['condition'] = $_POST['condition'] ?? null;
-    $args['description'] = $_POST['description'] ?? null;
+    $args['make'] = $_POST['make'];
+    $args['model'] = $_POST['model'];
+    $args['year'] = $_POST['year'];
+    $args['body_type'] = $_POST['body_type'];
+    $args['colour'] = $_POST['colour'];
+    $args['mileage'] = $_POST['mileage'];
+    $args['price'] = $_POST['price'];
+    $args['condition'] = $_POST['condition'];
+    $args['description'] = $_POST['description'];
+    $args['file'] = $_FILES['image'];
+
+    $file_name = $_FILES['image']['name'] ?? null; // Add this line
+    $tempname = $_FILES['image']['tmp_name']; // Correct key is 'tmp_name'
+    $folder = $_SERVER['DOCUMENT_ROOT'] . '/projects/Car-Dealership-Inventory-System/public/images/' . $file_name;
+
+    move_uploaded_file($tempname, $folder);
     
     $car = new Car($args);
     $result = $car->create();
@@ -48,71 +55,74 @@ if (is_post_request()) {
                 <h1>Add vehicle</h1>
             </div>
 
-            <form class="form_container" action="<?php echo url_for('/staff/cars/new.php'); ?> method="POST">
+            <form class="form_container" action="<?php echo url_for('/staff/cars/new.php');?>" method="POST" enctype="multipart/form-data">
                 
                 <div class="form_box">
                     <h4>Make</h4>
                     <input class="text_field" type="text"  name="make">
                 </div>
+
                 <div class="form_box">
                     <h4>Model</h4>
                     <input class="text_field" type="text" name="model">
                 </div>
+
                 <div class="form_box">
                     <h4>Year</h4>
                     <input class="text_field" type="text"name="year">
                 </div>
+                
                 <div class="form_box">
                     <h4>Body Type</h4>
                     <select class="drop_down" name="body_type">
                         <option value=""></option>
-                        <option value="sedan">Sedan</option>
-                        <option value="suv">SUV</option>
-                        <option value="coupe">Coupe</option>
-                        <option value="hatchback">Hatchback</option>
-                        <option value="convertible">Convertible</option>
-                        <option value="pickup">Pickup</option>
-                        <option value="van">Van</option>
-                        <option value="sports">Sports</option>
-                        <option value="crossover">Crossover</option>
-                        <option value="motorbike">Motorbike</option>
+                        <?php foreach (Car::BODY_OPTIONS as $option_id => $option_name) { ?>
+                            <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
+
                 <div class="form_box">
                     <h4>Colour</h4>
                     <select class="drop_down" name="colour">
                         <option value=""></option>
-                        <option value="black">Black</option>
-                        <option value="gray">Gray</option>
-                        <option value="silver">Silver</option>
-                        <option value="white">White</option>
-                        <option value="blue">Blue</option>
-                        <option value="red">Red</option>
+                        <?php foreach (Car::COLOUR_OPTIONS as $option_id => $option_name) { ?>
+                            <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
+
                 <div class="form_box">
                     <h4>Mileage (km)</h4>
                     <input class="text_field" type="text" name="mileage">
                 </div>
+
                 <div class="form_box">
                     <h4>Price ($)</h4>
                     <input class="text_field" type="text" name="price">
                 </div>
+
                 <div class="form_box">
                     <h4>Condition</h4>
                     <select class="drop_down" id="condition">
                         <option value=""></option>
-                        <option value="1">New</option>
-                        <option value="2">Certified Pre-Owned</option>
-                        <option value="3">Used</option>
+                        <?php foreach (Car::CONDITION_OPTIONS as $option_id => $option_name) { ?>
+                            <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
+
                 <div class="form_box description_box">
                     <h4>Description</h4>
                     <textarea class="text_field" type="text" name="description"></textarea>
                 </div>
+                
+                <div class="form_box">
+                    <h4>Image</h4>
+                    <input class="text_field" type="file" name="image">
+                </div>
 
-                <button type="submit" class="primary_button">Add vehicle</button>
+                <button type="submit" class="primary_button" name="submit">Add vehicle</button>
 
             </form>
 

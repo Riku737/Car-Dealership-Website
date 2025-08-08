@@ -89,13 +89,13 @@ $cars = Car::find_all();
                 <?php foreach($cars as $car) {?>
                 <a class="car_link" href="detail.php?id=<?php echo $car->id; ?>">
 
-                    <div class="image_boundary"><img class="car_preview_thumbnail" src="<?php echo h($car->image_path); ?>" ></div>
+                    <div class="image_boundary"><img class="car_preview_thumbnail" src="<?php echo h($car->file); ?>" ></div>
 
                     <div class="car_details">
                         <div class="pill_group">
                             <span class="headline_pill"><?php echo h($car->condition()); ?></span>
                             <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
-                            <span class="headline_pill"><?php echo h($car->body_type); ?></span>
+                            <span class="headline_pill"><?php echo h($car->body()); ?></span>
                         </div>
                         <h4><?php echo h($car->name()) ?></h4>
                         <p><?php echo h($car->price()); ?></p>

@@ -57,11 +57,11 @@ $car = Car::find_by_id($id);
                             </tr>
                             <tr>
                                 <th>Body Type</th>
-                                <td><?php echo h($car->body_type); ?></td>
+                                <td><?php echo h($car->body()); ?></td>
                             </tr>
                             <tr>
                                 <th>Colour</th>
-                                <td><?php echo h($car->colour); ?></td>
+                                <td><?php echo h($car->colour()); ?></td>
                             </tr>
                             <tr>
                                 <th>Mileage (km)</th>
@@ -73,7 +73,7 @@ $car = Car::find_by_id($id);
                             </tr>
                             <tr>
                                 <th>Fuel Type</th>
-                                <td><?php echo h($car->fuel_type); ?></td>
+                                <td><?php echo h($car->fuel()); ?></td>
                             </tr>
                             <tr>
                                 <th>Condition</th>
