@@ -183,7 +183,14 @@ body {
 
 .tertiary_button {
     color: var(--pri_color);
+    font-size: 14px;
     font-weight: 600;
+    text-decoration: none;
+}
+
+.tertiary_button:hover {
+    color: var(--pri_hov_color);
+    transition: 150ms;
 }
 
 .website_content {
@@ -472,7 +479,6 @@ th {
 
 .car_banner {
     padding: 60px;
-    border: none;
     display: flex;
     flex-direction: column;
     justify-content: center;

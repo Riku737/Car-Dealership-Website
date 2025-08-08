@@ -94,11 +94,11 @@ class Car {
     public $price;
     public $description;
     public $file;
-    
-    protected $fuelType_id;
-    protected $condition_id;
-    protected $bodyType_id;
-    protected $colour_id;
+
+    public $fuelType_id;
+    public $condition_id;
+    public $bodyType_id;
+    public $colour_id;
     
     // Constants
     public const BODY_OPTIONS = [

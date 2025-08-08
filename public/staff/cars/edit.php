@@ -24,9 +24,9 @@ $car = Car::find_by_id($id);
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo 'index.php' ?>">Staff</a>
+                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
                     <p>/</p>
-                    <a class="link" href="<?php echo '../cars/index.php' ?>">Inventory</a>
+                    <a class="link" href="<?php echo url_for('/staff/cars/index.php'); ?>">Inventory</a>
                     <p>/</p>
                     <p><?php echo h($car->name()) ?></p>
                 </div>
@@ -50,27 +50,27 @@ $car = Car::find_by_id($id);
                 <div class="form_box">
                     <h4>Body Type</h4>
                     <select class="drop_down" name="body_type" id="body_type">
-                        <option value="sedan">Sedan</option>
-                        <option value="suv">SUV</option>
-                        <option value="coupe">Coupe</option>
-                        <option value="hatchback">Hatchback</option>
-                        <option value="convertible">Convertible</option>
-                        <option value="pickup">Pickup</option>
-                        <option value="van">Van</option>
-                        <option value="sports">Sports</option>
-                        <option value="crossover">Crossover</option>
-                        <option value="motorcycle">Motorcycle</option>
+                        <option value=""></option>
+                        <?php foreach (Car::BODY_OPTIONS as $option_id => $option_name) { ?>
+                            <?php if ($option_id == $car->bodyType_id) { ?>
+                                <option selected value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                            <?php } else {?>
+                                <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                            <?php } ?>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="form_box">
                     <h4>Colour</h4>
                     <select class="drop_down" name="colour" id="colour">
-                        <option value="black">Black</option>
-                        <option value="gray">Gray</option>
-                        <option value="silver">Silver</option>
-                        <option value="white">White</option>
-                        <option value="blue">Blue</option>
-                        <option value="red">Red</option>
+                        <option value=""></option>
+                        <?php foreach (Car::COLOUR_OPTIONS as $option_id => $option_name) { ?>
+                            <?php if ($option_id == $car->colour_id) { ?>
+                                <option selected value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                            <?php } else {?>
+                                <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                            <?php } ?>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="form_box">
@@ -84,17 +84,26 @@ $car = Car::find_by_id($id);
                 <div class="form_box">
                     <h4>Condition</h4>
                     <select class="drop_down" name="condition" id="condition">
-                        <option value="1">New</option>
-                        <option value="2">Certified Pre-Owned</option>
-                        <option value="3">Used</option>
+                        <option value=""></option>
+                        <?php foreach (Car::CONDITION_OPTIONS as $option_id => $option_name) { ?>
+                            <?php if ($option_id == $car->condition_id) { ?>
+                                <option selected value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                            <?php } else {?>
+                                <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                            <?php } ?>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="form_box description_box">
                     <h4>Description</h4>
-                    <textarea class="text_field" type="text" id="description" name="description"><?php echo h($car->description); ?></textarea>
+                    <textarea class="text_field description_text" type="text" id="description" name="description"><?php echo h($car->description); ?></textarea>
                 </div>
 
-                <button type="submit" class="primary_button">Save changes</button>
+                <div class="form_buttons">
+                    <button type="submit" class="primary_button">Save changes</button>
+                    <a href="<?php echo url_for('/staff/cars/index.php')?>" class="tertiary_button">Cancel</a>
+                </div>
+
 
             </form>
 

@@ -114,15 +114,18 @@ if (is_post_request()) {
 
                 <div class="form_box description_box">
                     <h4>Description</h4>
-                    <textarea class="text_field" type="text" name="description"></textarea>
+                    <textarea class="text_field description_text" type="text" name="description"></textarea>
                 </div>
-                
+
                 <div class="form_box">
-                    <h4>Image</h4>
+                    <h4>Image</h4>  
                     <input class="text_field" type="file" name="image">
                 </div>
 
-                <button type="submit" class="primary_button" name="submit">Add vehicle</button>
+                <div class="form_buttons">
+                    <button type="submit" class="primary_button" name="submit">Add vehicle</button>
+                    <a href="<?php echo url_for('/staff/cars/index.php')?>" class="tertiary_button">Cancel</a>
+                </div>
 
             </form>
 

@@ -24,9 +24,9 @@ $car = Car::find_by_id($id);
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo 'index.php' ?>">Staff</a>
+                    <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a>
                     <p>/</p>
-                    <a class="link" href="<?php echo '../cars/index.php' ?>">Inventory</a>
+                    <a class="link" href="<?php echo url_for('/staff/cars/index.php') ?>">Inventory</a>
                     <p>/</p>
                     <p><?php echo h($car->name()) ?></p>
                 </div>
@@ -64,8 +64,8 @@ $car = Car::find_by_id($id);
                                 <td><?php echo h($car->colour()); ?></td>
                             </tr>
                             <tr>
-                                <th>Mileage (km)</th>
-                                <td><?php echo h(number_format($car->mileage_km)); ?></td>
+                                <th>Mileage</th>
+                                <td><?php echo h($car->mileage()); ?></td>
                             </tr>
                             <tr>
                                 <th>Price</th>
@@ -85,7 +85,7 @@ $car = Car::find_by_id($id);
                             </tr>
                             <tr>
                                 <th>Image</th>
-                                <td><img class="item_thumbnail" src="../../<?php echo h($car->image_path)?>"></td>
+                                <td><img class="item_thumbnail" src="../../<?php echo h($car->file)?>"></td>
                             </tr>
                         </tbody>
     
