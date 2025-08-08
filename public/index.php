@@ -45,18 +45,17 @@ $cars = Car::find_all();
                     <select class="custom_select" name="cars" id="cars">
                         <option value="all_makes" selected>All makes<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                         <optgroup label="Makes">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                            <?php foreach ($makes as $option_name) { ?>
+                                <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                            <?php } ?>
                         </optgroup>
                     </select>
                     <select class="custom_select" name="cars" id="cars">
-                        <option value="all_models" selected>All body types<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
-                        <optgroup label="Models">
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                        <option value="all_bodys" selected>All body types<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
+                        <optgroup label="Body Types">
+                            <?php foreach ($bodys as $option_name) { ?>
+                                <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                            <?php } ?>
                         </optgroup>
                     </select>
                     <select class="custom_select" name="cars" id="cars">
@@ -95,7 +94,7 @@ $cars = Car::find_all();
                         <div class="pill_group">
                             <span class="headline_pill"><?php echo h($car->condition()); ?></span>
                             <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
-                            <span class="headline_pill"><?php echo h($car->body()); ?></span>
+                            <span class="headline_pill"><?php echo h($car->body_type); ?></span>
                         </div>
                         <h4><?php echo h($car->name()) ?></h4>
                         <p><?php echo h($car->price()); ?></p>

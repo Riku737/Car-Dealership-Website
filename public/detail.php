@@ -30,7 +30,7 @@ include(SHARED_PATH . '/public_navigation.php');
                 <div class="pill_group">
                     <span class="headline_pill"><?php echo h($car->condition()); ?></span>
                     <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
-                    <span class="headline_pill"><?php echo h($car->body()); ?></span>
+                    <span class="headline_pill"><?php echo h($car->body_type); ?></span>
                 </div>
                 <h1 style="margin-top:7px; margin-bottom: 3px;"><?php echo h($car->name())?></h1>
                 <h2><?php echo h($car->price()) ?></h2>
@@ -75,11 +75,11 @@ include(SHARED_PATH . '/public_navigation.php');
                             </tr>
                             <tr>
                                 <th>Body Type</th>
-                                <td><?php echo h($car->body()); ?></td>
+                                <td><?php echo h($car->body_type); ?></td>
                             </tr>
                             <tr>
                                 <th>Colour</th>
-                                <td><?php echo h($car->colour()); ?></td>
+                                <td><?php echo h($car->colour); ?></td>
                             </tr>
                             <tr>
                                 <th>Mileage</th>
@@ -91,7 +91,7 @@ include(SHARED_PATH . '/public_navigation.php');
                             </tr>
                             <tr>
                                 <th>Fuel Type</th>
-                                <td><?php echo h($car->fuel()); ?></td>
+                                <td><?php echo h($car->fuel_type); ?></td>
                             </tr>
                             <tr>
                                 <th>Condition</th>
@@ -111,7 +111,7 @@ include(SHARED_PATH . '/public_navigation.php');
 
                     <h2>Found the One?</h2>
                     <p>If this ride checks all your boxes, don’t let it slip away. Let’s make your next move easy.</p>
-                    <a class="primary_button">Get more info</a>
+                    <a class="primary_button" href="<?php echo url_for('/index.php'); ?>">Get more info</a>
 
                 </div>
 

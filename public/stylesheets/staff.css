@@ -98,5 +98,10 @@
 .form_buttons {
     display: flex;
     align-items: center;
-    column-gap: 30px;
+    column-gap: 15px;
+}
+
+.image_box {
+    align-items: normal;
+    width: 100%;
 }

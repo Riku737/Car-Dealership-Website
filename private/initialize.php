@@ -31,4 +31,11 @@ require_once(PRIVATE_PATH . '/classses/ParseCSV.php');
 $database = db_connect();
 Car::set_database($database);
 
+$makes = Car::MAKE_OPTIONS;
+sort($makes);
+$bodys = Car::BODY_OPTIONS;
+sort($bodys);
+$colours = Car::COLOUR_OPTIONS;
+sort($colours);
+
 ?>

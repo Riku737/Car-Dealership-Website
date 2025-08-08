@@ -19,7 +19,7 @@
                 <div class="split_container">
                     <div>
                         <h1>Inventory</h1>
-                        <p>Find new, used, and certified pre-owned cars.</p>
+                        <p>Database for vehicles in stock.</p>
                     </div>
                     <div class="split_corner">
                         <a class="primary_button" href="new.php">Add vehicle</a>
@@ -50,9 +50,9 @@
                             <td><?php echo h($car->make); ?></td>
                             <td><?php echo h($car->model); ?></td>
                             <td><?php echo h($car->year); ?></td>
-                            <td><?php echo h($car->colour()); ?></td>
+                            <td><?php echo h($car->colour); ?></td>
                             <td><?php echo h($car->mileage_km); ?></td>
-                            <td><?php echo h('$' . number_format($car->price, 2)); ?></td>
+                            <td><?php echo h($car->price()); ?></td>
                             <td><?php echo h($car->condition()); ?></td>
                             <td><a class="link" href="show.php?id=<?php echo $car->id; ?>">View</a></td>
                             <td><a class="link" href="edit.php?id=<?php echo $car->id; ?>">Edit</a></td>

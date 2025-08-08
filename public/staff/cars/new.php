@@ -1,6 +1,6 @@
 <?php require_once('../../..//private/initialize.php');?>
 
-<?php 
+<?php
 
 if (is_post_request()) {
 
@@ -52,14 +52,19 @@ if (is_post_request()) {
                     <p>/</p>
                     <p>Add vehicle</p>
                 </div>
-                <h1>Add vehicle</h1>
+                <h1>Add vehicle to inventory</h1>
             </div>
 
             <form class="form_container" action="<?php echo url_for('/staff/cars/new.php');?>" method="POST" enctype="multipart/form-data">
                 
                 <div class="form_box">
                     <h4>Make</h4>
-                    <input class="text_field" type="text"  name="make">
+                    <select class="drop_down" name="make">
+                        <option value=""></option>
+                        <?php foreach ($makes as $option_name) { ?>
+                            <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <div class="form_box">
@@ -69,15 +74,15 @@ if (is_post_request()) {
 
                 <div class="form_box">
                     <h4>Year</h4>
-                    <input class="text_field" type="text"name="year">
+                    <input class="text_field" type="text" name="year" maxlength="4">
                 </div>
                 
                 <div class="form_box">
                     <h4>Body Type</h4>
                     <select class="drop_down" name="body_type">
                         <option value=""></option>
-                        <?php foreach (Car::BODY_OPTIONS as $option_id => $option_name) { ?>
-                            <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                        <?php foreach ($bodys as $option_name) { ?>
+                            <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -86,8 +91,8 @@ if (is_post_request()) {
                     <h4>Colour</h4>
                     <select class="drop_down" name="colour">
                         <option value=""></option>
-                        <?php foreach (Car::COLOUR_OPTIONS as $option_id => $option_name) { ?>
-                            <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
+                        <?php foreach ($colours as $option_name) { ?>
+                            <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -117,9 +122,10 @@ if (is_post_request()) {
                     <textarea class="text_field description_text" type="text" name="description"></textarea>
                 </div>
 
-                <div class="form_box">
-                    <h4>Image</h4>  
-                    <input class="text_field" type="file" name="image">
+                <div class="form_box image_box">
+                    <h4>Image</h4>
+                    <input class="text_field image_button" type="file" name="image" accept=".jpg, .jpeg, .png" hidden>
+                    <label for="image" class="image_button">Choose Image</label>
                 </div>
 
                 <div class="form_buttons">

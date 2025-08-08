@@ -106,7 +106,7 @@ body {
     width: 50%;
     display: flex;
     align-items: center;
-    column-gap: 30px;
+    column-gap: 15px;
     flex-direction: row-reverse;
 }
 
@@ -185,6 +185,7 @@ body {
     color: var(--pri_color);
     font-size: 14px;
     font-weight: 600;
+    padding: 15px 30px;
     text-decoration: none;
 }
 
