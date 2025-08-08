@@ -16,8 +16,15 @@
                     <p>/</p>
                     <p>Inventory</p>
                 </div>
-                <h1>Inventory</h1>
-                <p>Find new, used, and certified pre-owned cars.</p>
+                <div class="split_container">
+                    <div>
+                        <h1>Inventory</h1>
+                        <p>Find new, used, and certified pre-owned cars.</p>
+                    </div>
+                    <div class="split_corner">
+                        <a class="primary_button" href="new.php">Add vehicle</a>
+                    </div>
+                </div>
             </div>
 
             <div class="item_box">

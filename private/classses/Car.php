@@ -58,6 +58,32 @@ class Car {
         return $object;
     }
 
+    public function create() {
+        $sql = "INSERT INTO cars (";
+        $sql .= "make, model, year, body_type, colour, mileage_km, price, fuel_type, description, image_path, condition_id";
+        $sql .= ") VALUES (";
+        $sql .= "'" . $this->make . "', ";
+        $sql .= "'" . $this->model . "', ";
+        $sql .= "'" . $this->year . "', ";
+        $sql .= "'" . $this->body_type . "', ";
+        $sql .= "'" . $this->colour . "', ";
+        $sql .= "'" . $this->mileage_km . "', ";
+        $sql .= "'" . $this->price . "', ";
+        $sql .= "'" . $this->fuel_type . "', ";
+        $sql .= "'" . $this->description . "', ";
+        $sql .= "'" . $this->image_path . "', ";
+        $sql .= "'" . $this->condition_id . "'";
+        $sql .= ")";
+
+        $result = self::$database->query($sql);
+        if($result) {
+            $this->id = self::$database->insert_id;
+        }
+        
+        return $result;
+    }
+
+
     // Instance variables (Properties)
     public $id;
     public $make;
@@ -73,8 +99,18 @@ class Car {
     protected $condition_id;
 
     // Constants
-    public const CATEGORIES = ['Sedan', 'SUV', 'Coupe', 'Hatchback', 'Convertible', 'Pickup', 'Van', 'Sports', 'Crossover'];
-    public const COLOUR = ['Black', 'Gray', 'Silver', 'White', 'Blue', 'Red'];
+    public const CATEGORIES = ['Sedan', 'SUV', 'Coupe', 'Hatchback', 'Convertible', 'Pickup', 'Van', 'Sports', 'Crossover', 'Motorbike'];
+    public const COLOURS = ['Black', 'Gray', 'Silver', 'White', 'Blue', 'Red'];
+    public const FUEL_TYPES = [
+        1 => 'Petrol',
+        2 => 'Diesel',
+        3 => 'Electric',
+        4 => 'Hybrid',
+        5 => 'Plug-in Hybrid',
+        6 => 'LPG',
+        7 => 'CNG',
+        8 => 'Hydrogen'
+    ];
     protected const CONDITION_OPTIONS = [
         1 => 'New',
         2 => 'Certified Pre-Owned',
