@@ -31,6 +31,8 @@ if (is_post_request()) {
         $new_id = $car->id;
         $_SESSION['message'] = 'The car was created successfully.';
         redirect_to(url_for('/staff/cars/show.php?id=' . $new_id));
+    } else {
+        // show errors
     }
 
 }
@@ -75,7 +77,12 @@ if (is_post_request()) {
 
                 <div class="form_box">
                     <h4>Year</h4>
-                    <input class="text_field" type="number" name="year" maxlength="4" placeholder="Enter year in YYYY format" step="1">
+                    <select class="drop_down" name="year">
+                        <option selected disabled value="">Select year</option>
+                        <?php foreach (Car::year_options() as $option_name) { ?>
+                            <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
                 
                 <div class="form_box">
@@ -133,7 +140,7 @@ if (is_post_request()) {
                     </div>
                     <label for="image" class="image_button">
                         <input class="text_field image_button" type="file" id="image" name="image" accept=".jpg, .jpeg, .png">
-                        <p><i class="bi bi-upload"></i> Upload Image</p>
+                        <p><i class="bi bi-upload"></i>Upload Image</p>
                         <small style="font-weight: normal;">jpg, jpeg, png formats</small>
                     </label>
                 </div>

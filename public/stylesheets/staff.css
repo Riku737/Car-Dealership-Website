@@ -135,9 +135,18 @@
     font-size: 14px;
 }
 
+.image_button {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
 .image_button p {
     font-size: 14px;
     color: var(--pri_color);
+    display: flex;
+    justify-content: center;
+    gap: 7px;
 }
 
 .image_button small {

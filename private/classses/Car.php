@@ -184,6 +184,15 @@ class Car {
         $this->image = $args['image'] ?? 'default.png';
     }
 
+    public static function year_options() {
+        $years = [];
+        for ($year = 1998; $year <= date('Y'); $year++) {
+            $years[] = $year;
+        }
+        rsort($years);
+        return $years;
+    }
+
     public function condition() {
         if ($this->condition_id > 0) {
             return self::CONDITION_OPTIONS[$this->condition_id];
