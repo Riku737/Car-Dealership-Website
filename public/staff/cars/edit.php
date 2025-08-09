@@ -38,7 +38,6 @@ $car = Car::find_by_id($id);
                 <div class="form_box">
                     <h4>Make</h4>
                     <select class="drop_down" name="make">
-                        <option value=""></option>
                         <?php foreach ($makes as $option_name) { ?>
                             <?php if ($option_name == $car->make) { ?>
                                 <option selected value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
@@ -51,12 +50,12 @@ $car = Car::find_by_id($id);
 
                 <div class="form_box">
                     <h4>Model</h4>
-                    <input class="text_field" type="text" id="model" name="model" value="<?php echo h($car->model); ?>">
+                    <input class="text_field" type="text" id="model" name="model" value="<?php echo h($car->model); ?>" placeholder="Enter model name">
                 </div>
 
                 <div class="form_box">
                     <h4>Year</h4>
-                    <input class="text_field" type="text" id="year" name="year" value="<?php echo h($car->year); ?>">
+                    <input class="text_field" type="text" id="year" name="year" value="<?php echo h($car->year); ?>" maxlength="4" placeholder="Enter year in YYYY format">
                 </div>
 
                 <div class="form_box">
@@ -87,17 +86,19 @@ $car = Car::find_by_id($id);
 
                 <div class="form_box">
                     <h4>Mileage (km)</h4>
-                    <input class="text_field" type="text" id="mileage" name="mileage" value="<?php echo h($car->mileage_km); ?>">
+                    <input class="text_field" type="text" id="mileage" name="mileage" value="<?php echo h($car->mileage_km); ?>" placeholder="Enter mileage in km">
+                    <small>Mileage will be rounded to nearest whole number.</small>
                 </div>
 
                 <div class="form_box">
                     <h4>Price ($)</h4>
-                    <input class="text_field" type="text" id="price" name="price" value="<?php echo h($car->price); ?>">
+                    <input class="text_field" type="text" id="price" name="price" value="<?php echo h($car->price); ?>" placeholder="Enter price in CAD">
+                    <small>Price will be rounded to nearest whole number.</small>
                 </div>
 
                 <div class="form_box">
                     <h4>Condition</h4>
-                        <option value=""></option>
+                    <select class="drop_down" name="condition_id" id="condition_id">
                         <?php foreach (Car::CONDITION_OPTIONS as $option_id => $option_name) { ?>
                             <?php if ($option_id == $car->condition_id) { ?>
                                 <option selected value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
@@ -110,7 +111,7 @@ $car = Car::find_by_id($id);
 
                 <div class="form_box description_box">
                     <h4>Description</h4>
-                    <textarea class="text_field description_text" type="text" id="description" name="description"><?php echo h($car->description); ?></textarea>
+                    <textarea class="text_field description_text" type="text" id="description" name="description" placeholder="Enter brief vehicle description"><?php echo h($car->description); ?></textarea>
                 </div>
 
                 <div class="form_buttons">

@@ -100,11 +100,13 @@ if (is_post_request()) {
                 <div class="form_box">
                     <h4>Mileage (km)</h4>
                     <input class="text_field" type="text" name="mileage" placeholder="Enter mileage in km">
+                    <small>Mileage will be rounded to nearest whole number.</small>
                 </div>
 
                 <div class="form_box">
                     <h4>Price ($)</h4>
                     <input class="text_field" type="text" name="price" placeholder="Enter price in CAD">
+                    <small>Price will be rounded to nearest whole number.</small>
                 </div>
 
                 <div class="form_box">

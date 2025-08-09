@@ -109,6 +109,7 @@
     cursor: pointer;
     color: var(--pri_color);
     font-size: 14px;
+    text-align: center;
 }
 
 .image_button input[type="file"] {
