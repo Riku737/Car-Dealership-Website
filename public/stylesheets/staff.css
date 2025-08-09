@@ -28,6 +28,7 @@
     font-size: 14px;
     border: 1px solid var(--border_color);
     border-radius: 4px;
+    width: -webkit-fill-available;
 }
 
 .drop_down {
@@ -71,11 +72,7 @@
     gap: 7px;
     flex-direction: column;
     align-items: flex-start;
-}
-
-.description_box {
-    align-items: normal;
-    width: 100%;
+    width: 50%;
 }
 
 .description_text {
@@ -103,5 +100,17 @@
 
 .image_box {
     align-items: normal;
-    width: 100%;
+}
+
+.image_button {
+    border: 1px dashed var(--pri_color);
+    padding: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--pri_color);
+    font-size: 14px;
+}
+
+.image_button input[type="file"] {
+    display: none;
 }

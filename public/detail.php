@@ -37,7 +37,7 @@ include(SHARED_PATH . '/public_navigation.php');
             </div>
     
     
-            <img class="item_thumbnail" src="<?php echo h($car->file)?>">
+            <img class="item_thumbnail" src="<?php echo h($car->image())?>">
     
             <div class="content_container">
     

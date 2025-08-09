@@ -61,7 +61,7 @@ class Car {
 
     public function create() {
         $sql = "INSERT INTO cars (";
-        $sql .= "make, model, year, body_type, colour, mileage_km, price, fuel_type, description, condition_id, file";
+        $sql .= "make, model, year, body_type, colour, mileage_km, price, fuel_type, description, condition_id, image";
         $sql .= ") VALUES (";
         $sql .= "'" . $this->make . "', ";
         $sql .= "'" . $this->model . "', ";
@@ -73,7 +73,7 @@ class Car {
         $sql .= "'" . $this->fuel_type . "', ";
         $sql .= "'" . $this->description . "', ";
         $sql .= "'" . $this->condition_id . "', ";
-        $sql .= "'" . $this->file . "'";
+        $sql .= "'" . $this->image . "'";
         $sql .= ")";
 
         $result = self::$database->query($sql);
@@ -93,7 +93,7 @@ class Car {
     public $mileage_km;
     public $price;
     public $description;
-    public $file;
+    public $image;
 
     public $colour;
     public $body_type;
@@ -181,7 +181,7 @@ class Car {
         $this->fuel_type = $args['fuel_type'] ?? 'Unknown';
         $this->description = $args['description'] ?? 'Unknown';
         $this->condition_id = $args['condition_id'] ?? 0;
-        $this->file = $args['file'] ?? 'Unknown';
+        $this->image = $args['image'] ?? null;
     }
 
     public function condition() {
@@ -193,7 +193,12 @@ class Car {
     }
 
     public function image() {
+    if ($this->image) {
+        return "images/" . $this->image;
+    } else {
+        return "images/default.png";
     }
+}
 
     public function name() {
         if (isset($this->year) && isset($this->make) && isset($this->model)) {
@@ -204,7 +209,7 @@ class Car {
     }
 
     public function price() {
-        return "$" . number_format($this->price,2);
+        return "$" . number_format($this->price);
     }
 
     public function mileage() {

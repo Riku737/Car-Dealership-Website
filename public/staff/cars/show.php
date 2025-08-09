@@ -85,7 +85,7 @@ $car = Car::find_by_id($id);
                             </tr>
                             <tr>
                                 <th>Image</th>
-                                <td><img class="item_thumbnail" src="../../<?php echo h($car->file)?>"></td>
+                                <td><img class="item_thumbnail" src="../../<?php echo h($car->image())?>"></td>
                             </tr>
                         </tbody>
     

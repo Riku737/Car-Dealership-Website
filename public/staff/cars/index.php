@@ -51,8 +51,8 @@
                             <td><?php echo h($car->model); ?></td>
                             <td><?php echo h($car->year); ?></td>
                             <td><?php echo h($car->colour); ?></td>
-                            <td><?php echo h($car->mileage_km); ?></td>
-                            <td><?php echo h($car->price()); ?></td>
+                            <td><?php echo h(number_format($car->mileage_km)); ?></td>
+                            <td><?php echo h(number_format($car->price)); ?></td>
                             <td><?php echo h($car->condition()); ?></td>
                             <td><a class="link" href="show.php?id=<?php echo $car->id; ?>">View</a></td>
                             <td><a class="link" href="edit.php?id=<?php echo $car->id; ?>">Edit</a></td>

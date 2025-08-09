@@ -60,7 +60,7 @@ if (is_post_request()) {
                 <div class="form_box">
                     <h4>Make</h4>
                     <select class="drop_down" name="make">
-                        <option value=""></option>
+                        <option selected disabled value="">Select make</option>
                         <?php foreach ($makes as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
@@ -69,18 +69,18 @@ if (is_post_request()) {
 
                 <div class="form_box">
                     <h4>Model</h4>
-                    <input class="text_field" type="text" name="model">
+                    <input class="text_field" type="text" name="model" placeholder="Enter model name">
                 </div>
 
                 <div class="form_box">
                     <h4>Year</h4>
-                    <input class="text_field" type="text" name="year" maxlength="4">
+                    <input class="text_field" type="text" name="year" maxlength="4" placeholder="Enter year in YYYY format">
                 </div>
                 
                 <div class="form_box">
                     <h4>Body Type</h4>
                     <select class="drop_down" name="body_type">
-                        <option value=""></option>
+                        <option selected disabled value="">Select body type</option>
                         <?php foreach ($bodys as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
@@ -90,7 +90,7 @@ if (is_post_request()) {
                 <div class="form_box">
                     <h4>Colour</h4>
                     <select class="drop_down" name="colour">
-                        <option value=""></option>
+                        <option selected disabled value="">Select colour</option>
                         <?php foreach ($colours as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
@@ -99,18 +99,18 @@ if (is_post_request()) {
 
                 <div class="form_box">
                     <h4>Mileage (km)</h4>
-                    <input class="text_field" type="text" name="mileage">
+                    <input class="text_field" type="text" name="mileage" placeholder="Enter mileage in km">
                 </div>
 
                 <div class="form_box">
                     <h4>Price ($)</h4>
-                    <input class="text_field" type="text" name="price">
+                    <input class="text_field" type="text" name="price" placeholder="Enter price in CAD">
                 </div>
 
                 <div class="form_box">
                     <h4>Condition</h4>
                     <select class="drop_down" id="condition">
-                        <option value=""></option>
+                        <option selected disabled value="">Select condition</option>
                         <?php foreach (Car::CONDITION_OPTIONS as $option_id => $option_name) { ?>
                             <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
@@ -119,13 +119,18 @@ if (is_post_request()) {
 
                 <div class="form_box description_box">
                     <h4>Description</h4>
-                    <textarea class="text_field description_text" type="text" name="description"></textarea>
+                    <textarea class="text_field description_text" type="text" name="description" placeholder="Enter brief vehicle description"></textarea>
                 </div>
 
                 <div class="form_box image_box">
                     <h4>Image</h4>
-                    <input class="text_field image_button" type="file" name="image" accept=".jpg, .jpeg, .png" hidden>
-                    <label for="image" class="image_button">Choose Image</label>
+                    <label for="image" class="image_button">
+                        <input class="text_field image_button" type="file" id="image" name="image" accept=".jpg, .jpeg, .png">
+                        <div>
+                            <img id="image_preview" src="#" alt="Image Preview" style="display: none; max-width: 100%; height: auto;">
+                        </div>
+                        <span>Choose Image</span>
+                    </label>
                 </div>
 
                 <div class="form_buttons">
@@ -143,3 +148,14 @@ if (is_post_request()) {
 
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>
+
+<script>
+document.getElementById('image').addEventListener('change', function(event) {
+    const [file] = event.target.files;
+    if (file) {
+        const preview = document.getElementById('image_preview');
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = 'block';
+    }
+});
+</script>
