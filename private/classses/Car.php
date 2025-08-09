@@ -61,7 +61,7 @@ class Car {
 
 
     public function create() {
-        $attributes = $this->attributes();
+        $attributes = $this->sanitized_attributes();
         $sql = "INSERT INTO cars (";
         $sql .= join(', ', array_keys($attributes));
         $sql .= ") VALUES ('";
@@ -99,6 +99,14 @@ class Car {
             $attributes[$column] = $this->$column;
         }
         return $attributes;
+    }
+
+    protected function sanitized_attributes() {
+        $sanitized = [];
+        foreach ($this->attributes() as $key => $value) {
+            $sanitized[$key] = self::$database->escape_string($value);
+        }
+        return $sanitized;
     }
 
 
