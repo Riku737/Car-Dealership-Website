@@ -85,7 +85,10 @@ $car = Car::find_by_id($id);
                             </tr>
                             <tr>
                                 <th>Image</th>
-                                <td><img class="item_thumbnail" src="../../<?php echo h($car->image())?>"></td>
+                                <td style="display: flex; gap: 15px; align-items: center;">
+                                    <img style="width:25%" class="item_thumbnail" src="../../<?php echo h($car->image())?>" alt="<?php echo h($car->name()) ?>">
+                                    <small style="width: 75%;"><?php echo h($car->image) ?></small>
+                                </td>
                             </tr>
                         </tbody>
     

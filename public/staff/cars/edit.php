@@ -116,7 +116,6 @@ $car = Car::find_by_id($id);
 
                 <div class="form_buttons">
                     <button type="submit" class="primary_button">Save changes</button>
-                    <a href="<?php echo url_for('/staff/cars/index.php')?>" class="tertiary_button">Cancel</a>
                 </div>
 
 

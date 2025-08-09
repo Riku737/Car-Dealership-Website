@@ -88,7 +88,7 @@ $cars = Car::find_all();
                 <?php foreach($cars as $car) {?>
                 <a class="car_link" href="detail.php?id=<?php echo $car->id; ?>">
 
-                    <div class="image_boundary"><img class="car_preview_thumbnail" src="<?php echo h($car->image()); ?>" ></div>
+                    <div class="image_boundary"><img class="car_preview_thumbnail" src="<?php echo h($car->image()) ?>" alt="<?php echo h($car->name()) ?>"></div>
 
                     <div class="car_details">
                         <div class="pill_group">

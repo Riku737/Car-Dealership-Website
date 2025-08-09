@@ -1,4 +1,4 @@
-<?php require_once('../../..//private/initialize.php');?>
+<?php require_once('../../../private/initialize.php');?>
 
 <?php
 
@@ -6,23 +6,24 @@ if (is_post_request()) {
 
     // Create record using post parameters
     $args = [];
-    $args['make'] = $_POST['make'];
-    $args['model'] = $_POST['model'];
-    $args['year'] = $_POST['year'];
-    $args['body_type'] = $_POST['body_type'];
-    $args['colour'] = $_POST['colour'];
-    $args['mileage'] = $_POST['mileage'];
-    $args['price'] = $_POST['price'];
-    $args['condition'] = $_POST['condition'];
-    $args['description'] = $_POST['description'];
-    $args['file'] = $_FILES['image'];
+    $args['make'] = $_POST['make'] ?? null;
+    $args['model'] = $_POST['model'] ?? null;
+    $args['year'] = $_POST['year'] ?? null;
+    $args['body_type'] = $_POST['body_type'] ?? null;
+    $args['colour'] = $_POST['colour'] ?? null;
+    $args['mileage'] = $_POST['mileage'] ?? null;
+    $args['price'] = $_POST['price'] ?? null;
+    $args['condition'] = $_POST['condition'] ?? null;
+    $args['description'] = $_POST['description'] ?? null;
+    $args['image'] = !empty($_FILES['image']['name']) ? $_FILES['image']['name'] : 'default.png';
 
-    $file_name = $_FILES['image']['name'] ?? null; // Add this line
-    $tempname = $_FILES['image']['tmp_name']; // Correct key is 'tmp_name'
-    $folder = $_SERVER['DOCUMENT_ROOT'] . '/projects/Car-Dealership-Inventory-System/public/images/' . $file_name;
+    if (!empty($_FILES['image']['name'])) {
+        $file_name = $_FILES['image']['name'];
+        $tempname = $_FILES['image']['tmp_name'];
+        $folder = __DIR__ . '/../../images/' . $file_name;
+        move_uploaded_file($tempname, $folder);
+    }
 
-    move_uploaded_file($tempname, $folder);
-    
     $car = new Car($args);
     $result = $car->create();
 
@@ -74,7 +75,7 @@ if (is_post_request()) {
 
                 <div class="form_box">
                     <h4>Year</h4>
-                    <input class="text_field" type="text" name="year" maxlength="4" placeholder="Enter year in YYYY format">
+                    <input class="text_field" type="number" name="year" maxlength="4" placeholder="Enter year in YYYY format" step="1">
                 </div>
                 
                 <div class="form_box">
@@ -99,13 +100,13 @@ if (is_post_request()) {
 
                 <div class="form_box">
                     <h4>Mileage (km)</h4>
-                    <input class="text_field" type="text" name="mileage" placeholder="Enter mileage in km">
+                    <input class="text_field" type="number" name="mileage" placeholder="Enter mileage in km" step="1">
                     <small>Mileage will be rounded to nearest whole number.</small>
                 </div>
 
                 <div class="form_box">
                     <h4>Price ($)</h4>
-                    <input class="text_field" type="text" name="price" placeholder="Enter price in CAD">
+                    <input class="text_field" type="number" name="price" placeholder="Enter price in CAD"  step="1">
                     <small>Price will be rounded to nearest whole number.</small>
                 </div>
 
@@ -126,18 +127,19 @@ if (is_post_request()) {
 
                 <div class="form_box image_box">
                     <h4>Image</h4>
+                    <div class="image_display" style="display: none;">
+                        <img id="image_preview" alt="Image preview">
+                        <span id="image_name"></span>
+                    </div>
                     <label for="image" class="image_button">
                         <input class="text_field image_button" type="file" id="image" name="image" accept=".jpg, .jpeg, .png">
-                        <div>
-                            <img id="image_preview" src="#" alt="Image Preview" style="display: none; max-width: 100%; height: auto;">
-                        </div>
-                        <span>Choose Image</span>
+                        <p><i class="bi bi-upload"></i> Upload Image</p>
+                        <small style="font-weight: normal;">jpg, jpeg, png formats</small>
                     </label>
                 </div>
 
                 <div class="form_buttons">
                     <button type="submit" class="primary_button" name="submit">Add vehicle</button>
-                    <a href="<?php echo url_for('/staff/cars/index.php')?>" class="tertiary_button">Cancel</a>
                 </div>
 
             </form>
@@ -153,11 +155,21 @@ if (is_post_request()) {
 
 <script>
 document.getElementById('image').addEventListener('change', function(event) {
+
     const [file] = event.target.files;
+    const imageName = document.getElementById('image_name');
+    const imagePreview = document.getElementById('image_preview');
+    const imageDisplay = document.querySelector('.image_display');
+
     if (file) {
-        const preview = document.getElementById('image_preview');
-        preview.src = URL.createObjectURL(file);
-        preview.style.display = 'block';
+        imageName.textContent = file.name;
+        imagePreview.src = URL.createObjectURL(file);
+        imageDisplay.style.display = 'flex';
+    } else {
+        imageName.textContent = '';
+        imagePreview.src = '';
+        imageDisplay.style.display = 'none';
     }
+
 });
 </script>

@@ -55,7 +55,7 @@ html, body, p, a, span, div, li, td, th, input, button, select, textarea, label 
     margin: 0;
 }
 
-p {
+p, small {
     color: var(--text_color);
 }
 
@@ -141,7 +141,6 @@ body {
     font-weight: 600;
     font-size: 14px;
     border: none;
-    transition: 200ms;
     gap: 7px;
     display: flex;
 }
@@ -165,7 +164,6 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
-    transition: 200ms;
     gap: 7px;
     display: flex;
 }
@@ -246,12 +244,16 @@ body {
 }
 
 .footer_links a:hover {
-    color: #dadada;
+    color: var(--pri_hov_color);
 }
 
 .footer_disclaimer {
     border-top: 1px solid;
     padding-top: 7px;
+}
+
+.footer_disclaimer small {
+    color: white;
 }
 
 .copyright_text {
@@ -497,9 +499,8 @@ th {
 
 /* IMAGES */
 .item_thumbnail {
-    width: 100%;
     border-radius: 7px;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    display: block;
+    display: inline;
 }

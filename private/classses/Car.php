@@ -172,16 +172,16 @@ class Car {
     // Constructor
     public function __construct($args = []) {
         $this->make = $args['make'] ?? 'Unknown';
-        $this->model = $args['model'] ?? 'Unknown';
-        $this->year = $args['year'] ?? 0000;
+        $this->model = !empty($args['model']) ? $args['model'] : 'Unknown';
+        $this->year = $args['year'] ?? 0;
         $this->body_type = $args['body_type'] ?? 'Unknown';
         $this->colour = $args['colour'] ?? 'Unknown';
         $this->mileage_km = $args['mileage_km'] ?? 0;
-        $this->price = $args['price'] ?? 0.00;
+        $this->price = $args['price'] ?? 0;
         $this->fuel_type = $args['fuel_type'] ?? 'Unknown';
-        $this->description = $args['description'] ?? 'Unknown';
+        $this->description = !empty($args['description']) ? $args['description'] : 'Unknown';
         $this->condition_id = $args['condition_id'] ?? 0;
-        $this->image = $args['image'] ?? null;
+        $this->image = $args['image'] ?? 'default.png';
     }
 
     public function condition() {
