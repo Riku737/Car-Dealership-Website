@@ -11,9 +11,10 @@ if (is_post_request()) {
     $args['year'] = $_POST['year'] ?? null;
     $args['body_type'] = $_POST['body_type'] ?? null;
     $args['colour'] = $_POST['colour'] ?? null;
-    $args['mileage'] = $_POST['mileage'] ?? null;
+    $args['mileage_km'] = $_POST['mileage'] ?? null;
     $args['price'] = $_POST['price'] ?? null;
-    $args['condition'] = $_POST['condition'] ?? null;
+    $args['fuel_type'] = $_POST['fuel_type'] ?? null;
+    $args['condition_id'] = $_POST['condition'] ?? null;
     $args['description'] = $_POST['description'] ?? null;
     $args['image'] = !empty($_FILES['image']['name']) ? $_FILES['image']['name'] : 'default.png';
 
@@ -118,8 +119,18 @@ if (is_post_request()) {
                 </div>
 
                 <div class="form_box">
+                    <h4>Fuel Type</h4>
+                    <select class="drop_down" name="fuel_type">
+                        <option selected disabled value="">Select fuel type</option>
+                        <?php foreach (Car::FUEL_OPTIONS as $option_name) { ?>
+                            <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+
+                <div class="form_box">
                     <h4>Condition</h4>
-                    <select class="drop_down" id="condition">
+                    <select class="drop_down" name="condition">
                         <option selected disabled value="">Select condition</option>
                         <?php foreach (Car::CONDITION_OPTIONS as $option_id => $option_name) { ?>
                             <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>

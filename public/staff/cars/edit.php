@@ -105,8 +105,22 @@ $car = Car::find_by_id($id);
                 </div>
 
                 <div class="form_box">
+                    <h4>Fuel Type</h4>
+                    <select class="drop_down" name="fuel_type">
+                        <option selected disabled value="">Select fuel type</option>
+                        <?php foreach (Car::FUEL_OPTIONS as $option_name) { ?>
+                            <?php if ($option_name == $car->fuel_type) { ?>
+                                <option selected value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                            <?php } else {?>
+                                <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                            <?php } ?>
+                        <?php } ?>
+                    </select>
+                </div>
+
+                <div class="form_box">
                     <h4>Condition</h4>
-                    <select class="drop_down" name="condition_id" id="condition_id">
+                    <select class="drop_down" name="condition_id">
                         <option selected disabled value="">Select condition</option>
                         <?php foreach (Car::CONDITION_OPTIONS as $option_id => $option_name) { ?>
                             <?php if ($option_id == $car->condition_id) { ?>

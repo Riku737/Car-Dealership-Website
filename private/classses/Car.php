@@ -4,6 +4,7 @@ class Car {
 
     // ACTIVE RECORD CODE
     protected static $database;
+    protected static $db_columns = ['make', 'model', 'year', 'body_type', 'colour', 'mileage_km', 'price', 'fuel_type', 'description', 'condition_id', 'image'];
 
     public static function set_database($database) {
         self::$database = $database;
@@ -60,21 +61,25 @@ class Car {
 
 
     public function create() {
+        $attributes = $this->attributes();
         $sql = "INSERT INTO cars (";
-        $sql .= "make, model, year, body_type, colour, mileage_km, price, fuel_type, description, condition_id, image";
-        $sql .= ") VALUES (";
-        $sql .= "'" . $this->make . "', ";
-        $sql .= "'" . $this->model . "', ";
-        $sql .= "'" . $this->year . "', ";
-        $sql .= "'" . $this->body_type . "', ";
-        $sql .= "'" . $this->colour . "', ";
-        $sql .= "'" . $this->mileage_km . "', ";
-        $sql .= "'" . $this->price . "', ";
-        $sql .= "'" . $this->fuel_type . "', ";
-        $sql .= "'" . $this->description . "', ";
-        $sql .= "'" . $this->condition_id . "', ";
-        $sql .= "'" . $this->image . "'";
-        $sql .= ")";
+        $sql .= join(', ', array_keys($attributes));
+        $sql .= ") VALUES ('";
+        $sql .= join("', '", array_values($attributes));
+        $sql .= "')";
+
+        // $sql .= "'" . $this->make . "', ";
+        // $sql .= "'" . $this->model . "', ";
+        // $sql .= "'" . $this->year . "', ";
+        // $sql .= "'" . $this->body_type . "', ";
+        // $sql .= "'" . $this->colour . "', ";
+        // $sql .= "'" . $this->mileage_km . "', ";
+        // $sql .= "'" . $this->price . "', ";
+        // $sql .= "'" . $this->fuel_type . "', ";
+        // $sql .= "'" . $this->description . "', ";
+        // $sql .= "'" . $this->condition_id . "', ";
+        // $sql .= "'" . $this->image . "'";
+        // $sql .= ")";
 
         $result = self::$database->query($sql);
         if($result) {
@@ -82,6 +87,18 @@ class Car {
         }
         
         return $result;
+    }
+
+    // Properties which have database columns, excluding ID
+    public function attributes() {
+        $attributes = [];
+        foreach (self::$db_columns as $column) {
+            if ($column == 'id') {
+                continue; // Skip id as it's auto-generated and incremented
+            }
+            $attributes[$column] = $this->$column;
+        }
+        return $attributes;
     }
 
 
@@ -218,7 +235,7 @@ class Car {
     }
 
     public function price() {
-        return "$" . number_format($this->price);
+        return "CAD $" . number_format($this->price);
     }
 
     public function mileage() {
