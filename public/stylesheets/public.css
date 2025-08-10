@@ -151,10 +151,6 @@ body {
     transition: 150ms;
 }
 
-.primary_button:active {
-    transform: scale(0.9);
-}
-
 .secondary_button {
     background-color: white;
     color: var(--pri_color);
@@ -173,10 +169,6 @@ body {
     border: 1px solid var(--pri_hov_color);
     color: var(--pri_hov_color);
     transition: 150ms;
-}
-
-.secondary_button:active {
-    transform: scale(0.9);
 }
 
 .tertiary_button {
@@ -304,13 +296,8 @@ body {
     background-size: 16px 16px;
 }
 
-.custom_select:active {
-    transform: scale(0.9);
-}
-
 .custom_select:hover {
     cursor: pointer;
-    background-color: #fbfbfb;
 }
 
 .headline_pill {

@@ -48,6 +48,7 @@ class Car {
         }
     }
 
+    // Validates whether file name exists in images folder
     public static function find_by_image($image) {
         $dir = __DIR__ . '/../../public/images/';
         $files = [];
@@ -76,8 +77,8 @@ class Car {
         return $object;
     }
 
-
-    public function create() {
+    // Create a new car record
+    protected function create() {
         $attributes = $this->sanitized_attributes();
         $sql = "INSERT INTO cars (";
         $sql .= join(', ', array_keys($attributes));
@@ -104,6 +105,40 @@ class Car {
         }
         
         return $result;
+    }
+
+    // Update car record
+    protected function update() {
+        $attributes = $this->sanitized_attributes();
+        $attribute_pairs = [];
+        foreach($attributes as $key => $value) {
+            $attribute_pairs[] = "{$key}='{$value}'";
+        }
+
+        $sql = "UPDATE cars SET ";
+        $sql .= join(', ', $attribute_pairs);
+        $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "' ";
+        $sql .= "LIMIT 1";
+        $result = self::$database->query($sql);
+        return $result;
+    }
+
+    public function save() {
+        // A new record will not have an ID yet
+        if (isset($this->id)) {
+            return $this->update();
+        } else {
+            return $this->create();
+        }
+    }
+
+    // Merges the provided associative array of attributes into the current object
+    public function merge_attributes($args=[]) {
+        foreach($args as $key => $value) {
+            if (property_exists($this, $key) && !is_null($value)) {
+                $this->$key = $value;
+            }
+        }
     }
 
     // Properties which have database columns, excluding ID

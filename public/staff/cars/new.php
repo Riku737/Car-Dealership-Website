@@ -26,7 +26,7 @@ if (is_post_request()) {
     }
 
     $car = new Car($args);
-    $result = $car->create();
+    $result = $car->save();
 
     if ($result === true) {
         $new_id = $car->id;

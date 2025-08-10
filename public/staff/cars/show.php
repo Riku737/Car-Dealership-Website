@@ -5,9 +5,7 @@
 $id = $_GET['id'] ?? false;
 
 if (!$id) {
-
     redirect_to('index.php');
-
 }
 
 $car = Car::find_by_id($id);

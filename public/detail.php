@@ -2,12 +2,11 @@
 // Initalize files
 require_once('../private/initialize.php');
 
-$id = $_GET['id'] ?? false;
-
-if (!$id) {
+if (!isset($_GET['id'])) {
     redirect_to('index.php');
 }
 
+$id = $_GET['id'];
 $car = Car::find_by_id($id);
 $page_title = $car->name();
 

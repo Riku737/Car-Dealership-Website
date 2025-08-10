@@ -2,15 +2,52 @@
 
 <?php 
 
-$id = $_GET['id'] ?? false;
-
-if (!$id) {
-
+if (!isset($_GET['id'])) {
     redirect_to('index.php');
-
 }
 
+$id = $_GET['id'];
 $car = Car::find_by_id($id);
+if ($car == false) {
+    redirect_to(url_for('/staff/cars/index.php'));
+}
+
+if (is_post_request()) {
+
+    $args = [];
+    $args['make'] = $_POST['make'] ?? null;
+    $args['model'] = $_POST['model'] ?? null;
+    $args['year'] = $_POST['year'] ?? null;
+    $args['body_type'] = $_POST['body_type'] ?? null;
+    $args['colour'] = $_POST['colour'] ?? null;
+    $args['mileage_km'] = $_POST['mileage'] ?? null;
+    $args['price'] = $_POST['price'] ?? null;
+    $args['fuel_type'] = $_POST['fuel_type'] ?? null;
+    $args['condition_id'] = $_POST['condition'] ?? null;
+    $args['description'] = $_POST['description'] ?? null;
+
+    if (!empty($_FILES['image']['name'])) {
+        $file_name = $_FILES['image']['name'];
+        $tempname = $_FILES['image']['tmp_name'];
+        $folder = __DIR__ . '/../../images/' . $file_name;
+        move_uploaded_file($tempname, $folder);
+        $args['image'] = $file_name;
+    } else {
+        $args['image'] = $car->image; // Keep existing image
+    }
+
+    $car->merge_attributes($args);
+    $result = $car->update();
+
+    if ($result === true) {
+        $_SESSION['message'] = 'The car was updated successfully.';
+        redirect_to(url_for('/staff/cars/show.php?id=' . $id));
+    } else {
+        // Show errors
+    }
+
+} 
+
 
 ?>
 
@@ -33,7 +70,7 @@ $car = Car::find_by_id($id);
                 <h1><?php echo h($car->name()); ?></h1>
             </div>
 
-            <form class="form_container">
+            <form class="form_container" action="<?php echo url_for('/staff/cars/edit.php?id=' . $id); ?>" method="post" enctype="multipart/form-data">
                 
                 <div class="form_box">
                     <h4>Make</h4>
