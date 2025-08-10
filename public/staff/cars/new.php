@@ -5,17 +5,7 @@
 if (is_post_request()) {
 
     // Create record using post parameters
-    $args = [];
-    $args['make'] = $_POST['make'] ?? null;
-    $args['model'] = $_POST['model'] ?? null;
-    $args['year'] = $_POST['year'] ?? null;
-    $args['body_type'] = $_POST['body_type'] ?? null;
-    $args['colour'] = $_POST['colour'] ?? null;
-    $args['mileage_km'] = $_POST['mileage'] ?? null;
-    $args['price'] = $_POST['price'] ?? null;
-    $args['fuel_type'] = $_POST['fuel_type'] ?? null;
-    $args['condition_id'] = $_POST['condition'] ?? null;
-    $args['description'] = $_POST['description'] ?? null;
+    $args = $_POST['car'];
     $args['image'] = !empty($_FILES['image']['name']) ? $_FILES['image']['name'] : 'default.png';
 
     if (!empty($_FILES['image']['name'])) {
@@ -63,7 +53,7 @@ if (is_post_request()) {
                 
                 <div class="form_box">
                     <h4>Make</h4>
-                    <select class="drop_down" name="make">
+                    <select class="drop_down" name="car[make]">
                         <option selected disabled value="">Select make</option>
                         <?php foreach ($makes as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
@@ -73,12 +63,12 @@ if (is_post_request()) {
 
                 <div class="form_box">
                     <h4>Model</h4>
-                    <input class="text_field" type="text" name="model" placeholder="Enter model name">
+                    <input class="text_field" type="text" name="car[model]" placeholder="Enter model name">
                 </div>
 
                 <div class="form_box">
                     <h4>Year</h4>
-                    <select class="drop_down" name="year">
+                    <select class="drop_down" name="car[year]">
                         <option selected disabled value="">Select year</option>
                         <?php foreach (Car::year_options() as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
@@ -88,7 +78,7 @@ if (is_post_request()) {
                 
                 <div class="form_box">
                     <h4>Body Type</h4>
-                    <select class="drop_down" name="body_type">
+                    <select class="drop_down" name="car[body_type]">
                         <option selected disabled value="">Select body type</option>
                         <?php foreach ($bodys as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
@@ -98,7 +88,7 @@ if (is_post_request()) {
 
                 <div class="form_box">
                     <h4>Colour</h4>
-                    <select class="drop_down" name="colour">
+                    <select class="drop_down" name="car[colour]">
                         <option selected disabled value="">Select colour</option>
                         <?php foreach ($colours as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
@@ -108,19 +98,19 @@ if (is_post_request()) {
 
                 <div class="form_box">
                     <h4>Mileage (km)</h4>
-                    <input class="text_field" type="number" name="mileage" placeholder="Enter mileage in km" step="1">
+                    <input class="text_field" type="number" name="car[mileage_km]" placeholder="Enter mileage in km" step="1">
                     <small>Mileage will be rounded to nearest whole number.</small>
                 </div>
 
                 <div class="form_box">
                     <h4>Price ($)</h4>
-                    <input class="text_field" type="number" name="price" placeholder="Enter price in CAD"  step="1">
+                    <input class="text_field" type="number" name="car[price]" placeholder="Enter price in CAD"  step="1">
                     <small>Price will be rounded to nearest whole number.</small>
                 </div>
 
                 <div class="form_box">
                     <h4>Fuel Type</h4>
-                    <select class="drop_down" name="fuel_type">
+                    <select class="drop_down" name="car[fuel_type]">
                         <option selected disabled value="">Select fuel type</option>
                         <?php foreach (Car::FUEL_OPTIONS as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
@@ -130,7 +120,7 @@ if (is_post_request()) {
 
                 <div class="form_box">
                     <h4>Condition</h4>
-                    <select class="drop_down" name="condition">
+                    <select class="drop_down" name="car[condition_id]">
                         <option selected disabled value="">Select condition</option>
                         <?php foreach (Car::CONDITION_OPTIONS as $option_id => $option_name) { ?>
                             <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
@@ -140,7 +130,7 @@ if (is_post_request()) {
 
                 <div class="form_box description_box">
                     <h4>Description</h4>
-                    <textarea class="text_field description_text" type="text" name="description" placeholder="Enter brief vehicle description"></textarea>
+                    <textarea class="text_field description_text" type="text" name="car[description]" placeholder="Enter brief vehicle description"></textarea>
                 </div>
 
                 <div class="form_box image_box">
