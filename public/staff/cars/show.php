@@ -28,7 +28,7 @@ $car = Car::find_by_id($id);
                     <p>/</p>
                     <a class="link" href="<?php echo url_for('/staff/cars/index.php') ?>">Inventory</a>
                     <p>/</p>
-                    <p><?php echo h($car->name()) ?></p>
+                    <p>Show</p>
                 </div>
                 <h1><?php echo h($car->name()); ?></h1>
             </div>

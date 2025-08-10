@@ -54,7 +54,7 @@ if (is_post_request()) {
                     <p>/</p>
                     <a class="link" href="<?php echo url_for('/staff/cars/index.php'); ?>">Inventory</a>
                     <p>/</p>
-                    <p>Add vehicle</p>
+                    <p>New</p>
                 </div>
                 <h1>Add vehicle to inventory</h1>
             </div>
@@ -158,6 +158,7 @@ if (is_post_request()) {
 
                 <div class="form_buttons">
                     <button type="submit" class="primary_button" name="submit">Add vehicle</button>
+                    <a href="<?php echo url_for('/staff/cars/index.php'); ?>" class="tertiary_button">Cancel</a>
                 </div>
 
             </form>

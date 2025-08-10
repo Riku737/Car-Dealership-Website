@@ -28,9 +28,9 @@ $car = Car::find_by_id($id);
                     <p>/</p>
                     <a class="link" href="<?php echo url_for('/staff/cars/index.php'); ?>">Inventory</a>
                     <p>/</p>
-                    <p><?php echo h($car->name()) ?></p>
+                    <p>Edit</p>
                 </div>
-                <h1>Edit <?php echo h($car->name()); ?></h1>
+                <h1><?php echo h($car->name()); ?></h1>
             </div>
 
             <form class="form_container">
@@ -59,7 +59,11 @@ $car = Car::find_by_id($id);
                     <select class="drop_down" name="year">
                         <option selected disabled value="">Select year</option>
                         <?php foreach (Car::year_options() as $option_name) { ?>
-                            <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                            <?php if ($option_name == $car->year) { ?>
+                                <option selected value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                            <?php } else {?>
+                                <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                            <?php } ?>
                         <?php } ?>
                     </select>
                 </div>
@@ -152,6 +156,7 @@ $car = Car::find_by_id($id);
 
                 <div class="form_buttons">
                     <button type="submit" class="primary_button">Save changes</button>
+                    <a href="<?php echo url_for('/staff/cars/index.php'); ?>" class="tertiary_button">Cancel</a>
                 </div>
 
 
