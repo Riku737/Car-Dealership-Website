@@ -48,6 +48,23 @@ class Car {
         }
     }
 
+    public static function find_by_image($image) {
+        $dir = __DIR__ . '/../../public/images/';
+        $files = [];
+        foreach (scandir($dir) as $file) {
+            if ($file !== '.' && $file !== '..' && is_file($dir . $file)) {
+                $files[] = $file;
+            }
+        }
+
+        if (in_array($image, $files)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     // Convert each row of result into Car object
     protected static function instantiate($record) {
         $object = new Car;
@@ -227,12 +244,14 @@ class Car {
     }
 
     public function image() {
-    if ($this->image) {
-        return "images/" . $this->image;
-    } else {
-        return "images/default.png";
+
+        if (self::find_by_image($this->image)) {
+            return "images/" . $this->image;
+        } else {
+            return "images/default.png";
+        }
+        
     }
-}
 
     public function name() {
         if (isset($this->year) && isset($this->make) && isset($this->model)) {

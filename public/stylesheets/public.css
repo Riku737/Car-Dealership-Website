@@ -487,6 +487,7 @@ th {
     justify-content: center;
     align-items: center;
     background-color: var(--pri_light_color);
+    border: 0;
 }
 
 .car_banner h2 {
