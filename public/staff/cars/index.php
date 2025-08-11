@@ -62,9 +62,9 @@ $cars = Car::find_all();
                             <td><?php echo h(number_format($car->mileage_km)); ?></td>
                             <td><?php echo h(number_format($car->price)); ?></td>
                             <td><?php echo h($car->condition()); ?></td>
-                            <td><a class="link" href="show.php?id=<?php echo $car->id; ?>">View</a></td>
-                            <td><a class="link" href="edit.php?id=<?php echo $car->id; ?>">Edit</a></td>
-                            <td><a class="link" href="delete.php?id=<?php echo $car->id; ?>">Delete</a></td>
+                            <td><a class="link" href="show.php?id=<?php echo h(u($car->id)); ?>">View</a></td>
+                            <td><a class="link" href="edit.php?id=<?php echo h(u($car->id)); ?>">Edit</a></td>
+                            <td><a class="link" href="delete.php?id=<?php echo h(u($car->id)); ?>">Delete</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>

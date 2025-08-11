@@ -2,9 +2,9 @@
 
 class DatabaseObject {
 
-    static protected $database;
-    static protected $table_name = "";
-    static protected $columns = [];
+    protected static $database;
+    protected static $table_name = "";
+    protected static $columns = [];
     public $errors = [];
 
     public static function set_database($database) {
@@ -151,7 +151,7 @@ class DatabaseObject {
     // Properties which have database columns, excluding ID
     public function attributes() {
         $attributes = [];
-        foreach (static::$columns as $column) {
+        foreach (static::$db_columns as $column) {
             if ($column == 'id') {
                 continue; // Skip id as it's auto-generated and incremented
             }

@@ -1,28 +1,36 @@
 <?php 
 require_once('../../../private/initialize.php');
-$page_title = 'New Admin';
+$page_title = 'Edit Admin';
 ?>
 
-<?php
+<?php 
+
+if (!isset($_GET['id'])) {
+    redirect_to('index.php');
+}
+
+$id = $_GET['id'];
+/** @var Admin $admin */
+$admin = Admin::find_by_id($id);
+if ($admin == false) {
+    redirect_to(url_for('/staff/admins/index.php'));
+}
 
 if (is_post_request()) {
 
-    // Create record using post parameters
     $args = $_POST['admin'];
-    $admin = new Admin($args);
+    $admin->merge_attributes($args);
     $result = $admin->save();
 
     if ($result === true) {
-        $new_id = $admin->id;
-        $_SESSION['message'] = 'The admin was created successfully.';
-        redirect_to(url_for('/staff/admins/show.php?id=' . $new_id));
+        $_SESSION['message'] = 'The admin was updated successfully.';
+        redirect_to(url_for('/staff/admins/show.php?id=' . $id));
     } else {
-        // show errors
+        // Show errors
     }
 
-} else {
-    $admin = new Admin();
-}
+} 
+
 
 ?>
 
@@ -40,21 +48,22 @@ if (is_post_request()) {
                     <p>/</p>
                     <a class="link" href="<?php echo url_for('/staff/admins/index.php'); ?>">Admins</a>
                     <p>/</p>
-                    <p>New</p>
+                    <p>Edit</p>
                 </div>
-                <h1>Create new admin</h1>
+                <h1><?php echo h($admin->full_name()); ?></h1>
             </div>
 
             <?php echo display_errors($admin->errors); ?>
 
-            <form class="form_container" action="<?php echo url_for('/staff/admins/new.php');?>" method="POST" enctype="multipart/form-data">
-
+            <form class="form_container" action="<?php echo url_for('/staff/admins/edit.php?id=' . h($id)); ?>" method="post" enctype="multipart/form-data">
+                
                 <?php include('form_fields.php'); ?>
 
                 <div class="form_buttons">
-                    <button type="submit" class="primary_button" name="submit">Create admin</button>
+                    <button type="submit" class="primary_button">Save changes</button>
                     <a href="<?php echo url_for('/staff/admins/index.php'); ?>" class="tertiary_button">Cancel</a>
-                </div>
+                </div>  
+
 
             </form>
 
@@ -63,6 +72,5 @@ if (is_post_request()) {
     </section>
 
 </div>
-
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>
