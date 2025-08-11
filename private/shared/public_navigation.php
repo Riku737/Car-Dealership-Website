@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/public.css'); ?>"/>
-    <title><?php if(isset($page_title)) { echo h($page_title); } ?></title>
+    <title><?php if(isset($page_title)) { echo h($page_title) . ' - The Used Suspects'; } else { echo 'The Used Suspects'; } ?></title>
 </head>
 <body>
 

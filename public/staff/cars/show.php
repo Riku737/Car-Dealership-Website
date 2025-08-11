@@ -10,6 +10,7 @@ if (!$id) {
 
 /** @var Car $car */
 $car = Car::find_by_id($id);
+$page_title = $car->name();
 
 ?>
 

@@ -1,4 +1,7 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
+require_once('../private/initialize.php'); 
+$page_title = 'Inventory';
+?>
 
 <?php include(SHARED_PATH . '/public_navigation.php'); ?>
 
