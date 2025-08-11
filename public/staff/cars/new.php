@@ -6,7 +6,7 @@ if (is_post_request()) {
 
     // Create record using post parameters
     $args = $_POST['car'];
-    $args['image'] = !empty($_FILES['image']['name']) ? $_FILES['image']['name'] : 'default.png';
+    $args['image'] = $_FILES['image']['name'];
 
     if (!empty($_FILES['image']['name'])) {
         $file_name = $_FILES['image']['name'];
@@ -25,6 +25,10 @@ if (is_post_request()) {
     } else {
         // show errors
     }
+
+} else {
+
+    $car = new Car();
 
 }
 
@@ -49,88 +53,100 @@ if (is_post_request()) {
                 <h1>Add vehicle to inventory</h1>
             </div>
 
+            <?php echo display_errors($car->errors); ?>
+
             <form class="form_container" action="<?php echo url_for('/staff/cars/new.php');?>" method="POST" enctype="multipart/form-data">
                 
-                <div class="form_box">
+                <div class="form_box form_box_options">
                     <h4>Make</h4>
-                    <select class="drop_down" name="car[make]">
+                    <select class="drop_down <?php if (has_errors($car->errors, 'make')) echo 'error'; ?>" name="car[make]">
                         <option selected disabled value="">Select make</option>
                         <?php foreach ($makes as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
                     </select>
+                    <?php echo inline_errors($car->errors, 'make'); ?>
                 </div>
 
                 <div class="form_box">
                     <h4>Model</h4>
-                    <input class="text_field" type="text" name="car[model]" placeholder="Enter model name">
+                    <input class="text_field <?php if (has_errors($car->errors, 'model')) echo 'error'; ?>" type="text" name="car[model]" placeholder="Enter model name">
+                    <?php echo inline_errors($car->errors, 'model'); ?>
                 </div>
 
-                <div class="form_box">
+                <div class="form_box form_box_options">
                     <h4>Year</h4>
-                    <select class="drop_down" name="car[year]">
+                    <select class="drop_down <?php if (has_errors($car->errors, 'year')) echo 'error'; ?>" name="car[year]">
                         <option selected disabled value="">Select year</option>
                         <?php foreach (Car::year_options() as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
                     </select>
+                    <?php echo inline_errors($car->errors, 'year'); ?>
                 </div>
-                
-                <div class="form_box">
+
+                <div class="form_box form_box_options">
                     <h4>Body Type</h4>
-                    <select class="drop_down" name="car[body_type]">
+                    <select class="drop_down <?php if (has_errors($car->errors, 'body_type')) echo 'error'; ?>" name="car[body_type]">
                         <option selected disabled value="">Select body type</option>
                         <?php foreach ($bodys as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
                     </select>
+                    <?php echo inline_errors($car->errors, 'body_type'); ?>
                 </div>
 
-                <div class="form_box">
+                <div class="form_box form_box_options">
                     <h4>Colour</h4>
-                    <select class="drop_down" name="car[colour]">
+                    <select class="drop_down <?php if (has_errors($car->errors, 'colour')) echo 'error'; ?>" name="car[colour]">
                         <option selected disabled value="">Select colour</option>
                         <?php foreach ($colours as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
                     </select>
+                    <?php echo inline_errors($car->errors, 'colour'); ?>
                 </div>
 
                 <div class="form_box">
                     <h4>Mileage (km)</h4>
-                    <input class="text_field" type="number" name="car[mileage_km]" placeholder="Enter mileage in km" step="1">
+                    <input class="text_field <?php if (has_errors($car->errors, 'mileage_km')) echo 'error'; ?>" type="number" name="car[mileage_km]" placeholder="Enter mileage in km" step="1">
                     <small>Mileage will be rounded to nearest whole number.</small>
+                    <?php echo inline_errors($car->errors, 'mileage_km'); ?>
                 </div>
 
                 <div class="form_box">
                     <h4>Price ($)</h4>
-                    <input class="text_field" type="number" name="car[price]" placeholder="Enter price in CAD"  step="1">
+                    <input class="text_field <?php if (has_errors($car->errors, 'price')) echo 'error'; ?>" type="number" name="car[price]" placeholder="Enter price in CAD"  step="1">
                     <small>Price will be rounded to nearest whole number.</small>
+                    <?php echo inline_errors($car->errors, 'price'); ?>
                 </div>
 
-                <div class="form_box">
+                <div class="form_box form_box_options">
                     <h4>Fuel Type</h4>
-                    <select class="drop_down" name="car[fuel_type]">
+                    <select class="drop_down <?php if (has_errors($car->errors, 'fuel_type')) echo 'error'; ?>" name="car[fuel_type]">
                         <option selected disabled value="">Select fuel type</option>
                         <?php foreach (Car::FUEL_OPTIONS as $option_name) { ?>
                             <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
                     </select>
+                    <?php echo inline_errors($car->errors, 'fuel_type'); ?>
                 </div>
 
-                <div class="form_box">
+                <div class="form_box form_box_options">
                     <h4>Condition</h4>
-                    <select class="drop_down" name="car[condition_id]">
+                    <select class="drop_down <?php if (has_errors($car->errors, 'condition_id')) echo 'error'; ?>" name="car[condition_id]">
                         <option selected disabled value="">Select condition</option>
                         <?php foreach (Car::CONDITION_OPTIONS as $option_id => $option_name) { ?>
                             <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
                         <?php } ?>
                     </select>
+                    <?php echo inline_errors($car->errors, 'condition_id'); ?>
                 </div>
 
                 <div class="form_box description_box">
                     <h4>Description</h4>
-                    <textarea class="text_field description_text" type="text" name="car[description]" placeholder="Enter brief vehicle description"></textarea>
+                    <textarea class="text_field description_text <?php if (has_errors($car->errors, 'description')) echo 'error'; ?>" type="text" name="car[description]" placeholder="Enter brief vehicle description"></textarea>
+                    <?php echo inline_errors($car->errors, 'description'); ?>   
                 </div>
 
                 <div class="form_box image_box">
@@ -139,11 +155,12 @@ if (is_post_request()) {
                         <img id="image_preview" alt="Image preview">
                         <span id="image_name"></span>
                     </div>
-                    <label for="image" class="image_button">
+                    <label for="image" class="image_button <?php if (has_errors($car->errors, 'image')) echo 'error_image'; ?>">
                         <input class="text_field image_button" type="file" id="image" name="image" accept=".jpg, .jpeg, .png">
                         <p><i class="bi bi-upload"></i>Upload Image</p>
-                        <small style="font-weight: normal;">jpg, jpeg, png formats</small>
+                        <small style="font-weight: normal;">jpg, jpeg, png</small>
                     </label>
+                    <?php echo inline_errors($car->errors, 'image'); ?>
                 </div>
 
                 <div class="form_buttons">

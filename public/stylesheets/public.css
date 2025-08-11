@@ -8,6 +8,9 @@
     --pri_hov_color: #007EA7;
     --pri_light_color: #bcedff;
     --pri_pill_color: #e8eeef;
+
+    --error_color: #d32f2f;
+    --error_bg_color: #fdecea;
     
     --ter_color: white;
     --accent_color: blue;
@@ -48,6 +51,10 @@ h4 {
 
 p {
     font-size: 16px;
+}
+
+small {
+    font-size: 13px;
 }
 
 html, body, p, a, span, div, li, td, th, input, button, select, textarea, label {
@@ -451,7 +458,7 @@ th {
 }
 
 .breadcrumb_menu p, .breadcrumb_menu a {
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .heading_container h1 {

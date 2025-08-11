@@ -5,10 +5,12 @@ class Car {
     // ACTIVE RECORD CODE
     protected static $database;
     protected static $db_columns = ['make', 'model', 'year', 'body_type', 'colour', 'mileage_km', 'price', 'fuel_type', 'description', 'condition_id', 'image'];
+    public $errors = [];
 
     public static function set_database($database) {
         self::$database = $database;
     }
+
 
     // Executes given SQL query, checks for errors, and then converts each row of the result into a Car object
     public static function find_by_sql($sql) {
@@ -77,8 +79,53 @@ class Car {
         return $object;
     }
 
+    protected function validate() {
+        $this->errors = []; // Reset errors array
+
+        if (is_blank($this->make)) {
+            $this->errors['make'] = "Make cannot be blank.";
+        }
+        if (is_blank($this->model)) {
+            $this->errors['model'] = "Model cannot be blank.";
+        }
+        if (is_blank($this->year)) {
+            $this->errors['year'] = "Year cannot be blank.";
+        }
+        if (is_blank($this->body_type)) {
+            $this->errors['body_type'] = "Body type cannot be blank.";
+        }
+        if (is_blank($this->colour)) {
+            $this->errors['colour'] = "Colour cannot be blank.";
+        }
+        if (is_blank($this->mileage_km)) {
+            $this->errors['mileage_km'] = "Mileage cannot be blank.";
+        }
+        if (is_blank($this->price)) {
+            $this->errors['price'] = "Price cannot be blank.";
+        }
+        if (is_blank($this->fuel_type)) {
+            $this->errors['fuel_type'] = "Fuel type cannot be blank.";
+        }
+        if (is_blank($this->description)) {
+            $this->errors['description'] = "Description cannot be blank.";
+        }
+        if (is_blank($this->condition_id)) {
+            $this->errors['condition_id'] = "Condition cannot be blank.";
+        }
+        if (is_blank($this->image)) {
+            $this->errors['image'] = "Image cannot be blank.";
+        }
+        
+        return $this->errors;
+    }
+
     // Create a new car record
     protected function create() {
+        $this->validate();
+        if (!empty($this->errors)) {
+            return false;
+        }
+
         $attributes = $this->sanitized_attributes();
         $sql = "INSERT INTO cars (";
         $sql .= join(', ', array_keys($attributes));
@@ -109,6 +156,11 @@ class Car {
 
     // Update car record
     protected function update() {
+        $this->validate();
+        if (!empty($this->errors)) {
+            return false;
+        }
+
         $attributes = $this->sanitized_attributes();
         $attribute_pairs = [];
         foreach($attributes as $key => $value) {
@@ -248,17 +300,17 @@ class Car {
 
     // Constructor
     public function __construct($args = []) {
-        $this->make = $args['make'] ?? 'Unknown';
-        $this->model = !empty($args['model']) ? $args['model'] : 'Unknown';
-        $this->year = $args['year'] ?? 0;
-        $this->body_type = $args['body_type'] ?? 'Unknown';
-        $this->colour = $args['colour'] ?? 'Unknown';
-        $this->mileage_km = $args['mileage_km'] ?? 0;
-        $this->price = $args['price'] ?? 0;
-        $this->fuel_type = $args['fuel_type'] ?? 'Unknown';
-        $this->description = !empty($args['description']) ? $args['description'] : 'Unknown';
-        $this->condition_id = $args['condition_id'] ?? 0;
-        $this->image = $args['image'] ?? 'default.png';
+        $this->make = $args['make'] ?? null;
+        $this->model = $args['model'] ?? null;
+        $this->year = $args['year'] ?? null;
+        $this->body_type = $args['body_type'] ?? null;
+        $this->colour = $args['colour'] ?? null;
+        $this->mileage_km = $args['mileage_km'] ?? null;
+        $this->price = $args['price'] ?? null;
+        $this->fuel_type = $args['fuel_type'] ?? null;
+        $this->description = $args['description'] ?? null;
+        $this->condition_id = $args['condition_id'] ?? null;
+        $this->image = $args['image'] ?? null;
     }
 
     public static function year_options() {

@@ -19,6 +19,7 @@ require_once('functions.php');
 require_once('status_error_functions.php');
 require_once('database_credentials.php');
 require_once('database_functions.php');
+require_once('validation_functions.php');
 
 // Load class definitions
 require_once(PRIVATE_PATH . '/classses/Car.php');

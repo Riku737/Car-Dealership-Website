@@ -66,8 +66,11 @@
     display: flex;
     gap: 7px;
     flex-direction: column;
-    align-items: flex-start;
     width: 50%;
+}
+
+.form_box_options {
+    align-items: flex-start;
 }
 
 .description_box {
@@ -103,11 +106,11 @@
 }
 
 .image_button {
-    border: 1px dashed var(--pri_color);
+    border: 1px dashed var(--border_color);
     padding: 15px;
     border-radius: 4px;
     cursor: pointer;
-    color: var(--pri_color);
+    color: var(--text_color);
     font-size: 14px;
     text-align: center;
     font-weight: 600;
@@ -143,14 +146,14 @@
 
 .image_button p {
     font-size: 14px;
-    color: var(--pri_color);
+    color: black;
     display: flex;
     justify-content: center;
     gap: 7px;
 }
 
 .image_button small {
-    color: var(--pri_color);
+    color: black;
 }
 
 .image_button:hover {
@@ -165,4 +168,33 @@
 
 .image_button input[type="file"] {
     display: none;
+}
+
+.error_container {
+    padding: 15px;
+    border-radius: 7px;
+    display: flex;
+    gap: 7px;
+    color: var(--error_color);
+    font-weight: 600;
+    font-family: var(--pri_font);
+    background-color: var(--error_bg_color);
+}
+
+.inline_error {
+    display: flex;
+    gap: 4px;
+    color: var(--error_color);
+    font-size: 13px;
+}
+
+.error {
+    border: 1px solid var(--error_color);
+    border-radius: 4px;
+}
+
+.error_image {
+    border: 1px dashed var(--error_color);
+    padding: 15px;
+    border-radius: 4px;
 }
