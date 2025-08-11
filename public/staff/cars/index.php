@@ -2,7 +2,12 @@
 
 <?php include(SHARED_PATH . '/staff_navigation.php'); ?>
 
-<?php $cars = Car::find_all(); ?>
+<?php 
+
+/** @var Car[] $cars */
+$cars = Car::find_all();
+
+?>
 
 <div class="website_content">
 

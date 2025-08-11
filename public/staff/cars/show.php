@@ -8,6 +8,7 @@ if (!$id) {
     redirect_to('index.php');
 }
 
+/** @var Car $car */
 $car = Car::find_by_id($id);
 
 ?>

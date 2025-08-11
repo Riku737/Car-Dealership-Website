@@ -24,6 +24,7 @@
 
 // $car = new Car($args);
 
+/** @var Car[] $cars */
 $cars = Car::find_all();
 
 ?>

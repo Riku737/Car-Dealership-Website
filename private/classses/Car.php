@@ -4,7 +4,7 @@ class Car extends DatabaseObject{
 
     // ACTIVE RECORD CODE
     protected static $table_name = 'cars';
-    protected static $db_columns = ['make', 'model', 'year', 'body_type', 'colour', 'mileage_km', 'price', 'fuel_type', 'description', 'condition_id', 'image'];
+    protected static $columns = ['make', 'model', 'year', 'body_type', 'colour', 'mileage_km', 'price', 'fuel_type', 'description', 'condition_id', 'image'];
 
     // Instance variables (Properties)
     public $id;

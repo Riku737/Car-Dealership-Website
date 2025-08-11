@@ -8,6 +8,7 @@ if (!isset($id)) {
     redirect_to(url_for('/staff/cars/index.php'));
 }
 
+/** @var Car $car */
 $car = Car::find_by_id($id);
 if ($car == false) {
     redirect_to(url_for('/staff/cars/index.php'));
