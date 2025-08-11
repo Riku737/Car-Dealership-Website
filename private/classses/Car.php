@@ -213,6 +213,18 @@ class Car {
         return $sanitized;
     }
 
+    public function delete() {
+        $sql = "DELETE FROM cars WHERE id='" . self::$database->escape_string($this->id) . "' LIMIT 1";
+        $result = self::$database->query($sql);
+        return $result;
+
+        // After deleting, the instance of the object will still exist in memory,
+        // even though the database record has been removed.
+        // This can be useful for logging or displaying messages to the user.
+        // For example: echo $user->first_name . " was deleted.";
+        // But, we can't call $user->update() after calling $user->delete().
+    }
+
 
     // Instance variables (Properties)
     public $id;
