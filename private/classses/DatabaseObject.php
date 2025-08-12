@@ -4,7 +4,7 @@ class DatabaseObject {
 
     protected static $database;
     protected static $table_name = "";
-    protected static $columns = [];
+    protected static $db_columns = [];
     public $errors = [];
 
     public static function set_database($database) {

@@ -47,7 +47,7 @@ if (is_post_request()) {
 
             <?php echo display_errors($admin->errors); ?>
 
-            <form class="form_container" action="<?php echo url_for('/staff/admins/new.php');?>" method="POST" enctype="multipart/form-data">
+            <form class="form_container" action="<?php echo url_for('/staff/admins/new.php');?>" method="POST">
 
                 <?php include('form_fields.php'); ?>
 

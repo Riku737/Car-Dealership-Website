@@ -113,7 +113,7 @@ body {
     width: 50%;
     display: flex;
     align-items: center;
-    column-gap: 15px;
+    /* column-gap: 15px; */
     flex-direction: row-reverse;
 }
 
