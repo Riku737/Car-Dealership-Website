@@ -22,7 +22,7 @@
         </div>
         <div class="navigation_right">
             <a class="secondary_button" href="<?php echo url_for('/index.php')?>">Cars for sale<i class="bi bi-arrow-right"></i></a>
-            <a class="menu_link tertiary_button" href="<?php echo url_for('/staff/index.php')?>">Login</a>
+            <a class="menu_link tertiary_button" href="<?php echo url_for('/staff/login.php')?>">Login</a>
         </div>
 
     </div>

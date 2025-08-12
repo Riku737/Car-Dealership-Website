@@ -23,8 +23,9 @@ require_once('validation_functions.php');
 
 // Load class definitions
 require_once(PRIVATE_PATH . '/classses/DatabaseObject.php');
-require_once(PRIVATE_PATH . '/classses/Car.php');
 require_once(PRIVATE_PATH . '/classses/Admin.php');
+require_once(PRIVATE_PATH . '/classses/Car.php');
+require_once(PRIVATE_PATH . '/classses/Session.php');
 require_once(PRIVATE_PATH . '/classses/ParseCSV.php');
 
 // foreach(glob('classes/*.class.php') as $file) {
@@ -33,6 +34,8 @@ require_once(PRIVATE_PATH . '/classses/ParseCSV.php');
 
 $database = db_connect();
 DatabaseObject::set_database($database);
+
+$session = new Session();
 
 $makes = Car::MAKE_OPTIONS;
 sort($makes);

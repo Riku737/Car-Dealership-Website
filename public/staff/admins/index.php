@@ -1,6 +1,7 @@
 <?php
 require_once('../../..//private/initialize.php');
 $page_title = 'Admins';
+require_login();
 
 /** @var Admin[] $admins */
 $admins = Admin::find_all();

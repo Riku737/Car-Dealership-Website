@@ -99,7 +99,7 @@ function has_valid_email_format($value) {
 // * For existing records, provide current ID as second argument
 //   has_unique_username('johnqpublic', 4)
 function has_unique_username($username, $current_id="0") {
-	$admin = Admin::find_user_by_username($username);
+	$admin = Admin::find_by_username($username);
 
 	if ($admin === false || $admin->id == $current_id) {
 		// is unique

@@ -1,6 +1,7 @@
 <?php 
 require_once('../../../private/initialize.php');
 $page_title = 'Edit Car';
+require_login();
 ?>
 
 <?php 

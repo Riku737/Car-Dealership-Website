@@ -32,6 +32,10 @@ class Admin extends DatabaseObject {
         $this->hashed_password = password_hash($this->password, PASSWORD_BCRYPT);
     }
 
+    public function verify_password($password) {
+        return password_verify($password, $this->hashed_password);
+    }
+
     protected function create() {
         $this->set_hashed_password();
         return parent::create();
@@ -105,7 +109,7 @@ class Admin extends DatabaseObject {
         return $this->errors;
     }
 
-    public static function find_user_by_username($username) {
+    public static function find_by_username($username) {
         $sql = "SELECT * FROM " . static::$table_name . " ";
         $sql .= "WHERE username='" . self::$database->escape_string($username) .  "'";
         $object_array = static::find_by_sql($sql);

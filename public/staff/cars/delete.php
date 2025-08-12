@@ -1,6 +1,7 @@
 <?php 
 require_once('../../../private/initialize.php');
 $page_title = 'Delete Car';
+require_login();
 ?>
 
 <?php 

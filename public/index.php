@@ -7,25 +7,13 @@ $page_title = 'Inventory';
 
 <?php
 
-// $parser = new ParseCSV(PRIVATE_PATH . '/car_dealership_inventory.csv');
-// $car_array = $parser->parse();
+if (is_post_request()) {
+    // Handle form submission
+    $selected_make = $_POST['make'] ?? 'all_makes';
+    $selected_body = $_POST['body_type'] ?? 'all_bodys';
+    $selected_budget = $_POST['budget'] ?? 'all_budgets';
 
-// print_r($car_array);
-
-// $args = [
-//     'make' => 'Toyota',
-//     'model' => 'Corolla',
-//     'year' => 2022,
-//     'body_type' => 'Sedan',
-//     'color' => 'White',
-//     'mileage_km' => 15000,
-//     'price' => 18000,
-//     'fuel_type' => 'Gasoline',
-//     'status' => 'Available',
-//     'condition_id' => '1'
-// ];
-
-// $car = new Car($args);
+}
 
 /** @var Car[] $cars */
 $cars = Car::find_all();
@@ -45,8 +33,8 @@ $cars = Car::find_all();
                     <p>Find new, used, and certified pre-owned vehicles with clean records and killer deals.</p>
                 </div>
     
-                <form class="search_container">
-                    <select class="custom_select" name="cars" id="cars">
+                <form class="search_container" action="index.php" method="post">
+                    <select class="custom_select" name="make" id="make">
                         <option value="all_makes" selected>All makes<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                         <optgroup label="Makes">
                             <?php foreach ($makes as $option_name) { ?>
@@ -54,7 +42,7 @@ $cars = Car::find_all();
                             <?php } ?>
                         </optgroup>
                     </select>
-                    <select class="custom_select" name="cars" id="cars">
+                    <select class="custom_select" name="body_type" id="body_type">
                         <option value="all_bodys" selected>All body types<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                         <optgroup label="Body Types">
                             <?php foreach ($bodys as $option_name) { ?>
@@ -62,7 +50,7 @@ $cars = Car::find_all();
                             <?php } ?>
                         </optgroup>
                     </select>
-                    <select class="custom_select" name="cars" id="cars">
+                    <select class="custom_select" name="budget" id="budget">
                         <option value="all_budgets" selected>All budgets<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                         <optgroup label="Budgets">
                             <option value="saab">$0 - $5,000</option>

@@ -1,6 +1,7 @@
 <?php 
 require_once('../../../private/initialize.php');
 $page_title = 'Delete Admin';
+require_login();
 ?>
 
 <?php 

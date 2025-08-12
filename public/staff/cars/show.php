@@ -1,6 +1,6 @@
-<?php require_once('../../..//private/initialize.php');?>
-
-<?php
+<?php 
+require_once('../../..//private/initialize.php');
+require_login();
 
 $id = $_GET['id'] ?? false;
 

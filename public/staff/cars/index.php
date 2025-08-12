@@ -1,6 +1,7 @@
 <?php 
 require_once('../../../private/initialize.php');
 $page_title = 'Car Inventory';
+require_login();
 ?>
 
 <?php include(SHARED_PATH . '/staff_navigation.php'); ?>

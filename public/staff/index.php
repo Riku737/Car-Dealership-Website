@@ -1,6 +1,7 @@
 <?php 
-require_once('../../private/initialize.php'); 
+require_once('../../private/initialize.php');
 $page_title = 'Staff Dashboard';
+require_login();
 ?>
 
 <?php include(SHARED_PATH . '/staff_navigation.php'); ?>
@@ -16,7 +17,7 @@ $page_title = 'Staff Dashboard';
                 <div class="breadcrumb_menu">
                     <p>Staff</p>
                 </div>
-                <h1>Admin Dashboard</h1>
+                <h1>Welcome back, <?php echo h($session->getUsername()); ?></h1>
             </div>
 
             <div class="admin_banner">

@@ -19,9 +19,10 @@
             <a class="menu_link" href="<?php echo url_for('/staff/admins/index.php')?>">Admins</a>
         </div>
         <div class="navigation_right">
-            <a class="secondary_button" href="<?php echo url_for('/index.php')?>">Logout</a>
+            <a class="secondary_button" href="<?php echo url_for('/staff/logout.php')?>">Logout</a>
+            <a class="tertiary_button" href="<?php echo url_for('/staff/admins/show.php?id=' . h(u($session->getID()))); ?>"><i class="bi bi-person-fill"></i><?php echo h($session->getUsername()); ?></a>
         </div>
 
-    </div>
+    </div>  
 
 </nav>

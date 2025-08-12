@@ -1,6 +1,7 @@
 <?php 
 require_once('../../../private/initialize.php');
 $page_title = 'Edit Admin';
+require_login();
 ?>
 
 <?php 
