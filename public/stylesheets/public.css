@@ -537,6 +537,9 @@ th {
     border-radius: 4px;
 }
 
+.text_field:focus-visible {
+    outline: 1px solid var(--pri_color);
+}
 
 .drop_down {
     padding: 15px 45px 15px 15px;
@@ -560,6 +563,10 @@ th {
 
 .drop_down:hover {
     cursor: pointer;
+}
+
+.drop_down:focus-visible {
+    outline: 1px solid var(--pri_color);
 }
 
 .form_container {

@@ -22,7 +22,7 @@ if (is_post_request()) {
     // Delete car
 
     $result = $car->delete();
-    $_SESSION['message'] = "The car was deleted successfully.";
+    $session->message("The car was deleted successfully.");
     redirect_to(url_for('/staff/cars/index.php'));
 
 } else {

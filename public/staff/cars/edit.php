@@ -35,7 +35,7 @@ if (is_post_request()) {
     $result = $car->save();
 
     if ($result === true) {
-        $_SESSION['message'] = 'The car was updated successfully.';
+        $session->message('The car was updated successfully.');
         redirect_to(url_for('/staff/cars/show.php?id=' . $id));
     } else {
         // Show errors

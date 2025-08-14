@@ -19,6 +19,8 @@ $cars = Car::find_all();
     
         <div class="section_content">
 
+            <?php echo display_session_message(); ?>
+
             <div class="heading_container">
                 <div class="breadcrumb_menu">
                     <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
@@ -41,21 +43,23 @@ $cars = Car::find_all();
                 <table class="table_section">
                     <thead>
                         <tr>
-                            <th>Make</th>
-                            <th>Model</th>
-                            <th>Year</th>
-                            <th>Colour</th>
-                            <th>Mileage (km)</th>
-                            <th>Price</th>
-                            <th>Condition</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
+                            <th style="width:5%">ID</th>
+                            <th style="width:20%">Make</th>
+                            <th style="width:20%">Model</th>
+                            <th style="width:5%">Year</th>
+                            <th style="width:5%">Colour</th>
+                            <th style="width:5%">Mileage</th>
+                            <th style="width:5%">Price</th>
+                            <th style="width:10%">Condition</th>
+                            <th style="width:5%">&nbsp;</th>
+                            <th style="width:5%">&nbsp;</th>
+                            <th style="width:5%">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach($cars as $car) {?>
                         <tr>
+                            <td><?php echo h($car->id); ?></td>
                             <td><?php echo h($car->make); ?></td>
                             <td><?php echo h($car->model); ?></td>
                             <td><?php echo h($car->year); ?></td>

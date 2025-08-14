@@ -72,12 +72,12 @@
 }
 
 .image_button:hover {
-    border-color: var(--pri_hov_color);
+    border-color: var(--pri_color);
     transition: 150ms;
 }
 
 .image_button:hover small, .image_button:hover p {
-    color: var(--pri_hov_color);
+    color: var(--pri_color);
     transition: 150ms;
 }
 

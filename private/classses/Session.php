@@ -2,27 +2,27 @@
 
 class Session {
 
-    private $admin_id;
-    private $username;
-    private $last_login;
-    private const MAX_LOGIN_AGE = 60*60*24; // 1 day
+    // INSTANCE VARIABLES
 
+    public $admin_id;
+    public $username;
+    public $last_login;
+    public $full_name;
+    protected const MAX_LOGIN_AGE = 60*60*24; // 1 day
+
+
+
+
+    // CONSTRUCTOR
     public function __construct() {
         session_start();
         $this->check_stored_login();
     }
 
-    public function getID() {
-        return $this->admin_id;
-    }
 
-    public function getUsername() {
-        return $this->username;
-    }
 
-    public function getLastLogin() {
-        return $this->last_login;
-    }
+
+    // INSTANCE METHODS
 
     public function login($admin) {
         // prevent session fixation attacks
@@ -33,6 +33,9 @@ class Session {
 
             $_SESSION['username'] = $admin->username;
             $this->username = $admin->username;
+
+            $_SESSION['full_name'] = $admin->full_name();
+            $this->full_name = $admin->full_name();
 
             $_SESSION['last_login'] = time();
             $this->last_login = time();
@@ -50,6 +53,8 @@ class Session {
         unset($this->admin_id);
         unset($_SESSION['username']);
         unset($this->username);
+        unset($_SESSION['full_name']);
+        unset($this->full_name);
         unset($_SESSION['last_login']);
         unset($this->last_login);
         return true;
@@ -59,6 +64,7 @@ class Session {
         if (isset($_SESSION['admin_id'])) {
             $this->admin_id = $_SESSION['admin_id'];
             $this->username = $_SESSION['username'];
+            $this->full_name = $_SESSION['full_name'];
             $this->last_login = $_SESSION['last_login'];
         }
     }
@@ -71,6 +77,21 @@ class Session {
         } else {
             return true;
         }
+    }
+
+    public function message($msg="") {
+        if(!empty($msg)) {
+            // Then this is a "set" message
+            $_SESSION['message'] = $msg;
+            return true;
+        } else {
+            // Then this is a "get" message
+            return $_SESSION['message'] ?? '';
+        }
+    }
+
+    public function clear_message() {
+        unset($_SESSION['message']);
     }
 
 }

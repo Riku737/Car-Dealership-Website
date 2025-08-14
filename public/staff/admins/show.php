@@ -29,7 +29,7 @@ $page_title = $admin->full_name();
                 <div class="breadcrumb_menu">
                     <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a>
                     <p>/</p>
-                    <a class="link" href="<?php echo url_for('/staff/admins/index.php') ?>">Inventory</a>
+                    <a class="link" href="<?php echo url_for('/staff/admins/index.php') ?>">Admins</a>
                     <p>/</p>
                     <p>Show</p>
                 </div>

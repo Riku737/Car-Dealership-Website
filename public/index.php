@@ -35,6 +35,7 @@ $cars = Car::find_all();
     
                 <form class="search_container" action="index.php" method="post">
                     <select class="custom_select" name="make" id="make">
+                        <label>Make</label>
                         <option value="all_makes" selected>All makes<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                         <optgroup label="Makes">
                             <?php foreach ($makes as $option_name) { ?>

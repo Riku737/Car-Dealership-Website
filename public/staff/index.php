@@ -17,7 +17,7 @@ require_login();
                 <div class="breadcrumb_menu">
                     <p>Staff</p>
                 </div>
-                <h1>Welcome back, <?php echo h($session->getUsername()); ?></h1>
+                <h1>Welcome, <?php echo h($session->full_name); ?></h1>
             </div>
 
             <div class="admin_banner">

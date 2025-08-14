@@ -24,7 +24,7 @@ if (is_post_request()) {
     $result = $admin->save();
 
     if ($result === true) {
-        $_SESSION['message'] = 'The admin was updated successfully.';
+        $session->message('The admin was updated successfully.');
         redirect_to(url_for('/staff/admins/show.php?id=' . $id));
     } else {
         // Show errors

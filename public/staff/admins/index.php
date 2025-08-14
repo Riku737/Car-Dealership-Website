@@ -38,14 +38,14 @@ $admins = Admin::find_all();
                 <table class="table_section">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
+                            <th style="width: 5%;">ID</th>
+                            <th style="width: 20%;">First Name</th>
+                            <th style="width: 20%;">Last Name</th>
+                            <th style="width: 20%;">Email</th>
+                            <th style="width: 20%;">Username</th>
+                            <th style="width: 5%;">&nbsp;</th>
+                            <th style="width: 5%;">&nbsp;</th>
+                            <th style="width: 5%;">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>

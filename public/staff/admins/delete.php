@@ -22,7 +22,7 @@ if (is_post_request()) {
     // Delete admin
 
     $result = $admin->delete();
-    $_SESSION['message'] = "The admin was deleted successfully.";
+    $session->message("The admin was deleted successfully.");
     redirect_to(url_for('/staff/admins/index.php'));
 
 } else {
@@ -43,7 +43,7 @@ if (is_post_request()) {
                 <div class="breadcrumb_menu">
                     <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a>
                     <p>/</p>
-                    <a class="link" href="<?php echo url_for('/staff/admins/index.php') ?>">Inventory</a>
+                    <a class="link" href="<?php echo url_for('/staff/admins/index.php') ?>">Admins</a>
                     <p>/</p>
                     <p>Delete</p>
                 </div>

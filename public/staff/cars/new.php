@@ -1,10 +1,8 @@
 <?php 
+
 require_once('../../../private/initialize.php');
 $page_title = 'New Car';
 require_login();
-?>
-
-<?php
 
 if (is_post_request()) {
 
@@ -24,10 +22,8 @@ if (is_post_request()) {
 
     if ($result === true) {
         $new_id = $car->id;
-        $_SESSION['message'] = 'The car was created successfully.';
+        $session->message('The car was created successfully.');
         redirect_to(url_for('/staff/cars/show.php?id=' . $new_id));
-    } else {
-        // show errors
     }
 
 } else {

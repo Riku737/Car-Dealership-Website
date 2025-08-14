@@ -2,11 +2,12 @@
 
 class Car extends DatabaseObject{
 
-    // ACTIVE RECORD CODE
+    // ACTIVE RECORD CODES
     protected static $table_name = 'cars';
-    protected static $columns = ['make', 'model', 'year', 'body_type', 'colour', 'mileage_km', 'price', 'fuel_type', 'description', 'condition_id', 'image'];
+    protected static $db_columns = ['make', 'model', 'year', 'body_type', 'colour', 'mileage_km', 'price', 'fuel_type', 'description', 'condition_id', 'image'];
 
-    // Instance variables (Properties)
+
+    // INSTANCE VARIABLES
     public $id;
     public $make;
     public $model;
@@ -15,13 +16,13 @@ class Car extends DatabaseObject{
     public $price;
     public $description;
     public $image;
-
     public $colour;
     public $body_type;
     public $fuel_type;
     public $condition_id;
     
-    // Constants
+
+    // CONSTANTS
     public const MAKE_OPTIONS = [
         'Honda',
         'Toyota',
@@ -86,11 +87,14 @@ class Car extends DatabaseObject{
 
     public const CONDITION_OPTIONS = [
         1 => 'New',
-        2 => 'Certified Pre-Owned',
+        2 => 'Certified',
         3 => 'Used',
     ];
 
-    // Constructor
+
+
+
+    // CONSTRUCTOR
     public function __construct($args = []) {
         $this->make = $args['make'] ?? null;
         $this->model = $args['model'] ?? null;
@@ -105,6 +109,13 @@ class Car extends DatabaseObject{
         $this->image = $args['image'] ?? null;
     }
 
+
+
+
+    // METHODS
+
+    // Returns an array of valid year options for the car
+    // Note: array is sorted from recent to oldest years
     public static function year_options() {
         $years = [];
         for ($year = 1998; $year <= date('Y'); $year++) {
@@ -114,6 +125,7 @@ class Car extends DatabaseObject{
         return $years;
     }
 
+    // Returns condition based on condition_id of instance
     public function condition() {
         if ($this->condition_id > 0) {
             return self::CONDITION_OPTIONS[$this->condition_id];
@@ -122,6 +134,7 @@ class Car extends DatabaseObject{
         }
     }
 
+    // Returns the image path for the car image
     public function image() {
 
         if (self::find_by_image($this->image)) {
@@ -132,6 +145,30 @@ class Car extends DatabaseObject{
         
     }
 
+    // Validates whether given filename already exists in images folder
+    public static function find_by_image($image) {
+        $dir = __DIR__ . '/../../public/images/'; // Pathway to images directory
+        $files = [];
+
+        // Scan the directory to get all files and folders inside images
+        // Records filenames in images in $files array
+        foreach (scandir($dir) as $file) {
+            if ($file !== '.' && $file !== '..' && is_file($dir . $file)) {
+                $files[] = $file;
+            }
+        }
+
+        // Check if the given $image filename exists in the files array
+        // Returns true if found, false otherwise
+        if (in_array($image, $files)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    // Returns the full name of the car
     public function name() {
         if (isset($this->year) && isset($this->make) && isset($this->model)) {
             return "{$this->year} {$this->make} {$this->model}";
@@ -140,15 +177,19 @@ class Car extends DatabaseObject{
         }
     }
 
+    // Returns full price label
     public function price() {
         return "CAD $" . number_format($this->price);
     }
 
+    // Returns full mileage label
     public function mileage() {
         return number_format(h($this->mileage_km)) . " km";
     }
 
-
+    /**
+     * Override parent::validate()
+     */
     protected function validate() {
         $this->errors = []; // Reset errors array
 
@@ -188,8 +229,7 @@ class Car extends DatabaseObject{
         
         return $this->errors;
     }
-
-
+    
 }
 
 ?>
