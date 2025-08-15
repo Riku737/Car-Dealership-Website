@@ -19,12 +19,15 @@
  * 
  */
 
+
+// Create database connection
 function db_connect() {
     $connection = new mysqli(DATABASE_SERVER, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
     confirm_db_connect($connection);
     return $connection;
 }
 
+// Validate database connection
 function confirm_db_connect($connection) {
     if ($connection->connect_errno) {
         $msg = "Database connection failed: ";
@@ -34,6 +37,7 @@ function confirm_db_connect($connection) {
     }
 }
 
+// Disconnect from the database
 function db_disconnect($connection) {
     if (isset($connection)) {
         $connection->close();

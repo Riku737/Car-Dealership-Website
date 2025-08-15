@@ -1,10 +1,7 @@
 <?php 
 require_once('../../../private/initialize.php');
 $page_title = 'Edit Admin';
-require_login();
-?>
-
-<?php 
+require_login(); // Admin protect page
 
 if (!isset($_GET['id'])) {
     redirect_to('index.php');
@@ -26,8 +23,6 @@ if (is_post_request()) {
     if ($result === true) {
         $session->message('The admin was updated successfully.');
         redirect_to(url_for('/staff/admins/show.php?id=' . $id));
-    } else {
-        // Show errors
     }
 
 } 
@@ -45,18 +40,14 @@ if (is_post_request()) {
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
-                    <p>/</p>
-                    <a class="link" href="<?php echo url_for('/staff/admins/index.php'); ?>">Admins</a>
-                    <p>/</p>
-                    <p>Edit</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a><p>/</p><a class="link" href="<?php echo url_for('/staff/admins/index.php'); ?>">Admins</a><p>/</p><p>Edit</p>
                 </div>
                 <h1><?php echo h($admin->full_name()); ?></h1>
             </div>
 
             <?php echo display_errors($admin->errors); ?>
 
-            <form class="form_container" action="<?php echo url_for('/staff/admins/edit.php?id=' . h($id)); ?>" method="post" enctype="multipart/form-data">
+            <form class="form_container" action="<?php echo url_for('/staff/admins/edit.php?id=' . h($id)); ?>" method="post">
                 
                 <?php include('form_fields.php'); ?>
 

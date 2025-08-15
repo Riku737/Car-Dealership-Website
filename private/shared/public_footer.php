@@ -38,7 +38,6 @@
                 
             </div>
 
-
             <div class="footer_disclaimer">
                 <small>Disclaimer: This website and company are entirely fictitious and created solely for learning and educational purposes.</small>
             </div>

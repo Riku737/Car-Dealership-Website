@@ -4,5 +4,4 @@ $page_title = "Logout";
 
 $session->logout();
 redirect_to(url_for('/staff/login.php'));
-
 ?>

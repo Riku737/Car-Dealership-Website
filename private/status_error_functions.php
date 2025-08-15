@@ -1,5 +1,6 @@
 <?php
 
+// Validate user is logged in
 function require_login() {
 	global $session;
 	if (!$session->is_logged_in()) {
@@ -7,6 +8,7 @@ function require_login() {
 	}
 }
 
+// Display errors in a user-friendly way
 function display_errors($errors=array()) {
   $output = '';
   if(!empty($errors)) {
@@ -18,7 +20,8 @@ function display_errors($errors=array()) {
   return $output;
 }
 
-function inline_errors($errors=[], $field_name='') {
+// Display inline errors for a specific field
+function display_inline_errors($errors=[], $field_name='') {
 
 	if (has_errors($errors, $field_name)) {
 		return '<div class="inline_error">' . h($errors[$field_name]) . '</div>';
@@ -26,6 +29,8 @@ function inline_errors($errors=[], $field_name='') {
 
 }
 
+// Display a session message
+// Shows a message to the user, typically after a form submission
 function display_session_message() {
 	global $session;
 	$msg = $session->message();

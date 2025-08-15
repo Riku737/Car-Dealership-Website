@@ -26,7 +26,6 @@ require_once(PRIVATE_PATH . '/classses/DatabaseObject.php');
 require_once(PRIVATE_PATH . '/classses/Admin.php');
 require_once(PRIVATE_PATH . '/classses/Car.php');
 require_once(PRIVATE_PATH . '/classses/Session.php');
-require_once(PRIVATE_PATH . '/classses/ParseCSV.php');
 
 // foreach(glob('classes/*.class.php') as $file) {
 //     require_once($file);

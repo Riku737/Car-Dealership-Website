@@ -1,20 +1,21 @@
 <?php 
 require_once('../../..//private/initialize.php');
-require_login();
+require_login(); // Ensure user is logged in
 
 $id = $_GET['id'] ?? false;
 
-if (!$id) {
+if (!$id) { // No ID present
     redirect_to('index.php');
 }
 
+// Find the car by ID
 /** @var Car $car */
 $car = Car::find_by_id($id);
-$page_title = $car->name();
 
+$page_title = $car->name(); // Title page based on car name
+
+include(SHARED_PATH . '/staff_navigation.php'); 
 ?>
-
-<?php include(SHARED_PATH . '/staff_navigation.php'); ?>
 
 <div class="website_content">
 
@@ -26,11 +27,7 @@ $page_title = $car->name();
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a>
-                    <p>/</p>
-                    <a class="link" href="<?php echo url_for('/staff/cars/index.php') ?>">Inventory</a>
-                    <p>/</p>
-                    <p>Show</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a><p>/</p><a class="link" href="<?php echo url_for('/staff/cars/index.php') ?>">Inventory</a><p>/</p><p>Show</p>
                 </div>
                 <h1><?php echo h($car->name()); ?></h1>
             </div>

@@ -111,6 +111,9 @@ function has_unique_username($username, $current_id="0") {
 	
 }
 
+// Checks for errors in a specific field
+// Returns true if there are errors for the specified field
+// Example: has_errors($errors, 'username')
 function has_errors($errors, $field) {
 	return isset($errors[$field]) && !empty($errors[$field]);
 }

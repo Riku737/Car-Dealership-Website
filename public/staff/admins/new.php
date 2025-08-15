@@ -1,10 +1,7 @@
 <?php 
 require_once('../../../private/initialize.php');
 $page_title = 'New Admin';
-require_login();
-?>
-
-<?php
+require_login(); // Admin protect page
 
 if (is_post_request()) {
 
@@ -17,8 +14,6 @@ if (is_post_request()) {
         $new_id = $admin->id;
         $session->message('The admin was created successfully.');
         redirect_to(url_for('/staff/admins/show.php?id=' . $new_id));
-    } else {
-        // show errors
     }
 
 } else {
@@ -37,11 +32,7 @@ if (is_post_request()) {
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
-                    <p>/</p>
-                    <a class="link" href="<?php echo url_for('/staff/admins/index.php'); ?>">Admins</a>
-                    <p>/</p>
-                    <p>New</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a><p>/</p><a class="link" href="<?php echo url_for('/staff/admins/index.php'); ?>">Admins</a><p>/</p><p>New</p>
                 </div>
                 <h1>Create new admin</h1>
             </div>

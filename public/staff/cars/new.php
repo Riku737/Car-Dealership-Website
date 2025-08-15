@@ -2,7 +2,7 @@
 
 require_once('../../../private/initialize.php');
 $page_title = 'New Car';
-require_login();
+require_login(); // Admin protect page
 
 if (is_post_request()) {
 
@@ -10,6 +10,7 @@ if (is_post_request()) {
     $args = $_POST['car'];
     $args['image'] = $_FILES['image']['name'];
 
+    // If an image is uploaded, store file in the designated images folder
     if (!empty($_FILES['image']['name'])) {
         $file_name = $_FILES['image']['name'];
         $tempname = $_FILES['image']['tmp_name'];
@@ -17,10 +18,12 @@ if (is_post_request()) {
         move_uploaded_file($tempname, $folder);
     }
 
+    // Create a new Car object with the provided arguments
     $car = new Car($args);
+    // Validate and save the car to database. Return whether successful insertion
     $result = $car->save();
 
-    if ($result === true) {
+    if ($result === true) { // If the car was saved successfully
         $new_id = $car->id;
         $session->message('The car was created successfully.');
         redirect_to(url_for('/staff/cars/show.php?id=' . $new_id));
@@ -28,13 +31,13 @@ if (is_post_request()) {
 
 } else {
 
+    // Not a post request, or form submission. Loading the form for the first time.
     $car = new Car();
 
 }
 
+include(SHARED_PATH . '/staff_navigation.php');
 ?>
-
-<?php include(SHARED_PATH . '/staff_navigation.php'); ?>
 
 <div class="website_content">
 
@@ -44,11 +47,7 @@ if (is_post_request()) {
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
-                    <p>/</p>
-                    <a class="link" href="<?php echo url_for('/staff/cars/index.php'); ?>">Inventory</a>
-                    <p>/</p>
-                    <p>New</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a><p>/</p><a class="link" href="<?php echo url_for('/staff/cars/index.php'); ?>">Inventory</a><p>/</p><p>New</p>
                 </div>
                 <h1>Add vehicle to inventory</h1>
             </div>

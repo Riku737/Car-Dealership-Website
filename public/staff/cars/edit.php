@@ -1,16 +1,14 @@
 <?php 
 require_once('../../../private/initialize.php');
 $page_title = 'Edit Car';
-require_login();
-?>
-
-<?php 
+require_login(); // Admin protect page
 
 if (!isset($_GET['id'])) {
     redirect_to('index.php');
 }
 
 $id = $_GET['id'];
+
 /** @var Car $car */
 $car = Car::find_by_id($id);
 if ($car == false) {
@@ -37,16 +35,12 @@ if (is_post_request()) {
     if ($result === true) {
         $session->message('The car was updated successfully.');
         redirect_to(url_for('/staff/cars/show.php?id=' . $id));
-    } else {
-        // Show errors
     }
 
 } 
 
-
+include(SHARED_PATH . '/staff_navigation.php'); 
 ?>
-
-<?php include(SHARED_PATH . '/staff_navigation.php'); ?>
 
 <div class="website_content">
 
@@ -56,11 +50,7 @@ if (is_post_request()) {
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
-                    <p>/</p>
-                    <a class="link" href="<?php echo url_for('/staff/cars/index.php'); ?>">Inventory</a>
-                    <p>/</p>
-                    <p>Edit</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a><p>/</p><a class="link" href="<?php echo url_for('/staff/cars/index.php'); ?>">Inventory</a><p>/</p><p>Edit</p>
                 </div>
                 <h1><?php echo h($car->name()); ?></h1>
             </div>

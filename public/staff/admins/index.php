@@ -1,7 +1,7 @@
 <?php
 require_once('../../..//private/initialize.php');
 $page_title = 'Admins';
-require_login();
+require_login(); // Admin protect page
 
 /** @var Admin[] $admins */
 $admins = Admin::find_all();
@@ -18,9 +18,7 @@ $admins = Admin::find_all();
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
-                    <p>/</p>
-                    <p>Admins</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a><p>/</p><p>Admins</p>
                 </div>
                 <div class="split_container">
                     <div>

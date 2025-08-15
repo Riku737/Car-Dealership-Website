@@ -1,23 +1,18 @@
 <?php
 require_once('../private/initialize.php'); 
 $page_title = 'Inventory';
-?>
-
-<?php include(SHARED_PATH . '/public_navigation.php'); ?>
-
-<?php
 
 if (is_post_request()) {
     // Handle form submission
     $selected_make = $_POST['make'] ?? 'all_makes';
     $selected_body = $_POST['body_type'] ?? 'all_bodys';
     $selected_budget = $_POST['budget'] ?? 'all_budgets';
-
 }
 
 /** @var Car[] $cars */
 $cars = Car::find_all();
 
+include(SHARED_PATH . '/public_navigation.php'); 
 ?>
 
 <div class="website_content">

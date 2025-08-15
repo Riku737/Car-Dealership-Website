@@ -1,16 +1,12 @@
 <?php 
 require_once('../../../private/initialize.php');
 $page_title = 'Car Inventory';
-require_login();
-?>
-
-<?php include(SHARED_PATH . '/staff_navigation.php'); ?>
-
-<?php 
+require_login(); // Admin protect page
 
 /** @var Car[] $cars */
 $cars = Car::find_all();
 
+include(SHARED_PATH . '/staff_navigation.php');
 ?>
 
 <div class="website_content">
@@ -23,9 +19,7 @@ $cars = Car::find_all();
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
-                    <p>/</p>
-                    <p>Inventory</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a><p>/</p><p>Inventory</p>
                 </div>
                 <div class="split_container">
                     <div>

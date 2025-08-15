@@ -12,7 +12,6 @@ $id = $_GET['id'];
 $car = Car::find_by_id($id);
 $page_title = $car->name();
 
-// Navigation component
 include(SHARED_PATH . '/public_navigation.php');
 ?>
 

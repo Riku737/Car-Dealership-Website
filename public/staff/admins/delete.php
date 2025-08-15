@@ -1,18 +1,15 @@
 <?php 
 require_once('../../../private/initialize.php');
 $page_title = 'Delete Admin';
-require_login();
-?>
-
-<?php 
+require_login(); // Admin protect page
 
 $id = $_GET['id'];
 
-if (!isset($id)) {
+if (!isset($id)) { // Check if ID is present
     redirect_to(url_for('/staff/admins/index.php'));
 }
 
-/** @var Admin $admin */
+// Find admin by ID
 $admin = Admin::find_by_id($id);
 if ($admin == false) {
     redirect_to(url_for('/staff/admins/index.php'));
@@ -20,13 +17,9 @@ if ($admin == false) {
 
 if (is_post_request()) {
     // Delete admin
-
     $result = $admin->delete();
     $session->message("The admin was deleted successfully.");
     redirect_to(url_for('/staff/admins/index.php'));
-
-} else {
-    // Display form
 }
 
 ?>
@@ -41,11 +34,7 @@ if (is_post_request()) {
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a>
-                    <p>/</p>
-                    <a class="link" href="<?php echo url_for('/staff/admins/index.php') ?>">Admins</a>
-                    <p>/</p>
-                    <p>Delete</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a><p>/</p><a class="link" href="<?php echo url_for('/staff/admins/index.php') ?>">Admins</a><p>/</p><p>Delete</p>
                 </div>
                 <h1><?php echo h($admin->full_name()); ?></h1>
                 <p>Are you sure you want to delete this admin?</p>
