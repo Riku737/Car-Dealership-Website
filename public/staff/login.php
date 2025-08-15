@@ -49,11 +49,6 @@ include(SHARED_PATH . '/public_navigation.php');
         <div class="section_content">
 
             <div class="heading_container">
-                <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
-                    <p>/</p>
-                    <p>Login</p>
-                </div>
                 <h1>Login</h1>
             </div>
 

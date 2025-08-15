@@ -13,7 +13,6 @@ include(SHARED_PATH . '/staff_navigation.php');
         <div class="section_content">
 
             <div class="heading_container">
-                <div class="breadcrumb_menu"><p>Staff</p></div>
                 <h1>Welcome, <?php echo h($session->full_name); ?></h1>
             </div>
 

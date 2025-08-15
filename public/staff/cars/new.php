@@ -47,7 +47,9 @@ include(SHARED_PATH . '/staff_navigation.php');
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a><p>/</p><a class="link" href="<?php echo url_for('/staff/cars/index.php'); ?>">Inventory</a><p>/</p><p>New</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
+                    <a class="link" href="<?php echo url_for('/staff/cars/index.php'); ?>">Inventory</a>
+                    <p>New</p>
                 </div>
                 <h1>Add vehicle to inventory</h1>
             </div>

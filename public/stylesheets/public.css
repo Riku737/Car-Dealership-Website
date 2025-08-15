@@ -288,12 +288,17 @@ th {
 
 .breadcrumb_menu {
     display: flex;
-    gap: 7px;
     margin-bottom: 15px;
 }
 
 .breadcrumb_menu p, .breadcrumb_menu a {
     font-size: 13px;
+}
+
+.breadcrumb_menu > *:not(:first-child)::before {
+    content: '/';
+    margin: 0 7px;
+    color: #888; /* Optional: style the slash */
 }
 
 

@@ -19,7 +19,8 @@ include(SHARED_PATH . '/staff_navigation.php');
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a><p>/</p><p>Inventory</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
+                    <p>Inventory</p>
                 </div>
                 <div class="split_container">
                     <div>

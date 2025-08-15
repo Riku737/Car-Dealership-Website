@@ -34,7 +34,9 @@ if (is_post_request()) {
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
-                    <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a><p>/</p><a class="link" href="<?php echo url_for('/staff/admins/index.php') ?>">Admins</a><p>/</p><p>Delete</p>
+                    <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a>
+                    <a class="link" href="<?php echo url_for('/staff/admins/index.php') ?>">Admins</a>
+                    <p>Delete</p>
                 </div>
                 <h1><?php echo h($admin->full_name()); ?></h1>
                 <p>Are you sure you want to delete this admin?</p>

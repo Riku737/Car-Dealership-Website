@@ -24,7 +24,6 @@ include(SHARED_PATH . '/public_navigation.php');
             <div class="heading_container">
                 <div class="breadcrumb_menu">
                     <a class="link" href="<?php echo 'index.php' ?>">Inventory</a>
-                    <p>/</p>
                     <p><?php echo h($car->name()) ?></p>
                 </div>
                 <div class="pill_group">
