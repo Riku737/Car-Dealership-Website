@@ -36,7 +36,11 @@ function display_session_message() {
 	$msg = $session->message();
 	if(isset($msg) && $msg != '') {
 		$session->clear_message();
-		return '<div id="message">' . h($msg) . '</div>';
+		$output = '<div class="message">';
+		$output .= '<i class="bi bi-check-lg"></i>';
+		$output .= h($msg);
+		$output .= '</div>';
+		return $output;
 	}
 }
 

@@ -16,6 +16,8 @@ $admins = Admin::find_all();
     
         <div class="section_content">
 
+            <?php echo display_session_message(); ?>
+
             <div class="heading_container">
                 <div class="breadcrumb_menu">
                     <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
@@ -27,7 +29,7 @@ $admins = Admin::find_all();
                         <p>Database for managing admin users.</p>
                     </div>
                     <div class="split_corner">
-                        <a class="primary_button" href="new.php">Add admin</a>
+                        <a class="primary_button" href="new.php"><i class="bi bi-plus-lg"></i>Add admin</a>
                     </div>
                 </div>
             </div>

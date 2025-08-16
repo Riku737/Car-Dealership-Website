@@ -22,6 +22,8 @@ $page_title = $admin->full_name();
 
         <div class="section_content">
 
+            <?php echo display_session_message(); ?>
+
             <div class="heading_container">
                 <div class="breadcrumb_menu">
                     <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a>

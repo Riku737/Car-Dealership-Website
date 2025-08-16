@@ -3,8 +3,19 @@ require_once('../../../private/initialize.php');
 $page_title = 'Car Inventory';
 require_login(); // Admin protect page
 
-/** @var Car[] $cars */
-$cars = Car::find_all();
+$current_page = $_GET['page'] ?? 1;
+$per_page = 5;
+$total_count = Car::count_all();
+
+$pagination = new Pagination($current_page, $per_page, $total_count);
+
+// /** @var Car[] $cars */
+// $cars = Car::find_all();
+
+$sql = "SELECT * FROM cars ";
+$sql .= "LIMIT " . $per_page . " ";
+$sql .= "OFFSET " . $pagination->offset();
+$cars = Car::find_by_sql($sql);
 
 include(SHARED_PATH . '/staff_navigation.php');
 ?>
@@ -28,7 +39,7 @@ include(SHARED_PATH . '/staff_navigation.php');
                         <p>Database for vehicles in stock.</p>
                     </div>
                     <div class="split_corner">
-                        <a class="primary_button" href="new.php">Add vehicle</a>
+                        <a class="primary_button" href="new.php"><i class="bi bi-plus-lg"></i>Add vehicle</a>
                     </div>
                 </div>
             </div>
@@ -72,12 +83,35 @@ include(SHARED_PATH . '/staff_navigation.php');
                 </table>
     
             </div>
-    
+            
+            <?php
+            if ($pagination->total_pages() > 1) { 
+                echo "<div class=\"pagination_container\">";
+
+                $url = url_for('/staff/cars/index.php');
+
+                echo "<div class=\"pagination_left\">";
+                echo $pagination->previous_link($url);
+                echo "</div>";
+
+                echo "<div class=\"pagination_center\">";
+                echo $pagination->number_links($url);
+                echo "</div>";
+
+                echo "<div class=\"pagination_right\">";
+                echo $pagination->next_link($url);
+                echo "</div>";
+
+                echo "</div>";
+            }
+            ?>
+
         </div>
-    
+
     </section>
 
 </div>
 
+</div>
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>

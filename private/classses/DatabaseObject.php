@@ -61,10 +61,15 @@ class DatabaseObject {
 
     // Returns array of Car objects, each representing a row from cars table in the database
     public static function find_all() {
-        // Building SQL query
         $sql = "SELECT * FROM " . static::$table_name; // Determine class name at runtime using static
-        // Calls find_by_sql() and returns all records
-        return static::find_by_sql($sql);
+        return static::find_by_sql($sql); // Calls find_by_sql() and returns all records
+    }
+
+    public static function count_all() {
+        $sql = "SELECT COUNT(*) FROM " . static::$table_name;
+        $result_set = self::$database->query($sql);
+        $row = $result_set->fetch_array();
+        return array_shift($row); // Returns the first element of the array, which is the count of all records
     }
 
     // Retrieves a single car from the database whose id matches the given value

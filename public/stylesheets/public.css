@@ -14,7 +14,9 @@
 
     --error_color: #d32f2f;
     --error_bg_color: #fdecea;
-    
+    --success_color: #388e3c;
+    --success_bg_color: #e8f5e9;
+
     --ter_color: white;
     --accent_color: blue;
     --background_color: #f6f8f9;
@@ -85,7 +87,7 @@ p, small {
     font-size: 14px;
     border: none;
     gap: 7px;
-    display: flex;
+    display: inline-flex;
 }
 
 .primary_button:hover {
@@ -104,7 +106,7 @@ p, small {
     font-weight: 600;
     font-size: 14px;
     gap: 7px;
-    display: flex;
+    display: inline-flex;
 }
 
 .secondary_button:hover {
@@ -121,7 +123,7 @@ p, small {
     padding: 15px 30px;
     text-decoration: none;
     gap: 7px;
-    display: flex;
+    display: inline-flex;
 }
 
 .tertiary_button:hover {
@@ -133,6 +135,7 @@ p, small {
     font-family: var(--sec_font);
     color: var(--pri_color);
     text-decoration: none;
+    font-weight: 600;
 }
 
 .link:hover {

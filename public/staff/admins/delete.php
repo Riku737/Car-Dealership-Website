@@ -10,6 +10,7 @@ if (!isset($id)) { // Check if ID is present
 }
 
 // Find admin by ID
+/** @var Admin $admin */
 $admin = Admin::find_by_id($id);
 if ($admin == false) {
     redirect_to(url_for('/staff/admins/index.php'));
