@@ -135,7 +135,6 @@ p, small {
     font-family: var(--sec_font);
     color: var(--pri_color);
     text-decoration: none;
-    font-weight: 600;
 }
 
 .link:hover {

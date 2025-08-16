@@ -3,14 +3,38 @@ require_once('../private/initialize.php');
 $page_title = 'Inventory';
 
 if (is_post_request()) {
+
     // Handle form submission
-    $selected_make = $_POST['make'] ?? 'all_makes';
-    $selected_body = $_POST['body_type'] ?? 'all_bodys';
-    $selected_budget = $_POST['budget'] ?? 'all_budgets';
+    $selected_make = $_POST['make'];
+    $selected_body = $_POST['body_type'];
+    $selected_price = $_POST['price'];
+
+    $conditions = [];
+
+    if ($selected_make && $selected_make !== 'all_makes') {
+        $conditions[] = "make = '" . $selected_make . "'";
+    }
+    if ($selected_price && $selected_price !== 'all_prices') {
+        $conditions[] = "price <= " . (int)$selected_price;
+    }
+    if ($selected_body && $selected_body !== 'all_bodys') {
+        $conditions[] = "body_type = '" . $selected_body . "'";
+    }
+
+    $sql = "SELECT * FROM cars ";
+    if (!empty($conditions)) {
+        $sql .= "WHERE " . join(' AND ', $conditions);
+    }
+
+    $cars = Car::find_by_sql($sql);
+
+} else {
+
+    /** @var Car[] $cars */
+    $cars = Car::find_all();
+
 }
 
-/** @var Car[] $cars */
-$cars = Car::find_all();
 
 include(SHARED_PATH . '/public_navigation.php'); 
 ?>
@@ -29,34 +53,53 @@ include(SHARED_PATH . '/public_navigation.php');
                 </div>
     
                 <form class="search_container" action="index.php" method="post">
+
+                    <!-- Make Filter -->
                     <select class="custom_select" name="make" id="make">
-                        <label>Make</label>
-                        <option value="all_makes" selected>All makes<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
+                        <option value="all_makes">All makes<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                         <optgroup label="Makes">
                             <?php foreach ($makes as $option_name) { ?>
-                                <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                                <?php if ($option_name == $selected_make) { ?>
+                                    <option value="<?php echo $option_name; ?>" selected><?php echo $option_name; ?></option>
+                                <?php } else { ?>
+                                    <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                                <?php } ?>
                             <?php } ?>
                         </optgroup>
                     </select>
+
+                    <!-- Body Type Filter -->
                     <select class="custom_select" name="body_type" id="body_type">
-                        <option value="all_bodys" selected>All body types<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
+                        <option value="all_bodys">All body types<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                         <optgroup label="Body Types">
                             <?php foreach ($bodys as $option_name) { ?>
-                                <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                                <?php if ($option_name == $selected_body) { ?>
+                                    <option value="<?php echo $option_name; ?>" selected><?php echo $option_name; ?></option>
+                                <?php } else { ?>
+                                    <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
+                                <?php } ?>
                             <?php } ?>
                         </optgroup>
                     </select>
-                    <select class="custom_select" name="budget" id="budget">
-                        <option value="all_budgets" selected>All budgets<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
-                        <optgroup label="Budgets">
-                            <option value="saab">$0 - $5,000</option>
-                            <option value="opel">$5,000 - $10,000</option>
-                            <option value="audi">$10,000 - $15,000</option>
+
+                    <!-- Price Filter -->
+                    <select class="custom_select" name="price" id="price">
+                        <option value="all_prices">No max price<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
+                        <optgroup label="Prices">
+                            <?php foreach ($prices as $option_value => $option_name) { ?>
+                                <?php if ($option_value == $selected_price) { ?>
+                                    <option value="<?php echo $option_value; ?>" selected><?php echo $option_name; ?></option>
+                                <?php } else { ?>
+                                    <option value="<?php echo $option_value; ?>"><?php echo $option_name; ?></option>
+                                <?php } ?>
+                            <?php } ?>
                         </optgroup>
                     </select>
+
                     <button class="primary_button">
                         <i class="bi bi-search" style="font-size:14px; font-weight:bold; stroke-width:2.5;"></i>Search
                     </button>
+
                 </form>
 
             </div>
@@ -69,8 +112,6 @@ include(SHARED_PATH . '/public_navigation.php');
 
         
         <div class="section_content">
-
-            <h2>All Vehicles</h2>
 
             <div class="grid_layout">
                 <?php foreach($cars as $car) {?>

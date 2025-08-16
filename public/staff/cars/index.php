@@ -90,17 +90,17 @@ include(SHARED_PATH . '/staff_navigation.php');
 
                 $url = url_for('/staff/cars/index.php');
 
-                echo "<div class=\"pagination_left\">";
+                // echo "<div class=\"pagination_left\">";
+                // echo $pagination->previous_link($url);
+                // echo "</div>";
+                
                 echo $pagination->previous_link($url);
-                echo "</div>";
-
-                echo "<div class=\"pagination_center\">";
                 echo $pagination->number_links($url);
-                echo "</div>";
-
-                echo "<div class=\"pagination_right\">";
                 echo $pagination->next_link($url);
-                echo "</div>";
+
+                // echo "<div class=\"pagination_right\">";
+                // echo $pagination->next_link($url);
+                // echo "</div>";
 
                 echo "</div>";
             }

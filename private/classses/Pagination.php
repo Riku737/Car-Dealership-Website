@@ -35,7 +35,7 @@ class Pagination {
     public function previous_link($url="") {
         $link = '';
         if ($this->previous_page() != false) {
-            $link = "<a class=\"tertiary_button\" href=\"{$url}?page=" . $this->previous_page() . "\"><i class=\"bi bi-arrow-left\"></i>Previous</a>";
+            $link = "<a class=\"pagination_link\" href=\"{$url}?page=" . $this->previous_page() . "\">Previous</a>";
         }
         return $link;
     }
@@ -43,7 +43,7 @@ class Pagination {
     public function next_link($url="") {
         $link = '';
         if ($this->next_page() != false) {
-            $link = "<a class=\"tertiary_button\" href=\"{$url}?page=" . $this->next_page() . "\">Next<i class=\"bi bi-arrow-right\"></i></a>";
+            $link = "<a class=\"pagination_link\" href=\"{$url}?page=" . $this->next_page() . "\">Next</a>";
         }
         return $link;
     }

@@ -52,6 +52,8 @@
 
 .pagination_container {
     display: flex;
+    gap: 30px;
+    align-items: center;
 }
 
 .pagination_left {
