@@ -32,7 +32,7 @@ $admins = Admin::find_all();
                     </div>
                 </div>
             </div>
-            
+
             <?php echo display_session_message(); ?>
 
             <div class="item_box">
@@ -75,4 +75,4 @@ $admins = Admin::find_all();
 
 </div>
 
-<?php include(SHARED_PATH . '/public_footer.php'); ?>
+<?php include(SHARED_PATH . '/staff_footer.php'); ?>
