@@ -113,4 +113,4 @@ include(SHARED_PATH . '/staff_navigation.php');
 
 </div>
 
-<?php include(SHARED_PATH . '/public_footer.php'); ?>
+<?php include(SHARED_PATH . '/staff_footer.php'); ?>

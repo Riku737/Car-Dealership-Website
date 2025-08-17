@@ -36,6 +36,8 @@ class Pagination {
         $link = '';
         if ($this->previous_page() != false) {
             $link = "<a class=\"pagination_link\" href=\"{$url}?page=" . $this->previous_page() . "\">Previous</a>";
+        } else {
+            $link = "<a class=\"pagination_link pagination_disabled\">Previous</a>";
         }
         return $link;
     }
@@ -44,6 +46,8 @@ class Pagination {
         $link = '';
         if ($this->next_page() != false) {
             $link = "<a class=\"pagination_link\" href=\"{$url}?page=" . $this->next_page() . "\">Next</a>";
+        } else {
+            $link = "<a class=\"pagination_link pagination_disabled\">Next</a>";
         }
         return $link;
     }
@@ -52,12 +56,32 @@ class Pagination {
         $output = '';
         for ($i=1; $i <= $this->total_pages(); $i++) {
             if ($i == $this->current_page) {
-                $output .= "<span class=\"current_page\">{$i}</span>";
+                $output .= "<a class=\"pagination_link current_page\" href=\"{$url}?page={$i}\">{$i}</a>";
             } else {
                 $output .= "<a class=\"pagination_link\" href=\"{$url}?page={$i}\">{$i}</a>";
             }
         }
         return $output;
+    }
+
+    public function page_links($url="") {
+        if ($this->total_pages() > 1) { 
+            echo "<div class=\"pagination_container\">";
+
+            // echo "<div class=\"pagination_left\">";
+            // echo $pagination->previous_link($url);
+            // echo "</div>";
+            
+            echo $this->previous_link($url);
+            echo $this->number_links($url);
+            echo $this->next_link($url);
+
+            // echo "<div class=\"pagination_right\">";
+            // echo $pagination->next_link($url);
+            // echo "</div>";
+
+            echo "</div>";
+        }
     }
 
 }

@@ -4,7 +4,7 @@ $page_title = 'Car Inventory';
 require_login(); // Admin protect page
 
 $current_page = $_GET['page'] ?? 1;
-$per_page = 5;
+$per_page = 10;
 $total_count = Car::count_all();
 
 $pagination = new Pagination($current_page, $per_page, $total_count);
@@ -84,29 +84,10 @@ include(SHARED_PATH . '/staff_navigation.php');
     
                 </table>
     
+                <?php $pagination->page_links(url_for('/staff/cars/index.php')); ?>
+            
             </div>
             
-            <?php
-            if ($pagination->total_pages() > 1) { 
-                echo "<div class=\"pagination_container\">";
-
-                $url = url_for('/staff/cars/index.php');
-
-                // echo "<div class=\"pagination_left\">";
-                // echo $pagination->previous_link($url);
-                // echo "</div>";
-                
-                echo $pagination->previous_link($url);
-                echo $pagination->number_links($url);
-                echo $pagination->next_link($url);
-
-                // echo "<div class=\"pagination_right\">";
-                // echo $pagination->next_link($url);
-                // echo "</div>";
-
-                echo "</div>";
-            }
-            ?>
 
         </div>
 
@@ -116,4 +97,4 @@ include(SHARED_PATH . '/staff_navigation.php');
 
 </div>
 
-<?php include(SHARED_PATH . '/public_footer.php'); ?>
+<?php include(SHARED_PATH . '/staff_footer.php'); ?>
