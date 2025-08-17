@@ -20,7 +20,7 @@
         </div>
         <div class="navigation_right">
             <a class="secondary_button" href="<?php echo url_for('/staff/logout.php')?>">Logout</a>
-            <a class="tertiary_button" href="<?php echo url_for('/staff/admins/show.php?id=' . h(u($session->admin_id))); ?>"><i class="bi bi-person-fill"></i><?php echo h($session->username); ?></a>
+            <a class="tertiary_button" href="<?php echo url_for('/staff/admins/show.php?id=' . h(u($session->admin_id))); ?>"></i><?php echo h($session->username); ?></a>
         </div>
 
     </div>  

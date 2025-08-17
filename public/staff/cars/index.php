@@ -34,12 +34,12 @@ include(SHARED_PATH . '/staff_navigation.php');
                     <p>Inventory</p>
                 </div>
                 <div class="split_container">
-                    <div>
+                    <div class="left_split">
                         <h1>Inventory</h1>
                         <p>Database for vehicles in stock.</p>
                     </div>
-                    <div class="split_corner">
-                        <a class="primary_button" href="new.php"><i class="bi bi-plus-lg"></i>Add vehicle</a>
+                    <div class="right_split">
+                        <a class="primary_button" href="<?php echo url_for('/staff/cars/new.php'); ?>"><i class="bi bi-plus-lg"></i>Add vehicle</a>
                     </div>
                 </div>
             </div>
@@ -50,13 +50,14 @@ include(SHARED_PATH . '/staff_navigation.php');
                     <thead>
                         <tr>
                             <th style="width:5%">ID</th>
-                            <th style="width:20%">Make</th>
-                            <th style="width:20%">Model</th>
+                            <th style="width:25%">Make</th>
+                            <th style="width:25%">Model</th>
+                            <th style="width:5%">Body</th>
                             <th style="width:5%">Year</th>
                             <th style="width:5%">Colour</th>
                             <th style="width:5%">Mileage</th>
                             <th style="width:5%">Price</th>
-                            <th style="width:10%">Condition</th>
+                            <th style="width:5%">Condition</th>
                             <th style="width:5%">&nbsp;</th>
                             <th style="width:5%">&nbsp;</th>
                             <th style="width:5%">&nbsp;</th>
@@ -68,6 +69,7 @@ include(SHARED_PATH . '/staff_navigation.php');
                             <td><?php echo h($car->id); ?></td>
                             <td><?php echo h($car->make); ?></td>
                             <td><?php echo h($car->model); ?></td>
+                            <td><?php echo h($car->body_type); ?></td>
                             <td><?php echo h($car->year); ?></td>
                             <td><?php echo h($car->colour); ?></td>
                             <td><?php echo h(number_format($car->mileage_km)); ?></td>

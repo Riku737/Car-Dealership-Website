@@ -12,18 +12,18 @@
                 <div>
                     <h4>Sitemap</h4>
                     <div class="footer_links">
-                        <a href="">About</a>
-                        <a href="">Contact</a>
-                        <a href="">News</a>
-                        <a href="">Careers</a>
+                        <a href="<?php echo url_for('/index.php'); ?>">About</a>
+                        <a href="<?php echo url_for('/index.php'); ?>">Contact</a>
+                        <a href="<?php echo url_for('/index.php'); ?>">News</a>
+                        <a href="<?php echo url_for('/index.php'); ?>">Careers</a>
                     </div>
                 </div>
                 
                 <div>
                     <h4>Policies</h4>
                     <div class="footer_links">
-                        <a href="">Privacy</a>
-                        <a href="">Terms</a>
+                        <a href="<?php echo url_for('/index.php'); ?>">Privacy</a>
+                        <a href="<?php echo url_for('/index.php'); ?>">Terms</a>
                     </div>
                 </div>
     

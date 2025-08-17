@@ -9,7 +9,8 @@
 .admin_box {
     padding: 30px;
     border-radius: 7px;
-    border: 1px solid var(--border_color);
+    background-color: white;
+    /* border: 1px solid var(--border_color); */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -29,7 +30,13 @@
     gap: 30px;
 }
 
-.split_corner {
+.left_split {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.right_split {
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -46,6 +53,8 @@
     font-family: var(--sec_font);
     background-color: var(--success_bg_color);
 }
+
+
 
 
 /* PAGINATION */

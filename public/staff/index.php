@@ -40,4 +40,6 @@ include(SHARED_PATH . '/staff_navigation.php');
 
 </div>
 
-<?php include(SHARED_PATH . '/staff_footer.php'); ?>
+<?php
+db_disconnect($database);
+?>

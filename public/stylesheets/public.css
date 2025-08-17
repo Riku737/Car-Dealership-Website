@@ -7,10 +7,12 @@
 /* ROOT */
 
 :root {
-    --pri_color: #00a8e8;
-    --pri_hov_color: #007EA7;
-    --pri_light_color: #bcedff;
-    --pri_pill_color: #e8eeef;
+    --pri_color: #679436;
+    --pri_hov_color: #558027;
+
+    --sec_color: #427AA1;
+    --sec_hov_color: #234a66;
+    --sec_light_color: #b3d7e6;
 
     --error_color: #d32f2f;
     --error_bg_color: #fdecea;
@@ -20,7 +22,7 @@
     --ter_color: white;
     --accent_color: blue;
     --background_color: #f6f8f9;
-    --hero_backgrond_color: #0b1b21;
+    --hero_backgrond_color: #d5dbcf;
 
     --border_color: #dadada;
     --text_color: #363636;
@@ -88,6 +90,7 @@ p, small {
     border: none;
     gap: 7px;
     display: inline-flex;
+    align-items: center;
 }
 
 .primary_button:hover {
@@ -107,6 +110,7 @@ p, small {
     font-size: 14px;
     gap: 7px;
     display: inline-flex;
+    align-items: center;
 }
 
 .secondary_button:hover {
@@ -124,6 +128,7 @@ p, small {
     text-decoration: none;
     gap: 7px;
     display: inline-flex;
+    align-items: center;
 }
 
 .tertiary_button:hover {
@@ -133,12 +138,14 @@ p, small {
 
 .link {
     font-family: var(--sec_font);
-    color: var(--pri_color);
-    text-decoration: none;
+    color: var(--sec_color);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
 }
 
 .link:hover {
-    color: var(--pri_hov_color);
+    color: var(--sec_hov_color);
     transform: 150ms;
 }
 
@@ -150,6 +157,7 @@ p, small {
 body {
     margin: 0;
     padding: 0;
+    background-color: #f8f9f7;
 }
 
 
@@ -168,14 +176,9 @@ body {
     padding: 60px;
     display: flex;
     flex-direction: column;
-    color: white;
     gap: 30px;
     border-radius: 7px;
     align-items: center;
-}
-
-.hero_container p {
-    color: white;
 }
 
 .section_content {
@@ -186,7 +189,36 @@ body {
     gap: 30px;
 }
 
+.section_content_small {
+    margin: auto;
+    width: 540px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.split_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.left_split {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.right_split {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
 /* Table */
+.item_box_table {
+    border: 1px solid var(--border_color);
+    border-radius: 7px;
+}
 
 .table_section {
     width: 100%;
@@ -197,6 +229,7 @@ body {
 .table_section td, th {
     padding: 15px;
     font-size: 16px;
+    word-wrap: break-word;
 }
 
 th {
@@ -207,6 +240,10 @@ th {
     border-bottom: 1px solid var(--border_color);
 }
 
+/* .table_section tbody tr:last-child {
+    border-bottom: none;
+} */
+
 .table_section td {
     color: var(--text_color);
 }
@@ -215,9 +252,15 @@ th {
 /* Element grouping section */
 
 .item_box {
-    border: 1px solid var(--border_color);
+    background-color: white;
+    /* border: 1px solid var(--border_color); */
     padding: 30px;
     border-radius: 7px;
+}
+
+.item_box h2 {
+    margin: 0;
+    margin-bottom: 30px;
 }
 
 .item_box img {
@@ -226,6 +269,26 @@ th {
 
 .item_box p {
     margin: 0;
+}
+
+/* Form */
+
+.item_box_form {
+    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.item_box_form_small {
+    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.item_box_form_single {
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -262,6 +325,7 @@ th {
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
+    gap: 7px;
 }
 
 .menu_link {
@@ -290,7 +354,7 @@ th {
 
 .breadcrumb_menu {
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 7px;
 }
 
 .breadcrumb_menu p, .breadcrumb_menu a {
@@ -298,15 +362,23 @@ th {
 }
 
 .breadcrumb_menu > *:not(:first-child)::before {
+    text-decoration: none;
+    display: inline-block;
     content: '/';
     margin: 0 7px;
-    color: #888; /* Optional: style the slash */
+    color: var(--text_color);
 }
 
 
 
 
 /* HOME PAGE (CAR INVENTORY) */
+
+.heading_container {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
 
 .search_container {
     display: flex;
@@ -315,11 +387,13 @@ th {
 
 .headline_pill {
     font-size: 14px;
-    background-color: var(--pri_pill_color);
-    border-radius: 4px;
-    padding: 3px 7px;
+    /* background-color: var(--pri_pill_color); */
+    /* border-radius: 4px; */
+    /* padding: 3px 7px; */
     display: inline-block;
     font-family: var(--pri_font);
+    font-weight: 600;
+    color: black;
 }
 
 .pill_group {
@@ -343,27 +417,32 @@ th {
     flex-direction: column;
     height: 100%;
     min-height: 0;
+    background-color: white;
+    /* border: 1px solid var(--border_color); */
     gap: 15px;
-    /* background-color: #f4f6f7;
-    border-radius: 15px; */
-    /* padding: 30px; */
+    border-radius: 7px;
 }
 
 .car_link:hover .car_preview_thumbnail {
     transform: scale(1.05);
     transition: 150ms;
 }
+.car_link:hover h4 {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--sec_color);
+}
 
 .image_boundary {
     overflow: hidden;
-    border-radius: 7px 7px;
+    border-radius: 7px;
 }
 
 .car_preview_thumbnail {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 7px 7px;
     transition: transform 150ms;
     display: block;
 }
@@ -388,15 +467,12 @@ th {
     flex-direction: column;
     align-items: flex-start;
     flex: 1 1 auto;
+    /* padding: 30px; */
 }
-
 
 
 
 /* CAR DETAILS PAGE */
-.heading_container h1 {
-    margin-bottom: 7px;
-}
 
 .content_container h2 {
     margin: 0;
@@ -409,8 +485,8 @@ th {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--pri_light_color);
-    border: 0;
+    border: none;
+    background-color: var(--hero_backgrond_color);
 }
 
 .car_banner h2 {
@@ -440,14 +516,12 @@ th {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    align-items: flex-start;
 }
 
 .form_box {
     display: flex;
     gap: 7px;
     flex-direction: column;
-    width: 50%;
 }
 
 .form_box_options {
@@ -479,8 +553,8 @@ th {
     border-radius: 4px;
 }
 
-.text_field:focus-visible {
-    outline: 1px solid var(--pri_color);
+.text_field:focus-visible, .drop_down:focus-visible {
+    outline: 2px solid var(--sec_color);
 }
 
 /* Drop down options */
@@ -489,7 +563,6 @@ th {
     padding: 15px 45px 15px 15px;
     border-radius: 4px;
     border: 1px solid var(--border_color);
-    font-weight: 600;
     font-size: 14px;
 }
 
@@ -501,7 +574,6 @@ th {
     background-repeat: no-repeat;
     background-position: right 15px center;
     background-size: 16px 16px;
-    font-weight: 600;
     background-color: white;
 }
 
@@ -509,32 +581,8 @@ th {
     cursor: pointer;
 }
 
-.drop_down:focus-visible {
-    outline: 1px solid var(--pri_color);
-}
-
-.custom_select {
-    padding: 15px 45px 15px 15px;
-    border-radius: 4px;
-    border: none;
-    font-weight: 600;
-    background-color: white;
-    font-size: 14px;
-    transition: 200ms;
-}
-
-.custom_select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill=\"black\" height=\"16\" viewBox=\"0 0 24 24\" width=\"16\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 16px 16px;
-}
-
-.custom_select:hover {
-    cursor: pointer;
+.form_box .drop_down {
+    width: 100%;
 }
 
 /* Upload Image */
@@ -649,9 +697,8 @@ th {
 /* FOOTER */
 
 .footer_section {
-    background-color: var(--pri_color);
+    background-color: #1e1e1c;
     padding: 60px 0;
-    color: white;
 }
 
 .footer_content {
@@ -668,12 +715,12 @@ th {
     gap: 30px;
 }
 
-.footer_content p {
-    color: white;
-}
-
 .footer_content h4 {
     margin-bottom: 15px;
+}
+
+.footer_content h4, .footer_content p, .footer_content small {
+    color: white;
 }
 
 .footer_links {
@@ -685,19 +732,21 @@ th {
 .footer_links a {
     color: white;
     text-decoration: none;
+    font-size: 16px;
+    font-family: var(--sec_font);
 }
 
 .footer_links a:hover {
-    color: var(--pri_hov_color);
+    color: var(--sec_color);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--sec_color);
+    text-decoration-thickness: 2px;
 }
 
 .footer_disclaimer {
-    border-top: 1px solid;
+    border-top: 1px solid var(--border_color);
     padding-top: 7px;
-}
-
-.footer_disclaimer small {
-    color: white;
 }
 
 .copyright_text {

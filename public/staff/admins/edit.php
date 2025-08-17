@@ -44,7 +44,15 @@ if (is_post_request()) {
                     <a class="link" href="<?php echo url_for('/staff/admins/index.php'); ?>">Admins</a>
                     <p>Edit</p>
                 </div>
-                <h1><?php echo h($admin->full_name()); ?></h1>
+                <div class="split_container">
+                    <div class="left_split">
+                        <h1><?php echo h($admin->full_name()); ?></h1>
+                    </div>
+                    <div class="right_split">
+                        <a class="primary_button" href="<?php echo url_for('/staff/admins/delete.php?id=' . h($admin->id)); ?>"><i class="bi bi-trash-fill"></i>Delete admin</a>
+                    </div>
+                </div>
+                
             </div>
 
             <?php echo display_errors($admin->errors); ?>

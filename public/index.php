@@ -4,7 +4,7 @@ $page_title = 'Inventory';
 
 if (is_post_request()) {
 
-    // Handle form submission
+    // Filiter cars
     $selected_make = $_POST['make'];
     $selected_body = $_POST['body_type'];
     $selected_price = $_POST['price'];
@@ -55,7 +55,7 @@ include(SHARED_PATH . '/public_navigation.php');
                 <form class="search_container" action="index.php" method="post">
 
                     <!-- Make Filter -->
-                    <select class="custom_select" name="make" id="make">
+                    <select class="drop_down" name="make" id="make">
                         <option value="all_makes">All makes<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                         <optgroup label="Makes">
                             <?php foreach ($makes as $option_name) { ?>
@@ -69,7 +69,7 @@ include(SHARED_PATH . '/public_navigation.php');
                     </select>
 
                     <!-- Body Type Filter -->
-                    <select class="custom_select" name="body_type" id="body_type">
+                    <select class="drop_down" name="body_type" id="body_type">
                         <option value="all_bodys">All body types<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                         <optgroup label="Body Types">
                             <?php foreach ($bodys as $option_name) { ?>
@@ -83,7 +83,7 @@ include(SHARED_PATH . '/public_navigation.php');
                     </select>
 
                     <!-- Price Filter -->
-                    <select class="custom_select" name="price" id="price">
+                    <select class="drop_down" name="price" id="price">
                         <option value="all_prices">No max price<i class="bi bi-caret-down-fill" style="color:black;"></i></option>
                         <optgroup label="Prices">
                             <?php foreach ($prices as $option_value => $option_name) { ?>
@@ -110,30 +110,39 @@ include(SHARED_PATH . '/public_navigation.php');
 
     <section class="section_container">
 
-        
         <div class="section_content">
 
-            <div class="grid_layout">
-                <?php foreach($cars as $car) {?>
-                <a class="car_link" href="detail.php?id=<?php echo $car->id; ?>">
+            <div class="item_box">
 
-                    <div class="image_boundary">
-                        <img class="car_preview_thumbnail" src="<?php echo h($car->image()) ?>" alt="<?php echo h($car->name()) ?>">
-                    </div>
+                <?php 
+                if (empty($cars)) {
+                    echo "<p>No cars found matching your search filters.</p>";
+                }
+                ?>
 
-                    <div class="car_details">
-                        <div class="pill_group">
-                            <span class="headline_pill"><?php echo h($car->condition()); ?></span>
-                            <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
-                            <span class="headline_pill"><?php echo h($car->body_type); ?></span>
+                <div class="grid_layout">
+                    <?php foreach($cars as $car) {?>
+                    <a class="car_link" href="detail.php?id=<?php echo $car->id; ?>">
+    
+                        <div class="image_boundary">
+                            <img class="car_preview_thumbnail" src="<?php echo h($car->image()) ?>" alt="<?php echo h($car->name()) ?>">
                         </div>
-                        <h4><?php echo h($car->name()) ?></h4>
-                        <p><?php echo h($car->price()); ?></p>
-                    </div>
-                    
-                </a>
-                <?php } ?>
+    
+                        <div class="car_details">
+                            <div class="pill_group">
+                                <span class="headline_pill"><?php echo h($car->condition()); ?></span>
+                                <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
+                                <span class="headline_pill"><?php echo h($car->body_type); ?></span>
+                            </div>
+                            <h4><?php echo h($car->name()) ?></h4>
+                            <p><?php echo h($car->price()); ?></p>
+                        </div>
+                        
+                    </a>
+                    <?php } ?>
+                </div>
             </div>
+
             
         </div>
 

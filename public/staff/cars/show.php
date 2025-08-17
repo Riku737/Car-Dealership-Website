@@ -31,7 +31,15 @@ include(SHARED_PATH . '/staff_navigation.php');
                     <a class="link" href="<?php echo url_for('/staff/cars/index.php') ?>">Inventory</a>
                     <p>Show</p>
                 </div>
-                <h1><?php echo h($car->name()); ?></h1>
+                <div class="split_container">
+                    <div class="left_split">
+                        <h1><?php echo h($car->name()); ?></h1>
+                    </div>
+                    <div class="right_split">
+                        <a class="primary_button" href="<?php echo url_for('/staff/cars/edit.php?id=' . h($car->id)); ?>"><i class="bi bi-pencil-fill"></i>Edit car</a>
+                    </div>
+                </div>
+
             </div>
 
             <div class="content_container">

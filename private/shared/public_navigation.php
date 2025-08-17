@@ -15,10 +15,10 @@
         <div class="navigation_left">
             <a class="menu_link menu_logo" href="<?php echo url_for('/index.php')?>">The Used Suspects</a>
             <a class="menu_link" href="<?php echo url_for('/index.php')?>">Home</a>
-            <a class="menu_link" href="<?php echo url_for('/about.php')?>">About</a>
-            <a class="menu_link" href="<?php echo url_for('/about.php')?>">Contact</a>
-            <a class="menu_link" href="<?php echo url_for('/about.php')?>">News</a>
-            <a class="menu_link" href="<?php echo url_for('/about.php')?>">Careers</a>
+            <a class="menu_link" href="<?php echo url_for('/index.php')?>">About</a>
+            <a class="menu_link" href="<?php echo url_for('/index.php')?>">Contact</a>
+            <a class="menu_link" href="<?php echo url_for('/index.php')?>">News</a>
+            <a class="menu_link" href="<?php echo url_for('/index.php')?>">Careers</a>
         </div>
         <div class="navigation_right">
             <a class="secondary_button" href="<?php echo url_for('/index.php')?>">Cars for sale<i class="bi bi-arrow-right"></i></a>

@@ -71,7 +71,8 @@ class Car extends DatabaseObject{
         'Silver',
         'White',
         'Blue',
-        'Red'
+        'Red',
+        'Green'
     ];
 
     public const FUEL_OPTIONS = [
@@ -191,7 +192,7 @@ class Car extends DatabaseObject{
 
     // Returns full price label
     public function price() {
-        return "CAD $" . number_format($this->price);
+        return "$" . number_format($this->price);
     }
 
     // Returns full mileage label

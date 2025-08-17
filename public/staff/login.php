@@ -46,7 +46,7 @@ include(SHARED_PATH . '/public_navigation.php');
 
     <section class="section_container">
     
-        <div class="section_content">
+        <div class="section_content_small">
 
             <div class="heading_container">
                 <h1>Login</h1>
@@ -56,21 +56,31 @@ include(SHARED_PATH . '/public_navigation.php');
 
             <form class="form_container" action="<?php echo url_for('/staff/login.php');?>" method="POST">
 
-                <div class="form_box">
-                    <h4>Username</h4>
-                    <input class="text_field <?php if (has_errors($errors, 'username')) echo 'error'; ?>" type="text" id="username" name="admin[username]" value="<?php echo h($username); ?>" placeholder="Enter username">
-                    <?php echo display_inline_errors($errors, 'username'); ?>
+                <div class="item_box">
+
+                    <div class="item_box_form_single">
+
+                        <div class="form_box">
+                            <h4>Username</h4>
+                            <input class="text_field <?php if (has_errors($errors, 'username')) echo 'error'; ?>" type="text" id="username" name="admin[username]" value="<?php echo h($username); ?>" placeholder="Enter username">
+                            <?php echo display_inline_errors($errors, 'username'); ?>
+                        </div>
+        
+                        <div class="form_box">
+                            <h4>Password</h4>
+                            <input class="text_field  <?php if (has_errors($errors, 'password')) echo 'error'; ?>" type="password" id="password" name="admin[password]" value="" placeholder="Enter password">
+                            <?php echo display_inline_errors($errors, 'password'); ?>
+                        </div>
+        
+                        <div class="form_buttons">
+                            <button type="submit" class="primary_button" name="submit">Login</button>
+                        </div>
+
+                    </div>
+
+
                 </div>
 
-                <div class="form_box">
-                    <h4>Password</h4>
-                    <input class="text_field  <?php if (has_errors($errors, 'password')) echo 'error'; ?>" type="password" id="password" name="admin[password]" value="" placeholder="Enter password">
-                    <?php echo display_inline_errors($errors, 'password'); ?>
-                </div>
-
-                <div class="form_buttons">
-                    <button type="submit" class="primary_button" name="submit">Login</button>
-                </div>
 
             </form>
 
@@ -80,4 +90,6 @@ include(SHARED_PATH . '/public_navigation.php');
 
 </div>
 
-<?php include(SHARED_PATH . '/public_footer.php'); ?>
+<?php
+db_disconnect($database);
+?>

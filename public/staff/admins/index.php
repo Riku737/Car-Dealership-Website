@@ -16,23 +16,24 @@ $admins = Admin::find_all();
     
         <div class="section_content">
 
-            <?php echo display_session_message(); ?>
-
+            
             <div class="heading_container">
                 <div class="breadcrumb_menu">
                     <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
                     <p>Admins</p>
                 </div>
                 <div class="split_container">
-                    <div>
+                    <div class="left_split">
                         <h1>Admins</h1>
                         <p>Database for managing admin users.</p>
                     </div>
-                    <div class="split_corner">
-                        <a class="primary_button" href="new.php"><i class="bi bi-plus-lg"></i>Add admin</a>
+                    <div class="right_split">
+                        <a class="primary_button" href="<?php echo url_for('/staff/admins/new.php'); ?>"><i class="bi bi-plus-lg"></i>Add admin</a>
                     </div>
                 </div>
             </div>
+            
+            <?php echo display_session_message(); ?>
 
             <div class="item_box">
     
