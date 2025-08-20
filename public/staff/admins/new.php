@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../../../private/initialize.php');
 $page_title = 'New Admin';
 require_login(); // Admin protect page
@@ -15,7 +15,6 @@ if (is_post_request()) {
         $session->message('The admin was created successfully.');
         redirect_to(url_for('/staff/admins/show.php?id=' . $new_id));
     }
-
 } else {
     $admin = new Admin();
 }
@@ -27,7 +26,7 @@ if (is_post_request()) {
 <div class="website_content">
 
     <section class="section_container">
-    
+
         <div class="section_content">
 
             <div class="heading_container">
@@ -41,7 +40,7 @@ if (is_post_request()) {
 
             <?php echo display_errors($admin->errors); ?>
 
-            <form class="form_container" action="<?php echo url_for('/staff/admins/new.php');?>" method="POST">
+            <form class="form_container" action="<?php echo url_for('/staff/admins/new.php'); ?>" method="POST">
 
                 <?php include('form_fields.php'); ?>
 

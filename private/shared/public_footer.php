@@ -6,9 +6,9 @@
                 <div>
                     <h4>The Used Suspects</h4>
                     <p>We deal in quality rides with checkered pasts—fully reformed, reasonably priced, and ready to roll.</p>
-                    <p class="copyright_text"><?php echo "&copy; " . date("Y") . " The Used Suspects";?></p>
+                    <p class="copyright_text"><?php echo "&copy; " . date("Y") . " The Used Suspects"; ?></p>
                 </div>
-                
+
                 <div>
                     <h4>Sitemap</h4>
                     <div class="footer_links">
@@ -18,7 +18,7 @@
                         <a href="<?php echo url_for('/index.php'); ?>">Careers</a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h4>Policies</h4>
                     <div class="footer_links">
@@ -26,7 +26,7 @@
                         <a href="<?php echo url_for('/index.php'); ?>">Terms</a>
                     </div>
                 </div>
-    
+
                 <div>
                     <h4>Contact</h4>
                     <div class="footer_links">
@@ -35,7 +35,7 @@
                         <p>info@theusedsuspects.ca</p>
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="footer_disclaimer">
@@ -46,9 +46,10 @@
 
     </footer>
 
-</body>
-</html>
+    </body>
 
-<?php
-db_disconnect($database);
-?>
+    </html>
+
+    <?php
+    db_disconnect($database);
+    ?>

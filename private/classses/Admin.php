@@ -1,6 +1,7 @@
 <?php
 
-class Admin extends DatabaseObject {
+class Admin extends DatabaseObject
+{
 
     // CLASS VARIABLES
     protected static $table_name = "admins";
@@ -23,7 +24,8 @@ class Admin extends DatabaseObject {
 
     // CONSTRUCTOR
     // Note: The constructor accepts an associative array of attributes
-    public function __construct($args=[]) {
+    public function __construct($args = [])
+    {
         $this->first_name = $args['first_name'] ?? null;
         $this->last_name = $args['last_name'] ?? null;
         $this->email = $args['email'] ?? null;
@@ -38,17 +40,20 @@ class Admin extends DatabaseObject {
     // INSTANCE METHODS
 
     // Returns the full name of the admin
-    public function full_name() {
+    public function full_name()
+    {
         return $this->first_name . " " . $this->last_name;
     }
 
     // Sets the hashed password for the admin
-    protected function set_hashed_password() {
+    protected function set_hashed_password()
+    {
         $this->hashed_password = password_hash($this->password, PASSWORD_BCRYPT);
     }
 
     // Verifies whether the given password matches the stored hashed password
-    public function verify_password($password) {
+    public function verify_password($password)
+    {
         return password_verify($password, $this->hashed_password);
     }
 
@@ -57,7 +62,8 @@ class Admin extends DatabaseObject {
 
     // Searches admins by username in the database
     // Returns true or false whether an admin with the given username exists
-    public static function find_by_username($username) {
+    public static function find_by_username($username)
+    {
         $sql = "SELECT * FROM " . static::$table_name . " ";
         $sql .= "WHERE username='" . self::$database->escape_string($username) .  "'";
         $object_array = static::find_by_sql($sql);
@@ -74,12 +80,14 @@ class Admin extends DatabaseObject {
     /**
      * Override parent::create()
      */
-    protected function create() {
+    protected function create()
+    {
         $this->set_hashed_password();
         return parent::create();
     }
 
-    protected function update() {
+    protected function update()
+    {
         if ($this->password != '') {
             // Validate password
             $this->set_hashed_password();
@@ -93,26 +101,27 @@ class Admin extends DatabaseObject {
     /**
      * Override parent::validate()
      */
-    protected function validate() {
+    protected function validate()
+    {
         // Reset errors array
         $this->errors = [];
 
         // First name validation
-        if(is_blank($this->first_name)) {
+        if (is_blank($this->first_name)) {
             $this->errors['first_name'] = "First name cannot be blank.";
         } elseif (!has_length($this->first_name, array('min' => 2, 'max' => 255))) {
             $this->errors['first_name'] = "First name must be between 2 and 255 characters.";
         }
 
         // Last name validation
-        if(is_blank($this->last_name)) {
+        if (is_blank($this->last_name)) {
             $this->errors['last_name'] = "Last name cannot be blank.";
         } elseif (!has_length($this->last_name, array('min' => 2, 'max' => 255))) {
             $this->errors['last_name'] = "Last name must be between 2 and 255 characters.";
         }
 
         // Email validation
-        if(is_blank($this->email)) {
+        if (is_blank($this->email)) {
             $this->errors['email'] = "Email cannot be blank.";
         } elseif (!has_length($this->email, array('max' => 255))) {
             $this->errors['email'] = "Email must be less than 255 characters.";
@@ -121,7 +130,7 @@ class Admin extends DatabaseObject {
         }
 
         // Username validation
-        if(is_blank($this->username)) {
+        if (is_blank($this->username)) {
             $this->errors['username'] = "Username cannot be blank.";
         } elseif (!has_length($this->username, array('min' => 8, 'max' => 255))) {
             $this->errors['username'] = "Username must be between 8 and 255 characters.";
@@ -136,7 +145,7 @@ class Admin extends DatabaseObject {
         if ($this->password_required) {
 
             // Validate password
-            if(is_blank($this->password)) {
+            if (is_blank($this->password)) {
                 $this->errors['password'] = "Password cannot be blank.";
             } elseif (!has_length($this->password, array('min' => 12))) {
                 $this->errors['password'] = "Password must contain 12 or more characters";
@@ -151,7 +160,7 @@ class Admin extends DatabaseObject {
             }
 
             // Confirm password validation
-            if(is_blank($this->confirm_password)) {
+            if (is_blank($this->confirm_password)) {
                 $this->errors['confirm_password'] = "Confirm password cannot be blank.";
             } elseif ($this->password !== $this->confirm_password) {
                 $this->errors['confirm_password'] = "Password and confirm password must match.";
@@ -160,7 +169,4 @@ class Admin extends DatabaseObject {
 
         return $this->errors;
     }
-
 }
-
-?>

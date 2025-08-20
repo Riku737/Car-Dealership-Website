@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../../..//private/initialize.php');
 require_login(); // Ensure user is logged in
 
@@ -14,7 +14,7 @@ $car = Car::find_by_id($id);
 
 $page_title = $car->name(); // Title page based on car name
 
-include(SHARED_PATH . '/staff_navigation.php'); 
+include(SHARED_PATH . '/staff_navigation.php');
 ?>
 
 <div class="website_content">
@@ -43,9 +43,9 @@ include(SHARED_PATH . '/staff_navigation.php');
             </div>
 
             <div class="content_container">
-    
+
                 <div class="item_box">
-    
+
                     <table class="table_section">
                         <tbody>
                             <tr>
@@ -95,16 +95,16 @@ include(SHARED_PATH . '/staff_navigation.php');
                             <tr>
                                 <th>Image</th>
                                 <td style="display: flex; gap: 15px; align-items: center;">
-                                    <img style="width:25%" class="item_thumbnail" src="../../<?php echo h($car->image())?>" alt="<?php echo h($car->name()) ?>">
+                                    <img style="width:25%" class="item_thumbnail" src="../../<?php echo h($car->image()) ?>" alt="<?php echo h($car->name()) ?>">
                                     <small style="width: 75%;"><?php echo h($car->image) ?></small>
                                 </td>
                             </tr>
                         </tbody>
-    
+
                     </table>
-    
+
                 </div>
-    
+
             </div>
 
         </div>

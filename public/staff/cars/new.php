@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once('../../../private/initialize.php');
 $page_title = 'New Car';
@@ -8,7 +8,7 @@ if (is_post_request()) {
 
     // Create record using post parameters
     $args = $_POST['car'];
-    
+
     // If an image is uploaded, store file in the designated images folder
     if (!empty($_FILES['image']['name'])) {
         $file_name = $_FILES['image']['name'];
@@ -29,12 +29,10 @@ if (is_post_request()) {
         $session->message('The car was created successfully.');
         redirect_to(url_for('/staff/cars/show.php?id=' . $new_id));
     }
-
 } else {
 
     // Not a post request, or form submission. Loading the form for the first time.
     $car = new Car();
-
 }
 
 include(SHARED_PATH . '/staff_navigation.php');
@@ -43,7 +41,7 @@ include(SHARED_PATH . '/staff_navigation.php');
 <div class="website_content">
 
     <section class="section_container">
-    
+
         <div class="section_content">
 
             <div class="heading_container">
@@ -57,7 +55,7 @@ include(SHARED_PATH . '/staff_navigation.php');
 
             <?php echo display_errors($car->errors); ?>
 
-            <form class="form_container" action="<?php echo url_for('/staff/cars/new.php');?>" method="POST" enctype="multipart/form-data">
+            <form class="form_container" action="<?php echo url_for('/staff/cars/new.php'); ?>" method="POST" enctype="multipart/form-data">
 
                 <?php include('form_fields.php'); ?>
 
@@ -78,22 +76,22 @@ include(SHARED_PATH . '/staff_navigation.php');
 <?php include(SHARED_PATH . '/staff_footer.php'); ?>
 
 <script>
-document.getElementById('image').addEventListener('change', function(event) {
+    document.getElementById('image').addEventListener('change', function(event) {
 
-    const [file] = event.target.files;
-    const imageName = document.getElementById('image_name');
-    const imagePreview = document.getElementById('image_preview');
-    const imageDisplay = document.querySelector('.image_display');
+        const [file] = event.target.files;
+        const imageName = document.getElementById('image_name');
+        const imagePreview = document.getElementById('image_preview');
+        const imageDisplay = document.querySelector('.image_display');
 
-    if (file) {
-        imageName.textContent = file.name;
-        imagePreview.src = URL.createObjectURL(file);
-        imageDisplay.style.display = 'flex';
-    } else {
-        imageName.textContent = '';
-        imagePreview.src = '';
-        imageDisplay.style.display = 'none';
-    }
+        if (file) {
+            imageName.textContent = file.name;
+            imagePreview.src = URL.createObjectURL(file);
+            imageDisplay.style.display = 'flex';
+        } else {
+            imageName.textContent = '';
+            imagePreview.src = '';
+            imageDisplay.style.display = 'none';
+        }
 
-});
+    });
 </script>

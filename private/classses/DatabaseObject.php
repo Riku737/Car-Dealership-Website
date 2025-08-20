@@ -1,6 +1,7 @@
 <?php
 
-class DatabaseObject {
+class DatabaseObject
+{
 
     // CLASS VARIABLES
 
@@ -11,15 +12,16 @@ class DatabaseObject {
     // * insert_id()
     // * error()
     // * close()
+
     protected static $database;
 
     protected static $table_name = "";
-    protected static $columns = [];
+    protected static $db_columns = [];
 
 
     // INSTANCE VARIABLES
     public $errors = [];
-
+    public $id;
 
 
 
@@ -28,7 +30,8 @@ class DatabaseObject {
     // Sets up the database connection across all model classes (as a class method)
     // Called once in initialize.php to make database connection available to all objects that extend DatabaseObject.
     // Avoids having to pass the database connection to every method or store it in every object instance.
-    public static function set_database($database) {
+    public static function set_database($database)
+    {
         self::$database = $database;
     }
 
@@ -36,7 +39,8 @@ class DatabaseObject {
     // SQL QUERY EXECUTION
 
     // Executes given SQL query, checks for errors, and then converts each row of the result into a class object
-    public static function find_by_sql($sql) {
+    public static function find_by_sql($sql)
+    {
         // Execute SQL command and store success result in $result
         $result = self::$database->query($sql);
 
@@ -48,7 +52,7 @@ class DatabaseObject {
         // Convert SQL record into associative array
         $object_array = [];
         // Loops through each row in the SQL query result until there are no more rows
-        while($record = $result->fetch_assoc()) { // Fetch the next row as an associative array
+        while ($record = $result->fetch_assoc()) { // Fetch the next row as an associative array
             $object_array[] = static::instantiate($record); // Creates a new object of each row from database using the values from $record, and adds object to the array
         }
         $result->free(); // Cleans up and frees memory used by query result
@@ -60,12 +64,14 @@ class DatabaseObject {
     // SQL SHORTCUT METHODS
 
     // Returns array of Car objects, each representing a row from cars table in the database
-    public static function find_all() {
+    public static function find_all()
+    {
         $sql = "SELECT * FROM " . static::$table_name; // Determine class name at runtime using static
         return static::find_by_sql($sql); // Calls find_by_sql() and returns all records
     }
 
-    public static function count_all() {
+    public static function count_all()
+    {
         $sql = "SELECT COUNT(*) FROM " . static::$table_name;
         $result_set = self::$database->query($sql);
         $row = $result_set->fetch_array();
@@ -73,7 +79,8 @@ class DatabaseObject {
     }
 
     // Retrieves a single car from the database whose id matches the given value
-    public static function find_by_id($id) {
+    public static function find_by_id($id)
+    {
 
         // Building SQL query
         $sql = "SELECT * FROM " . static::$table_name . " ";
@@ -102,7 +109,8 @@ class DatabaseObject {
     // If the object has an ID, it updates the existing record.
     // For further context, when an object is instantiated, it does not have an ID
     // Therefore, a new record will be created by create();
-    public function save() {
+    public function save()
+    {
         // A new record will not have an ID yet
         if (isset($this->id)) {
             return $this->update();
@@ -112,7 +120,8 @@ class DatabaseObject {
     }
 
     // Create a new car record
-    protected function create() {
+    protected function create()
+    {
         // Validate the object properties before inserting record into the database
         $this->validate();
         if (!empty($this->errors)) {
@@ -130,15 +139,16 @@ class DatabaseObject {
         // Execute the SQL query and returns whether the query was successful
         // If the query fails, it returns false
         $result = self::$database->query($sql);
-        if($result) {
+        if ($result) {
             $this->id = self::$database->insert_id;
         }
-        
+
         return $result;
     }
 
     // Update car record
-    protected function update() {
+    protected function update()
+    {
         // Validate the object properties before updating record in the database
         $this->validate();
         if (!empty($this->errors)) {
@@ -151,7 +161,7 @@ class DatabaseObject {
         // Format associative array into SQL syntax
         // Example: ['make' => 'Toyota', 'model' => 'Camry'] becomes "make='Toyota', model='Camry'"
         $attribute_pairs = [];
-        foreach($attributes as $key => $value) {
+        foreach ($attributes as $key => $value) {
             $attribute_pairs[] = "{$key}='{$value}'";
         }
 
@@ -168,7 +178,8 @@ class DatabaseObject {
     }
 
     // Delete car record
-    public function delete() {
+    public function delete()
+    {
 
         // Building SQL query
         $sql = "DELETE FROM " . static::$table_name . " ";
@@ -189,8 +200,9 @@ class DatabaseObject {
     // Takes an associative array and updates the current object's properties with the values from that array
     // For each pair, if the property exists and the value is not null, update the property
     // Used for updating database records (edit.php)
-    public function merge_attributes($args=[]) {
-        foreach($args as $key => $value) {
+    public function merge_attributes($args = [])
+    {
+        foreach ($args as $key => $value) {
             if (property_exists($this, $key) && !is_null($value)) {
                 $this->$key = $value;
             }
@@ -203,7 +215,8 @@ class DatabaseObject {
     // Returns an associative array of the object's property and their values to be used in sanitized_attributes()
     // Excludes the record ID
     // Example: $attributes = ['make' => 'Toyota', 'model' => 'Camry']
-    public function attributes() {
+    public function attributes()
+    {
         $attributes = [];
         foreach (static::$db_columns as $column) {
             if ($column == 'id') {
@@ -217,7 +230,8 @@ class DatabaseObject {
     // Returns a sanitized associative array of the object's attributes
     // Each property is escaped for safe use in SQL queries
     // Escapes special characters, prevent unauthorized SQL injection
-    protected function sanitized_attributes() {
+    protected function sanitized_attributes()
+    {
         $sanitized = [];
         foreach ($this->attributes() as $key => $value) { // attributes() converts object's attributes into associative array
             $sanitized[$key] = self::$database->escape_string($value);
@@ -229,9 +243,10 @@ class DatabaseObject {
     // Create Car object from database record (an associative array)
     // Creates a new instance of the class, and assigns each value from the record to the corresponding property
     // $record = ['id' => 1, 'make' => 'Toyota', 'model' => 'Camry', 'year' => 2020];
-    protected static function instantiate($record) {
+    protected static function instantiate($record)
+    {
         $object = new static; // Create a new instance of the class that called
-        foreach($record as $property => $value) {
+        foreach ($record as $property => $value) {
             if (property_exists($object, $property)) { // Check if $property is defined property of $object
                 $object->$property = $value;
             }
@@ -245,12 +260,10 @@ class DatabaseObject {
     // VALIDATION FRAMEWORK
     // Overridden in child classes Admin and Car
 
-    protected function validate() {
+    protected function validate()
+    {
         $this->errors = []; // Reset errors array
 
         return $this->errors;
     }
-
 }
-
-?>

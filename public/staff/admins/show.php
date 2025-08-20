@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../../..//private/initialize.php');
 require_login(); // Admin protect page
 
@@ -22,7 +22,7 @@ $page_title = $admin->full_name();
 
         <div class="section_content">
 
-            
+
             <div class="heading_container">
                 <div class="breadcrumb_menu">
                     <a class="link" href="<?php echo url_for('/staff/index.php') ?>">Staff</a>
@@ -38,13 +38,13 @@ $page_title = $admin->full_name();
                     </div>
                 </div>
             </div>
-            
+
             <?php echo display_session_message(); ?>
-            
+
             <div class="content_container">
-                
+
                 <div class="item_box">
-                    
+
                     <table class="table_section">
                         <tbody>
                             <tr>
@@ -68,11 +68,11 @@ $page_title = $admin->full_name();
                                 <td><?php echo h($admin->username); ?></td>
                             </tr>
                         </tbody>
-    
+
                     </table>
-    
+
                 </div>
-    
+
             </div>
 
         </div>

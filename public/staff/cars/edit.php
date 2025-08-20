@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../../../private/initialize.php');
 $page_title = 'Edit Car';
 require_login(); // Admin protect page
@@ -37,16 +37,15 @@ if (is_post_request()) {
         $session->message('The car was updated successfully.');
         redirect_to(url_for('/staff/cars/show.php?id=' . $id));
     }
+}
 
-} 
-
-include(SHARED_PATH . '/staff_navigation.php'); 
+include(SHARED_PATH . '/staff_navigation.php');
 ?>
 
 <div class="website_content">
 
     <section class="section_container">
-    
+
         <div class="section_content">
 
             <div class="heading_container">
@@ -64,18 +63,18 @@ include(SHARED_PATH . '/staff_navigation.php');
                     </div>
                 </div>
             </div>
-            
+
 
             <?php echo display_errors($car->errors); ?>
-            
+
             <form class="form_container" action="<?php echo url_for('/staff/cars/edit.php?id=' . $id); ?>" method="post" enctype="multipart/form-data">
-                
+
                 <?php include('form_fields.php'); ?>
 
                 <div class="form_buttons">
                     <button type="submit" class="primary_button">Save changes</button>
                     <a href="<?php echo url_for('/staff/cars/index.php'); ?>" class="tertiary_button">Cancel</a>
-                </div>  
+                </div>
 
 
             </form>
@@ -89,22 +88,22 @@ include(SHARED_PATH . '/staff_navigation.php');
 <?php include(SHARED_PATH . '/staff_footer.php'); ?>
 
 <script>
-document.getElementById('image').addEventListener('change', function(event) {
+    document.getElementById('image').addEventListener('change', function(event) {
 
-    const [file] = event.target.files;
-    const imageName = document.getElementById('image_name');
-    const imagePreview = document.getElementById('image_preview');
-    const imageDisplay = document.querySelector('.image_display');
+        const [file] = event.target.files;
+        const imageName = document.getElementById('image_name');
+        const imagePreview = document.getElementById('image_preview');
+        const imageDisplay = document.querySelector('.image_display');
 
-    if (file) {
-        imageName.textContent = file.name;
-        imagePreview.src = URL.createObjectURL(file);
-        imageDisplay.style.display = 'flex';
-    } else {
-        imageName.textContent = '';
-        imagePreview.src = '';
-        imageDisplay.style.display = 'none';
-    }
+        if (file) {
+            imageName.textContent = file.name;
+            imagePreview.src = URL.createObjectURL(file);
+            imageDisplay.style.display = 'flex';
+        } else {
+            imageName.textContent = '';
+            imagePreview.src = '';
+            imageDisplay.style.display = 'none';
+        }
 
-});
+    });
 </script>

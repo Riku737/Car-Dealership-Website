@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../../../private/initialize.php');
 $page_title = 'Edit Admin';
 require_login(); // Admin protect page
@@ -24,8 +24,7 @@ if (is_post_request()) {
         $session->message('The admin was updated successfully.');
         redirect_to(url_for('/staff/admins/show.php?id=' . $id));
     }
-
-} 
+}
 
 
 ?>
@@ -35,7 +34,7 @@ if (is_post_request()) {
 <div class="website_content">
 
     <section class="section_container">
-    
+
         <div class="section_content">
 
             <div class="heading_container">
@@ -52,19 +51,19 @@ if (is_post_request()) {
                         <a class="primary_button" href="<?php echo url_for('/staff/admins/delete.php?id=' . h($admin->id)); ?>"><i class="bi bi-trash-fill"></i>Delete admin</a>
                     </div>
                 </div>
-                
+
             </div>
 
             <?php echo display_errors($admin->errors); ?>
 
             <form class="form_container" action="<?php echo url_for('/staff/admins/edit.php?id=' . h($id)); ?>" method="post">
-                
+
                 <?php include('form_fields.php'); ?>
 
                 <div class="form_buttons">
                     <button type="submit" class="primary_button">Save changes</button>
                     <a href="<?php echo url_for('/staff/admins/index.php'); ?>" class="tertiary_button">Cancel</a>
-                </div>  
+                </div>
 
 
             </form>

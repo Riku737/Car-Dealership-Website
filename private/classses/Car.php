@@ -1,6 +1,7 @@
 <?php
 
-class Car extends DatabaseObject{
+class Car extends DatabaseObject
+{
 
     // ACTIVE RECORD CODES
     protected static $table_name = 'cars';
@@ -20,7 +21,7 @@ class Car extends DatabaseObject{
     public $body_type;
     public $fuel_type;
     public $condition_id;
-    
+
 
     // CONSTANTS
     public const MAKE_OPTIONS = [
@@ -64,7 +65,7 @@ class Car extends DatabaseObject{
         'Crossover',
         'Motorbike'
     ];
-    
+
     public const COLOUR_OPTIONS = [
         'Black',
         'Gray',
@@ -108,7 +109,8 @@ class Car extends DatabaseObject{
 
 
     // CONSTRUCTOR
-    public function __construct($args = []) {
+    public function __construct($args = [])
+    {
         $this->make = $args['make'] ?? null;
         $this->model = $args['model'] ?? null;
         $this->year = $args['year'] ?? null;
@@ -129,7 +131,8 @@ class Car extends DatabaseObject{
 
     // Returns an array of valid year options for the car
     // Note: array is sorted from recent to oldest years
-    public static function year_options() {
+    public static function year_options()
+    {
         $years = [];
         for ($year = 1998; $year <= date('Y'); $year++) {
             $years[] = $year;
@@ -139,7 +142,8 @@ class Car extends DatabaseObject{
     }
 
     // Returns condition based on condition_id of instance
-    public function condition() {
+    public function condition()
+    {
         if ($this->condition_id > 0) {
             return self::CONDITION_OPTIONS[$this->condition_id];
         } else {
@@ -148,18 +152,19 @@ class Car extends DatabaseObject{
     }
 
     // Returns the image path for the car image
-    public function image() {
+    public function image()
+    {
 
         if (self::find_by_image($this->image)) {
             return "images/" . $this->image;
         } else {
             return "images/default.png";
         }
-        
     }
 
     // Validates whether given filename already exists in images folder
-    public static function find_by_image($image) {
+    public static function find_by_image($image)
+    {
         $dir = __DIR__ . '/../../public/images/'; // Pathway to images directory
         $files = [];
 
@@ -178,11 +183,11 @@ class Car extends DatabaseObject{
         } else {
             return false;
         }
-
     }
 
     // Returns the full name of the car
-    public function name() {
+    public function name()
+    {
         if (isset($this->year) && isset($this->make) && isset($this->model)) {
             return "{$this->year} {$this->make} {$this->model}";
         } else {
@@ -191,19 +196,22 @@ class Car extends DatabaseObject{
     }
 
     // Returns full price label
-    public function price() {
+    public function price()
+    {
         return "$" . number_format($this->price);
     }
 
     // Returns full mileage label
-    public function mileage() {
+    public function mileage()
+    {
         return number_format(h($this->mileage_km)) . " km";
     }
 
     /**
      * Override parent::validate()
      */
-    protected function validate() {
+    protected function validate()
+    {
         $this->errors = []; // Reset errors array
 
         if (is_blank($this->make)) {
@@ -239,10 +247,7 @@ class Car extends DatabaseObject{
         if (is_blank($this->image)) {
             $this->errors['image'] = "Image cannot be blank.";
         }
-        
+
         return $this->errors;
     }
-    
 }
-
-?>

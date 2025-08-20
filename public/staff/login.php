@@ -1,5 +1,5 @@
 <?php
-require_once('../../private/initialize.php'); 
+require_once('../../private/initialize.php');
 $page_title = "Login";
 
 $errors = [];
@@ -35,7 +35,6 @@ if (is_post_request()) {
             $errors['username'] = "Invalid username or password.";
             $errors['password'] = "Invalid username or password.";
         }
-
     }
 }
 
@@ -45,7 +44,7 @@ include(SHARED_PATH . '/public_navigation.php');
 <div class="website_content">
 
     <section class="section_container">
-    
+
         <div class="section_content_small">
 
             <div class="heading_container">
@@ -54,7 +53,7 @@ include(SHARED_PATH . '/public_navigation.php');
 
             <?php echo display_errors($errors); ?>
 
-            <form class="form_container" action="<?php echo url_for('/staff/login.php');?>" method="POST">
+            <form class="form_container" action="<?php echo url_for('/staff/login.php'); ?>" method="POST">
 
                 <div class="item_box">
 
@@ -65,13 +64,13 @@ include(SHARED_PATH . '/public_navigation.php');
                             <input class="text_field <?php if (has_errors($errors, 'username')) echo 'error'; ?>" type="text" id="username" name="admin[username]" value="<?php echo h($username); ?>" placeholder="Enter username">
                             <?php echo display_inline_errors($errors, 'username'); ?>
                         </div>
-        
+
                         <div class="form_box">
                             <h4>Password</h4>
                             <input class="text_field  <?php if (has_errors($errors, 'password')) echo 'error'; ?>" type="password" id="password" name="admin[password]" value="" placeholder="Enter password">
                             <?php echo display_inline_errors($errors, 'password'); ?>
                         </div>
-        
+
                         <div class="form_buttons">
                             <button type="submit" class="primary_button" name="submit">Login</button>
                         </div>

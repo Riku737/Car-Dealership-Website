@@ -13,10 +13,10 @@ $admins = Admin::find_all();
 <div class="website_content">
 
     <section class="section_container">
-    
+
         <div class="section_content">
 
-            
+
             <div class="heading_container">
                 <div class="breadcrumb_menu">
                     <a class="link" href="<?php echo url_for('/staff/index.php'); ?>">Staff</a>
@@ -36,7 +36,7 @@ $admins = Admin::find_all();
             <?php echo display_session_message(); ?>
 
             <div class="item_box">
-    
+
                 <table class="table_section">
                     <thead>
                         <tr>
@@ -51,26 +51,26 @@ $admins = Admin::find_all();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($admins as $admin) {?>
-                        <tr>
-                            <td><?php echo h($admin->id); ?></td>
-                            <td><?php echo h($admin->first_name); ?></td>
-                            <td><?php echo h($admin->last_name); ?></td>
-                            <td><?php echo h($admin->email); ?></td>
-                            <td><?php echo h($admin->username); ?></td>
-                            <td><a class="link" href="show.php?id=<?php echo h(u($admin->id)); ?>">View</a></td>
-                            <td><a class="link" href="edit.php?id=<?php echo h(u($admin->id)); ?>">Edit</a></td>
-                            <td><a class="link" href="delete.php?id=<?php echo h(u($admin->id)); ?>">Delete</a></td>
-                        </tr>
+                        <?php foreach ($admins as $admin) { ?>
+                            <tr>
+                                <td><?php echo h($admin->id); ?></td>
+                                <td><?php echo h($admin->first_name); ?></td>
+                                <td><?php echo h($admin->last_name); ?></td>
+                                <td><?php echo h($admin->email); ?></td>
+                                <td><?php echo h($admin->username); ?></td>
+                                <td><a class="link" href="show.php?id=<?php echo h(u($admin->id)); ?>">View</a></td>
+                                <td><a class="link" href="edit.php?id=<?php echo h(u($admin->id)); ?>">Edit</a></td>
+                                <td><a class="link" href="delete.php?id=<?php echo h(u($admin->id)); ?>">Delete</a></td>
+                            </tr>
                         <?php } ?>
                     </tbody>
-    
+
                 </table>
-    
+
             </div>
-    
+
         </div>
-    
+
     </section>
 
 </div>

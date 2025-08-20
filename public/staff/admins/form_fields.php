@@ -10,7 +10,7 @@
             <input class="text_field <?php if (has_errors($admin->errors, 'first_name')) echo 'error'; ?>" type="text" id="first_name" name="admin[first_name]" value="<?php echo h($admin->first_name); ?>" placeholder="Enter first name">
             <?php echo display_inline_errors($admin->errors, 'first_name'); ?>
         </div>
-        
+
         <!-- Last Name -->
         <div class="form_box">
             <h4>Last Name*</h4>
@@ -24,7 +24,7 @@
             <input class="text_field <?php if (has_errors($admin->errors, 'email')) echo 'error'; ?>" type="text" id="email" name="admin[email]" value="<?php echo h($admin->email); ?>" placeholder="Enter email">
             <?php echo display_inline_errors($admin->errors, 'email'); ?>
         </div>
-        
+
         <!-- Username -->
         <div class="form_box">
             <h4>Username*</h4>
@@ -49,7 +49,7 @@
             <input class="text_field <?php if (has_errors($admin->errors, 'password')) echo 'error'; ?>" type="password" id="password" name="admin[password]" value="<?php echo h($admin->password); ?>" placeholder="Enter password">
             <?php echo display_inline_errors($admin->errors, 'password'); ?>
         </div>
-        
+
         <!-- Confirm Password -->
         <div class="form_box">
             <h4>Confirm Password</h4>

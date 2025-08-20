@@ -16,39 +16,39 @@ include(SHARED_PATH . '/public_navigation.php');
 ?>
 
 <div class="website_content">
-    
+
     <section class="section_container">
-    
+
         <div class="section_content">
-    
+
             <div class="heading_container">
                 <div class="breadcrumb_menu">
                     <a class="link" href="<?php echo 'index.php' ?>">Inventory</a>
                     <p><?php echo h($car->name()) ?></p>
                 </div>
-                <h1><?php echo h($car->name())?></h1>
+                <h1><?php echo h($car->name()) ?></h1>
                 <h2><?php echo h($car->price()) ?></h2>
             </div>
-    
-    
-            <img class="item_thumbnail" src="<?php echo h($car->image())?>" alt="<?php echo h($car->name()) ?>">
-    
+
+
+            <img class="item_thumbnail" src="<?php echo h($car->image()) ?>" alt="<?php echo h($car->name()) ?>">
+
             <div class="content_container">
-    
+
                 <h2>Description</h2>
-    
+
                 <div class="item_box">
                     <p><?php echo h($car->description); ?></p>
                 </div>
-    
+
             </div>
-    
+
             <div class="content_container">
-    
+
                 <h2>Specifications</h2>
-    
+
                 <div class="item_box">
-    
+
                     <table class="table_section">
                         <tbody>
                             <tr>
@@ -92,11 +92,11 @@ include(SHARED_PATH . '/public_navigation.php');
                                 <td><?php echo h($car->condition()); ?></td>
                             </tr>
                         </tbody>
-    
+
                     </table>
-    
+
                 </div>
-    
+
             </div>
 
             <div class="content_container">
@@ -111,15 +111,15 @@ include(SHARED_PATH . '/public_navigation.php');
 
 
             </div>
-    
+
         </div>
-    
+
     </section>
 
 </div>
 
 
-<?php 
+<?php
 // Footer component
-include(SHARED_PATH . '/public_footer.php'); 
+include(SHARED_PATH . '/public_footer.php');
 ?>

@@ -1,6 +1,7 @@
 <?php
 
-class Session {
+class Session
+{
 
     // INSTANCE VARIABLES
 
@@ -8,13 +9,14 @@ class Session {
     public $username;
     public $last_login;
     public $full_name;
-    protected const MAX_LOGIN_AGE = 60*60*24; // 1 day
+    protected const MAX_LOGIN_AGE = 60 * 60 * 24; // 1 day
 
 
 
 
     // CONSTRUCTOR
-    public function __construct() {
+    public function __construct()
+    {
         session_start();
         $this->check_stored_login();
     }
@@ -29,10 +31,11 @@ class Session {
     // Note: $_SESSION is a superglobal associative array in PHP that is used to store data across multiple pages for a single user session
     // Data in $_SESSION is stored on the server, and each user gets a unique session ID (usually via a cookie)
     // session_start(); must be called before using $_SESSION
-    public function login($admin) {
+    public function login($admin)
+    {
         session_regenerate_id(); // Creates a new session ID to prevent session fixation attacks
         if ($admin) { // If an admin object is provided, set session variables
-            
+
             // Store admin ID
             $_SESSION['admin_id'] = $admin->id;
             $this->admin_id = $admin->id;
@@ -54,13 +57,15 @@ class Session {
 
     // Check if the admin is logged in
     // An admin is logged in if their ID is set and their last login was recent
-    public function is_logged_in() {
+    public function is_logged_in()
+    {
         // return isset($_SESSION['admin_id']);
         return isset($this->admin_id) && $this->last_login_is_recent();
     }
 
     // Logout scrubs all user admin session data
-    public function logout() {
+    public function logout()
+    {
         unset($_SESSION['admin_id']);
         unset($this->admin_id);
         unset($_SESSION['username']);
@@ -74,7 +79,8 @@ class Session {
 
     // Checks if the admin is already logged in
     // The admin is already logged in if their ID is already set in their session
-    private function check_stored_login() {
+    private function check_stored_login()
+    {
         if (isset($_SESSION['admin_id'])) {
             $this->admin_id = $_SESSION['admin_id'];
             $this->username = $_SESSION['username'];
@@ -86,7 +92,8 @@ class Session {
     // Checks if the last login was recent
     // An admin's last login is considered recent if it occurred within the past 24 hours
     // If the last login is not set, then the user has not logged in a session yet, thus return false
-    private function last_login_is_recent() {
+    private function last_login_is_recent()
+    {
         if (!isset($this->last_login)) {
             return false;
         } elseif (($this->last_login + self::MAX_LOGIN_AGE) < time()) {
@@ -98,8 +105,9 @@ class Session {
 
     // Sets a message to be displayed to the user
     // For UX form submission messages (update, delete, etc.)
-    public function message($msg="") {
-        if(!empty($msg)) {
+    public function message($msg = "")
+    {
+        if (!empty($msg)) {
             // Then this is a "set" message
             $_SESSION['message'] = $msg;
             return true;
@@ -110,10 +118,8 @@ class Session {
     }
 
     // Clears the message from the session
-    public function clear_message() {
+    public function clear_message()
+    {
         unset($_SESSION['message']);
     }
-
 }
-
-?>

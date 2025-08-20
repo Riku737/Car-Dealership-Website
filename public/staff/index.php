@@ -1,9 +1,9 @@
-<?php 
+<?php
 require_once('../../private/initialize.php');
 $page_title = 'Staff Dashboard';
 require_login(); // Ensure user is logged in
 
-include(SHARED_PATH . '/staff_navigation.php'); 
+include(SHARED_PATH . '/staff_navigation.php');
 ?>
 
 <div class="website_content">

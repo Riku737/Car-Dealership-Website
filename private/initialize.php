@@ -46,5 +46,3 @@ sort($colours);
 $fuels = Car::FUEL_OPTIONS;
 sort($fuels);
 $prices = Car::PRICE_OPTIONS;
-
-?>

@@ -1,5 +1,5 @@
 <?php
-require_once('../private/initialize.php'); 
+require_once('../private/initialize.php');
 $page_title = 'Inventory';
 
 if (is_post_request()) {
@@ -27,16 +27,14 @@ if (is_post_request()) {
     }
 
     $cars = Car::find_by_sql($sql);
-
 } else {
 
     /** @var Car[] $cars */
     $cars = Car::find_all();
-
 }
 
 
-include(SHARED_PATH . '/public_navigation.php'); 
+include(SHARED_PATH . '/public_navigation.php');
 ?>
 
 <div class="website_content">
@@ -46,12 +44,12 @@ include(SHARED_PATH . '/public_navigation.php');
         <div class="section_content">
 
             <div class="hero_container">
-                
+
                 <div class="heading_container" style="text-align: center;">
                     <h1 style="margin-top:0px;">Lineup of the Usual Suspects</h1>
                     <p>Find new, used, and certified pre-owned vehicles with clean records and killer deals.</p>
                 </div>
-    
+
                 <form class="search_container" action="index.php" method="post">
 
                     <!-- Make Filter -->
@@ -103,7 +101,7 @@ include(SHARED_PATH . '/public_navigation.php');
                 </form>
 
             </div>
-            
+
         </div>
 
     </section>
@@ -114,36 +112,36 @@ include(SHARED_PATH . '/public_navigation.php');
 
             <div class="item_box">
 
-                <?php 
+                <?php
                 if (empty($cars)) {
                     echo "<p>No cars found matching your search filters.</p>";
                 }
                 ?>
 
                 <div class="grid_layout">
-                    <?php foreach($cars as $car) {?>
-                    <a class="car_link" href="detail.php?id=<?php echo $car->id; ?>">
-    
-                        <div class="image_boundary">
-                            <img class="car_preview_thumbnail" src="<?php echo h($car->image()) ?>" alt="<?php echo h($car->name()) ?>">
-                        </div>
-    
-                        <div class="car_details">
-                            <div class="pill_group">
-                                <span class="headline_pill"><?php echo h($car->condition()); ?></span>
-                                <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
-                                <span class="headline_pill"><?php echo h($car->body_type); ?></span>
+                    <?php foreach ($cars as $car) { ?>
+                        <a class="car_link" href="detail.php?id=<?php echo $car->id; ?>">
+
+                            <div class="image_boundary">
+                                <img class="car_preview_thumbnail" src="<?php echo h($car->image()) ?>" alt="<?php echo h($car->name()) ?>">
                             </div>
-                            <h4><?php echo h($car->name()) ?></h4>
-                            <p><?php echo h($car->price()); ?></p>
-                        </div>
-                        
-                    </a>
+
+                            <div class="car_details">
+                                <div class="pill_group">
+                                    <span class="headline_pill"><?php echo h($car->condition()); ?></span>
+                                    <span class="headline_pill"><?php echo h($car->mileage()); ?></span>
+                                    <span class="headline_pill"><?php echo h($car->body_type); ?></span>
+                                </div>
+                                <h4><?php echo h($car->name()) ?></h4>
+                                <p><?php echo h($car->price()); ?></p>
+                            </div>
+
+                        </a>
                     <?php } ?>
                 </div>
             </div>
 
-            
+
         </div>
 
     </section>
