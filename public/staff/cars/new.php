@@ -8,14 +8,15 @@ if (is_post_request()) {
 
     // Create record using post parameters
     $args = $_POST['car'];
-    $args['image'] = $_FILES['image']['name'];
-
+    
     // If an image is uploaded, store file in the designated images folder
     if (!empty($_FILES['image']['name'])) {
         $file_name = $_FILES['image']['name'];
-        $tempname = $_FILES['image']['tmp_name'];
-        $folder = __DIR__ . '/../../images/' . $file_name;
-        move_uploaded_file($tempname, $folder);
+        $temp_name = $_FILES['image']['tmp_name'];
+        $unique_name = uniqid() . '_' . $file_name;
+        $args['image'] = $unique_name;
+        $folder = __DIR__ . '/../../images/' . $unique_name;
+        move_uploaded_file($temp_name, $folder);
     }
 
     // Create a new Car object with the provided arguments

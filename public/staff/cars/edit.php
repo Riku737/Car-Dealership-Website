@@ -21,10 +21,11 @@ if (is_post_request()) {
 
     if (!empty($_FILES['image']['name'])) {
         $file_name = $_FILES['image']['name'];
-        $tempname = $_FILES['image']['tmp_name'];
-        $folder = __DIR__ . '/../../images/' . $file_name;
-        move_uploaded_file($tempname, $folder);
-        $args['image'] = $file_name;
+        $temp_name = $_FILES['image']['tmp_name'];
+        $unique_name = uniqid() . '_' . $file_name;
+        $folder = __DIR__ . '/../../images/' . $unique_name;
+        move_uploaded_file($temp_name, $folder);
+        $args['image'] = $unique_name;
     } else {
         $args['image'] = $car->image; // Keep existing image
     }

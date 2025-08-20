@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../../../private/initialize.php');
 $page_title = 'Delete Car';
 require_login(); // Admin protect page
@@ -46,7 +46,7 @@ if (is_post_request()) {
             </div>
 
             <form action="<?php echo url_for('/staff/cars/delete.php?id=' . h(u($car->id))); ?>" method="post">
-            
+
                 <div class="form_buttons">
                     <button type="submit" class="primary_button" name="submit">Delete Car</button>
                     <a href="<?php echo url_for('/staff/cars/index.php'); ?>" class="tertiary_button">Cancel</a>
@@ -60,4 +60,6 @@ if (is_post_request()) {
 
 </div>
 
-<?php include(SHARED_PATH . '/staff_footer.php'); ?>
+<?php
+db_disconnect($database);
+?>

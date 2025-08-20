@@ -12,21 +12,22 @@
                 <?php foreach ($makes as $option_name) { ?>
                     <?php if ($option_name == $car->make) { ?>
                         <option selected value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
-                    <?php } else {?>
+                    <?php } else { ?>
                         <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                     <?php } ?>
                 <?php } ?>
             </select>
-            <?php echo display_inline_errors($car->errors, 'make'); // Error message ?>
+            <?php echo display_inline_errors($car->errors, 'make'); // Error message 
+            ?>
         </div>
-        
+
         <!-- Model -->
         <div class="form_box">
             <h4>Model*</h4>
             <input class="text_field <?php if (has_errors($car->errors, 'model')) echo 'error'; ?>" type="text" id="model" name="car[model]" value="<?php echo h($car->model); ?>" placeholder="Enter model name">
             <?php echo display_inline_errors($car->errors, 'model'); ?>
         </div>
-        
+
         <!-- Year -->
         <div class="form_box form_box_options">
             <h4>Year*</h4>
@@ -35,14 +36,15 @@
                 <?php foreach (Car::year_options() as $option_name) { ?>
                     <?php if ($option_name == $car->year) { ?>
                         <option selected value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
-                    <?php } else {?>
-                        <option value="<?php echo $option_name; ?>"><?php echo $option_name; // Error message ?></option>
+                    <?php } else { ?>
+                        <option value="<?php echo $option_name; ?>"><?php echo $option_name; // Error message 
+                                                                    ?></option>
                     <?php } ?>
                 <?php } ?>
             </select>
             <?php echo display_inline_errors($car->errors, 'year'); ?>
         </div>
-    
+
         <!-- Body Type -->
         <div class="form_box form_box_options">
             <h4>Body Type*</h4>
@@ -51,14 +53,15 @@
                 <?php foreach ($bodys as $option_name) { ?>
                     <?php if ($option_name == $car->body_type) { ?>
                         <option selected value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
-                    <?php } else {?>
+                    <?php } else { ?>
                         <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                     <?php } ?>
                 <?php } ?>
             </select>
-            <?php echo display_inline_errors($car->errors, 'body_type'); // Error message ?>
+            <?php echo display_inline_errors($car->errors, 'body_type'); // Error message 
+            ?>
         </div>
-        
+
         <!-- Colour -->
         <div class="form_box form_box_options">
             <h4>Colour*</h4>
@@ -67,12 +70,13 @@
                 <?php foreach ($colours as $option_name) { ?>
                     <?php if ($option_name == $car->colour) { ?>
                         <option selected value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
-                    <?php } else {?>
+                    <?php } else { ?>
                         <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                     <?php } ?>
                 <?php } ?>
             </select>
-            <?php echo display_inline_errors($car->errors, 'colour'); // Error message ?>
+            <?php echo display_inline_errors($car->errors, 'colour'); // Error message 
+            ?>
         </div>
 
     </div>
@@ -90,10 +94,11 @@
             <h4>Mileage (km)*</h4>
             <input class="text_field <?php if (has_errors($car->errors, 'mileage_km')) echo 'error'; ?>" type="number" step="1" id="mileage" name="car[mileage_km]" value="<?php echo h($car->mileage_km); ?>" placeholder="Enter mileage in km">
             <small>Mileage will be rounded to nearest whole number.</small>
-            <?php echo display_inline_errors($car->errors, 'mileage_km'); // Error message ?>
+            <?php echo display_inline_errors($car->errors, 'mileage_km'); // Error message 
+            ?>
         </div>
-        
-        
+
+
         <!-- Fuel Type -->
         <div class="form_box form_box_options">
             <h4>Fuel Type*</h4>
@@ -102,14 +107,15 @@
                 <?php foreach (Car::FUEL_OPTIONS as $option_name) { ?>
                     <?php if ($option_name == $car->fuel_type) { ?>
                         <option selected value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
-                    <?php } else {?>
+                    <?php } else { ?>
                         <option value="<?php echo $option_name; ?>"><?php echo $option_name; ?></option>
                     <?php } ?>
                 <?php } ?>
             </select>
-            <?php echo display_inline_errors($car->errors, 'fuel_type'); // Error message ?>
+            <?php echo display_inline_errors($car->errors, 'fuel_type'); // Error message 
+            ?>
         </div>
-        
+
         <!-- Condition -->
         <div class="form_box form_box_options">
             <h4>Condition*</h4>
@@ -118,12 +124,13 @@
                 <?php foreach (Car::CONDITION_OPTIONS as $option_id => $option_name) { ?>
                     <?php if ($option_id == $car->condition_id) { ?>
                         <option selected value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
-                    <?php } else {?>
+                    <?php } else { ?>
                         <option value="<?php echo $option_id; ?>"><?php echo $option_name; ?></option>
                     <?php } ?>
                 <?php } ?>
             </select>
-            <?php echo display_inline_errors($car->errors, 'condition_id'); // Error message ?>
+            <?php echo display_inline_errors($car->errors, 'condition_id'); // Error message 
+            ?>
         </div>
 
     </div>
@@ -141,7 +148,8 @@
             <h4>Price ($)*</h4>
             <input class="text_field <?php if (has_errors($car->errors, 'price')) echo 'error'; ?>" type="number" step="1" id="price" name="car[price]" value="<?php echo h($car->price); ?>" placeholder="Enter price in CAD">
             <small>Price will be rounded to nearest whole number.</small>
-            <?php echo display_inline_errors($car->errors, 'price'); // Error message ?>
+            <?php echo display_inline_errors($car->errors, 'price'); // Error message 
+            ?>
         </div>
 
     </div>
@@ -156,9 +164,10 @@
     <div class="form_box description_box">
         <h4>Description*</h4>
         <textarea class="text_field description_text <?php if (has_errors($car->errors, 'description')) echo 'error'; ?>" type="text" id="description" name="car[description]" placeholder="Enter brief vehicle description"><?php echo h($car->description); ?></textarea>
-        <?php echo display_inline_errors($car->errors, 'description'); // Error message ?>
+        <?php echo display_inline_errors($car->errors, 'description'); // Error message 
+        ?>
     </div>
-    
+
 </div>
 
 <div class="item_box">
@@ -169,7 +178,7 @@
     <div class="form_box image_box">
         <h4>Image*</h4>
         <div class="image_display" style="<?php if (empty($car->image)) echo 'display: none;'; ?>">
-            <img id="image_preview" alt="Image preview" src="../../<?php echo h($car->image())?>">
+            <img id="image_preview" alt="Image preview" src="../../<?php echo h($car->image()) ?>">
             <span id="image_name"><?php echo h($car->image); ?></span>
         </div>
         <label for="image" class="image_button <?php if (has_errors($car->errors, 'image')) echo 'error_image'; ?>">
@@ -177,7 +186,8 @@
             <p><i class="bi bi-upload"></i>Upload Image</p>
             <small style="font-weight: normal;">jpg, jpeg, png</small>
         </label>
-        <?php echo display_inline_errors($car->errors, 'image'); // Error message ?>
+        <?php echo display_inline_errors($car->errors, 'image'); // Error message 
+        ?>
     </div>
 
 </div>

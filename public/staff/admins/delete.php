@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../../../private/initialize.php');
 $page_title = 'Delete Admin';
 require_login(); // Admin protect page
@@ -58,4 +58,6 @@ if (is_post_request()) {
 
 </div>
 
-<?php include(SHARED_PATH . '/staff_footer.php'); ?>
+<?php
+db_disconnect($database);
+?>
