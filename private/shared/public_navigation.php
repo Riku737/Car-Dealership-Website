@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/public.css'); ?>" />
+    <script src="<?php echo url_for('/scripts/main.js'); ?>" defer></script>
     <title>
         <?php
         if (isset($page_title)) {
@@ -33,9 +34,10 @@
                 </div>
             </div>
             <div class="navigation_right">
-                <a class="secondary_button" href="<?php echo url_for('/index.php') ?>">Cars for sale<i class="bi bi-arrow-right"></i></a>
-                <a class="tertiary_button" href="<?php echo url_for('/staff/login.php') ?>">Login</a>
+                <a class="primary_button" href="<?php echo url_for('/index.php') ?>">Cars for sale<i class="bi bi-arrow-right"></i></a>
+                <a class="secondary_button" href="<?php echo url_for('/staff/login.php') ?>">Login</a>
             </div>
+            <button class="menu_toggle" onclick="toggleMenu()"><i class="bi bi-list"></i></button>
 
         </div>
 

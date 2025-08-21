@@ -25,8 +25,10 @@
 
             <div class="navigation_left">
                 <a class="menu_link menu_logo" href="<?php echo url_for('/staff/index.php') ?>">The Used Suspects</a>
-                <a class="menu_link" href="<?php echo url_for('/staff/cars/index.php') ?>">Inventory</a>
-                <a class="menu_link" href="<?php echo url_for('/staff/admins/index.php') ?>">Admins</a>
+                <div class="staff_menu_links">
+                    <a class="menu_link" href="<?php echo url_for('/staff/cars/index.php') ?>">Inventory</a>
+                    <a class="menu_link" href="<?php echo url_for('/staff/admins/index.php') ?>">Admins</a>
+                </div>
             </div>
             <div class="navigation_right">
                 <a class="secondary_button" href="<?php echo url_for('/staff/logout.php') ?>">Logout</a>

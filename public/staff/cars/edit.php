@@ -59,7 +59,7 @@ include(SHARED_PATH . '/staff_navigation.php');
                         <h1><?php echo h($car->name()); ?></h1>
                     </div>
                     <div class="right_split">
-                        <a class="primary_button" href="<?php echo url_for('/staff/cars/delete.php?id=' . h($car->id)); ?>"><i class="bi bi-trash-fill"></i>Delete car</a>
+                        <a class="tertiary_button" href="<?php echo url_for('/staff/cars/delete.php?id=' . h($car->id)); ?>"><i class="bi bi-trash-fill"></i>Delete car</a>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@ $page_title = $admin->full_name();
                         <h1><?php echo h($admin->username); ?></h1>
                     </div>
                     <div class="right_split">
-                        <a class="primary_button" href="<?php echo url_for('/staff/admins/edit.php?id=' . h($admin->id)); ?>"><i class="bi bi-pencil-fill"></i>Edit admin</a>
+                        <a class="tertiary_button" href="<?php echo url_for('/staff/admins/edit.php?id=' . h($admin->id)); ?>"><i class="bi bi-pencil-fill"></i>Edit admin</a>
                     </div>
                 </div>
             </div>

@@ -120,6 +120,6 @@ include(SHARED_PATH . '/public_navigation.php');
 
 
 <?php
-// Footer component
+include(SHARED_PATH . '/public_mobile_menu.php');
 include(SHARED_PATH . '/public_footer.php');
 ?>

@@ -36,7 +36,7 @@ include(SHARED_PATH . '/staff_navigation.php');
                         <h1><?php echo h($car->name()); ?></h1>
                     </div>
                     <div class="right_split">
-                        <a class="primary_button" href="<?php echo url_for('/staff/cars/edit.php?id=' . h($car->id)); ?>"><i class="bi bi-pencil-fill"></i>Edit car</a>
+                        <a class="tertiary_button" href="<?php echo url_for('/staff/cars/edit.php?id=' . h($car->id)); ?>"><i class="bi bi-pencil-fill"></i>Edit car</a>
                     </div>
                 </div>
 

@@ -48,7 +48,7 @@ if (is_post_request()) {
                         <h1><?php echo h($admin->full_name()); ?></h1>
                     </div>
                     <div class="right_split">
-                        <a class="primary_button" href="<?php echo url_for('/staff/admins/delete.php?id=' . h($admin->id)); ?>"><i class="bi bi-trash-fill"></i>Delete admin</a>
+                        <a class="tertiary_button" href="<?php echo url_for('/staff/admins/delete.php?id=' . h($admin->id)); ?>"><i class="bi bi-trash-fill"></i>Delete admin</a>
                     </div>
                 </div>
 

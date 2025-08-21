@@ -90,5 +90,6 @@ include(SHARED_PATH . '/public_navigation.php');
 </div>
 
 <?php
+include(SHARED_PATH . '/public_mobile_menu.php');
 db_disconnect($database);
 ?>

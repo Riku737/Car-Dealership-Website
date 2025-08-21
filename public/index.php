@@ -148,4 +148,7 @@ include(SHARED_PATH . '/public_navigation.php');
 
 </div>
 
-<?php include(SHARED_PATH . '/public_footer.php'); ?>
+<?php
+include(SHARED_PATH . '/public_mobile_menu.php');
+include(SHARED_PATH . '/public_footer.php');
+?>
