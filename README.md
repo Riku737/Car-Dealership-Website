@@ -35,6 +35,15 @@ A PHP and mySQL object oriented-based web application for managing and displayin
 4. Place the project in your web server's root directory (e.g., `htdocs` for XAMPP).
 5. Access the site via your browser (e.g., `http://localhost/Car-Dealership-Website/public/`).
 
+## Example Account Login
+
+You can use the following example admin account to log in:
+
+<pre>
+Username: JohnDoe123
+Password: MySecure!Pass123
+</pre>
+
 ## Usage
 
 -   Public users can browse cars, view details, and contact the dealership.
