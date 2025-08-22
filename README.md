@@ -17,9 +17,9 @@ A PHP and mySQL object oriented-based web application for managing and displayin
 -   File upload for car images (with unique file naming)
 -   Responsive navigation and modern UI
 
-![Inventory](inventory.png)
-![Inventory](login.png)
-![Inventory](crud.png)
+![Screenshot of app](thumbnail_1.png)
+![Screenshot of app](thumbnail_2.png)
+![Screenshot of app](thumbnail_3.png)
 
 ## Requirements
 
