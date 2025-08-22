@@ -23,7 +23,6 @@ include(SHARED_PATH . '/staff_navigation.php');
 
         <div class="section_content">
 
-            <?php echo display_session_message(); ?>
 
             <div class="heading_container">
                 <div class="breadcrumb_menu">
@@ -41,6 +40,8 @@ include(SHARED_PATH . '/staff_navigation.php');
                 </div>
 
             </div>
+
+            <?php echo display_session_message(); ?>
 
             <div class="content_container">
 

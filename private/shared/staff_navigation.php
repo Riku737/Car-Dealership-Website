@@ -19,6 +19,12 @@
 
 <body>
 
+    <div class="banner_message">
+        <div class="banner_content">
+            <h4>Admin</h4>
+        </div>
+    </div>
+
     <nav class="navigation_section">
 
         <div class="navigation_content">

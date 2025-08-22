@@ -1,3 +1,21 @@
+/* NAVIGATION */
+
+.banner_message {
+    background-color: var(--pri_color);
+    color: white;
+}
+
+.banner_message h4 {
+    margin: 15px 0;
+    padding: 0;
+}
+
+.banner_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* STAFF DASHBOARD PAGE */
 
 .admin_banner {
@@ -118,6 +136,15 @@
     .navigation_left {
         width: 100%;
         justify-content: space-between;
+    }
+    .navigation_right {
+        display: flex;
+    }
+    .navigation_right .tertiary_button {
+        display: none;
+    }
+    .staff_menu_links {
+        display: none;
     }
 
     /* MAIN CONTENT */
