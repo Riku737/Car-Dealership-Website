@@ -60,3 +60,11 @@ Password: MySecure!Pass123
 -   The `private/` directory is not web-accessible for security.
 -   Uploaded files are renamed with unique IDs to prevent conflicts.
 -   Always validate and sanitize user input.
+
+## Disclaimer
+
+This project was completed by following along with the LinkedIn Learning courses:
+
+-   _PHP: Object-Oriented Programming with Databases_
+
+The code and structure closely reflect the instructional content provided in these courses, and the project was developed as part of a personal learning exercise.
