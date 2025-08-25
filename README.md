@@ -10,7 +10,7 @@
 
 A PHP and mySQL object oriented-based web application for managing and displaying cars for sale, with car inventory and admin management features.
 
-This website was built alongside the *PHP: Object-Oriented Programming with Databases* course on LinkedIn Learning, but it is not an exact reproduction of the course. The original course project centered on a bicycle shop with a limited UI/UX and no image functionality. For this project, the concept was adapted and extended into a dealership context, with enhanced UI/UX design and additional features such as vehicle images and inventory search filters.
+This website was built alongside the *PHP: Object-Oriented Programming with Databases* course on LinkedIn Learning, but it is not an exact reproduction. The original course project centered on a bicycle shop with a limited UI/UX and no image functionality. For this project, the concept was adapted and extended into a dealership context, with enhanced UI/UX design and additional features such as vehicle images and inventory search filters.
 
 ## Key Features
 
