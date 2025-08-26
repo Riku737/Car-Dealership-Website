@@ -69,6 +69,6 @@ Password: MySecure!Pass123
 
 This project was completed by following along with the LinkedIn Learning courses:
 
--   _PHP: Object-Oriented Programming with Databases_
+-   [_PHP: Object-Oriented Programming with Databases_](https://www.linkedin.com/learning/php-object-oriented-programming-with-databases)
 
 The code and structure closely reflect the instructional content provided in these courses, and the project was developed as part of a personal learning exercise.
